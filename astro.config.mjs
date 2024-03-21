@@ -7,7 +7,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://now7x.vercel.app',
   integrations: [
     mdx(),
     sitemap(),
