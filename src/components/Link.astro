@@ -1,0 +1,27 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+
+const isExternalLink = (url: string) => {
+  const currentHost = Astro.url.hostname;
+  const linkHost = new URL(url, Astro.url.href).hostname;
+  return currentHost !== linkHost;
+};
+
+const external = isExternalLink(href);
+---
+
+{
+  external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <slot />
+    </a>
+  ) : (
+    <a href={href}>
+      <slot />
+    </a>
+  )
+}
