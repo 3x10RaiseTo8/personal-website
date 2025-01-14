@@ -1,0 +1,83 @@
+---
+import Link from "./Link.astro";
+
+const navLinks = [
+  {
+    title: "Changelog",
+    href: "/changelog",
+  },
+  {
+    title: "Now",
+    href: "/now",
+  },
+  {
+    title: "Bookmarks",
+    href: "/bookmarks",
+  },
+  {
+    title: "Lists",
+    href: "/lists",
+  },
+  {
+    title: "Tags",
+    href: "/tags",
+  },
+  {
+    title: "GitHub",
+    href: "https://github.com/3x10RaiseTo8",
+  },
+  {
+    title: "Twitter",
+    href: "https://twitter.com/now7x",
+  },
+  {
+    title: "RSS",
+    href: "/rss.xml",
+  },
+];
+---
+
+<footer>
+  <nav class="footer-links">
+    <Link href="/about">About</Link>
+    <Link href="/now">Now</Link>
+    <Link href="https://astro.build/">Astro</Link>
+  </nav>
+  <div class="footer-text">
+    © {new Date().getFullYear()} Abhishek Singh
+    <br />
+    <Link href="/license">License</Link>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .footer-links {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: #3498db;
+  }
+
+  .footer-text {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+</style>

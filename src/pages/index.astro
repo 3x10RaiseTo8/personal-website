@@ -1,20 +1,49 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Link from "../components/Link.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      To get started, open the directory <code>src/pages</code> in your project.<br
-      />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to
-      <Link href="https://astro.build/">Astro</Link>
-      <Link href="/now">NOWWWWWW PAGE</Link>
-      <Link href="/about">Abbbbbbowwwt PAGE</Link>
+  <header>
+    <h1>Welcome to My Personal Website</h1>
+  </header>
 
-      " message above.
-    </p>
-  </main>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm [Your Name], a [Your Profession/Passion]. I love creating,
+        learning, and exploring new ideas. Welcome to my little corner of the
+        internet!
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <p>Here are some of the things I've been working on recently:</p>
+      <ul>
+        <li>Project 1 - A description of your project</li>
+        <li>Project 2 - Another amazing project</li>
+        <li>Project 3 - Something else awesome</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>If you'd like to get in touch, click the button below:</p>
+      <button
+        class="button"
+        onclick="alert('Email me at your-email@example.com!')">Say Hello</button
+      >
+    </section>
+  </div>
+
+  <Footer />
 </Layout>
