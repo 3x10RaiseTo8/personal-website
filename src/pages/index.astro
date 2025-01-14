@@ -1,49 +1,106 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Link from "../components/Link.astro";
-import Footer from "../components/Footer.astro";
+const socials = [
+  {
+    title: "GitHub",
+    href: "https://github.com/3x10RaiseTo8",
+  },
+  {
+    title: "Twitter",
+    href: "https://twitter.com/now7x",
+  },
+  {
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/in/abhishek7x/",
+  },
+];
 ---
 
-<Layout title="Welcome to Astro.">
-  <header>
-    <h1>Welcome to My Personal Website</h1>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap"
+  rel="stylesheet"
+/>
+<Layout title="Abhishek Singh">
   <div class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Hello! I'm [Your Name], a [Your Profession/Passion]. I love creating,
-        learning, and exploring new ideas. Welcome to my little corner of the
-        internet!
-      </p>
-    </section>
-
-    <section id="projects">
-      <h2>My Projects</h2>
-      <p>Here are some of the things I've been working on recently:</p>
-      <ul>
-        <li>Project 1 - A description of your project</li>
-        <li>Project 2 - Another amazing project</li>
-        <li>Project 3 - Something else awesome</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>If you'd like to get in touch, click the button below:</p>
-      <button
-        class="button"
-        onclick="alert('Email me at your-email@example.com!')">Say Hello</button
+    <h1>abhishe<span id="k">k</span>.</h1>
+    <svg
+      width="200"
+      height="200"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+    >
+      <rect
+        x="0"
+        y="0"
+        width="200"
+        height="200"
+        fill="cyan"
+        stroke="black"
+        stroke-width="5"></rect>
+      <text
+        text-anchor="middle"
+        dominant-baseline="left"
+        fill="black"
+        font-family="Bricolage Grotesque"
+        font-weight="200"
+        font-stretch="condensed"
+        font-size="200"
+        id="k"
+        x="23%"
+        y="96%"
       >
+        <tspan>k</tspan>
+        <tspan font-weight="800">.</tspan></text
+      >
+    </svg>
+    <img src="kperiod.svg" alt="" />
+    <section>
+      <p>
+        Hello! I'm Abhishek, a generalist. I love learning and exploring new
+        ideas.
+      </p>
+      <p>Here are some of the things I've been working on recently</p>
+      <ul>
+        <li>Hiring Pipelines</li>
+        <li>Generative AI Agent with SQL, reasoning, complex branching.</li>
+        <li>Molecular docking on an inhibitor protein</li>
+      </ul>
+
+      <p>If you'd like to get in touch, DM on any platform</p>
+      <ul>
+        {
+          socials.map((social) => (
+            <li>
+              <Link href={social.href}>{social.title}</Link>
+            </li>
+          ))
+        }
+      </ul>
     </section>
   </div>
 
-  <Footer />
+  <style>
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    h1 {
+      text-align: right;
+      display: block;
+      font-family:
+        Bricolage Grotesque,
+        sans-serif;
+      font-weight: 800;
+      font-stretch: condensed;
+    }
+
+    #k {
+      font-weight: 200;
+    }
+  </style>
 </Layout>
