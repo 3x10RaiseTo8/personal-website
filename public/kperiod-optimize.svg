@@ -2,13 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg width="200" height="200" version="1.1" viewBox="0 0 52.917 52.917" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
-  <linearGradient id="linearGradient17" x1=".39473" x2="52.522" y1="26.458" y2="26.458" gradientTransform="matrix(.98329 0 0 .98329 .42102 .42102)" gradientUnits="userSpaceOnUse">
+  <linearGradient id="linearGradient17" x1=".39473" x2="52.522" y1="26.458" y2="26.458" gradientTransform="matrix(.98329 0 0 .98329 .44209 .44209)" gradientUnits="userSpaceOnUse">
    <stop stop-color="#0ff" offset=".15192"/>
    <stop offset="1"/>
   </linearGradient>
  </defs>
  <g>
-  <rect x="1.3008" y="1.3008" width="50.273" height="50.273" fill="#0ff" stroke="url(#linearGradient17)" stroke-dashoffset="2.6458" stroke-width="2.6458" style="paint-order:markers fill stroke"/>
+  <path d="m1.3219 1.3219h50.273v50.273h-50.273z" fill="#0ff" stroke="url(#linearGradient17)" stroke-dashoffset="2.6458" stroke-width="2.6458" style="paint-order:markers fill stroke"/>
  </g>
- <text x="-1.5874968" y="47.695553" fill="#000000" font-family="'Bricolage Grotesque'" font-size="61.736px" letter-spacing="0px" stroke-width=".265" xml:space="preserve"><tspan x="-1.5874968" y="47.695553" font-family="'Bricolage Grotesque Condensed'" font-size="61.736px" letter-spacing="0px" stroke-width=".265">k<tspan dx="0" font-family="'Bricolage Grotesque Condensed'" font-size="61.736px" font-weight="bold" letter-spacing="0px" stroke-width=".265">.</tspan></tspan></text>
+ <g stroke-width=".265" aria-label="k.">
+  <path d="m2.734 47.696v-43.277h3.4572v24.571q2.4694-1.4199 4.1981-3.3338 1.7286-1.9138 2.8399-3.9511 1.1112-2.099 1.7286-3.8276 0.61736-1.7903 0.8643-2.7781h3.4572q-0.43215 1.9138-1.2965 4.0128-0.86431 2.099-2.1608 4.0746-1.2347 1.9756-2.9016 3.6424-1.6669 1.6669-3.8276 2.7781v0.49389q1.6051 0 3.0251 0.24694 1.4199 0.18521 2.5929 0.98778 1.2347 0.74083 2.099 2.4077 0.92604 1.6669 1.4199 4.5685l1.6669 9.3839h-3.6424l-1.2965-7.5935q-0.49389-3.0251-1.0495-4.7537t-1.8521-2.4694q-1.2347-0.80257-4.0128-0.80257h-1.8521v15.619z"/>
+  <path d="m27.058 48.498q-2.1608 0-3.3955-1.4199-1.2347-1.4817-1.2347-4.1363 0-2.7164 1.173-4.1363 1.2347-1.4817 3.4572-1.4817 2.2842 0 3.4572 1.4817 1.173 1.4199 1.173 4.1363 0 5.5562-4.6302 5.5562z"/>
+ </g>
 </svg>
