@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="200" height="200" version="1.1" viewBox="0 0 52.917 52.917" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient17" x1=".39473" x2="52.522" y1="26.458" y2="26.458" gradientTransform="matrix(.98329 0 0 .98329 .42102 .42102)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#0ff" offset=".15192"/>
+   <stop offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <rect x="1.3008" y="1.3008" width="50.273" height="50.273" fill="#0ff" stroke="url(#linearGradient17)" stroke-dashoffset="2.6458" stroke-width="2.6458" style="paint-order:markers fill stroke"/>
+ </g>
+ <text x="-1.5874968" y="47.695553" fill="#000000" font-family="'Bricolage Grotesque'" font-size="61.736px" letter-spacing="0px" stroke-width=".265" xml:space="preserve"><tspan x="-1.5874968" y="47.695553" font-family="'Bricolage Grotesque Condensed'" font-size="61.736px" letter-spacing="0px" stroke-width=".265">k<tspan dx="0" font-family="'Bricolage Grotesque Condensed'" font-size="61.736px" font-weight="bold" letter-spacing="0px" stroke-width=".265">.</tspan></tspan></text>
+</svg>
