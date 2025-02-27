@@ -4,6 +4,8 @@ const posts = await getCollection("blog");
 ---
 
 <h1>My Blogssssssss</h1>
+<p>Here are all my blog posts:</p>
+<p>Updated</p>
 <ul>
   {
     posts.map((post) => (
@@ -13,3 +15,19 @@ const posts = await getCollection("blog");
     ))
   }
 </ul>
+
+<style>
+  h1 {
+    color: red;
+    size: 50px;
+  }
+  p {
+    color: blue;
+  }
+  ul {
+    color: green;
+  }
+  li {
+    color: yellow;
+  }
+</style>
