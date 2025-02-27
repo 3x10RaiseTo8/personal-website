@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "prebuild": "git submodule update --init --recursive --remote",
+    "about:prebuild": "echo 'Track remote changes for content submodule'",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
