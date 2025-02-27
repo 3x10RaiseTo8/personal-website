@@ -72,3 +72,13 @@
       text-decoration: var(--shiki-dark-text-decoration) !important;
     }
   }
+
+
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}

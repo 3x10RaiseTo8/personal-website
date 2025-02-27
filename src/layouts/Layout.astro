@@ -1,4 +1,7 @@
 ---
+import ThemeSwitcher from "@components/ThemeSwitcher.astro";
+import "../styles/global.css";
+
 interface Props {
   title: string;
 }
@@ -17,70 +20,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <ThemeSwitcher />
     <slot />
   </body>
 </html>
-
-<style>
-  body {
-    font-family: Calibri, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-
-  header {
-    background-color: #007bff;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    background-color: #0056b3;
-    padding: 10px 0;
-  }
-
-  nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  nav a:hover {
-    text-decoration: underline;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 15px;
-  }
-
-  footer {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-
-  .button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .button:hover {
-    background-color: #0056b3;
-  }
-</style>
