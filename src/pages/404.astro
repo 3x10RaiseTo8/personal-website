@@ -1,1 +1,63 @@
-This is what you get
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404">
+  <div class="container">
+    <h1>404</h1>
+    <p id="message"></p>
+  </div>
+</Layout>
+
+<script>
+  const messages = [
+    "Oops! You broke the Internet. Just kidding… but this page is missing.",
+    "Well, this is awkward…",
+    "You had ONE job, Internet!",
+    "I think you took a wrong turn at Albuquerque.",
+    "Page not found… but Bigfoot is!",
+    "Error 404: The page escaped to the multiverse.",
+    "The page you’re looking for is in another castle.",
+    "Ctrl + Z won’t fix this one.",
+    "We searched high and low… but no page here.",
+    "Congratulations! You found a secret level… just kidding.",
+    "I blame the intern for this.",
+    "404: Error between chair and keyboard.",
+    "Try blowing on your screen like an old Nintendo cartridge.",
+    "These aren’t the droids you’re looking for.",
+    "Houston, we have a problem.",
+    "A wild 404 appeared! It used ‘Disappearing Act’!",
+    "If a 404 page loads in the forest and no one sees it, does it exist?",
+    "404: The page you seek is within you all along.",
+  ];
+
+  const messageElement = document.getElementById("message");
+  if (messageElement) {
+    messageElement.textContent =
+      messages[Math.floor(Math.random() * messages.length)];
+  }
+</script>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #101015;
+    color: #dbdbdb;
+  }
+  .container {
+    max-width: 600px;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    padding: 15px;
+  }
+</style>
