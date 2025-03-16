@@ -1,4 +1,4 @@
 [submodule "test-private"]
 	path = test-private
-	url = https://github.com/3x10RaiseTo8/test-private.git
+	url = git@github.com:3x10RaiseTo8/test-private.git
 	branch = main
