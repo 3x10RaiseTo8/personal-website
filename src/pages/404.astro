@@ -1,1 +1,108 @@
-This is what you get
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404">
+  <div class="container">
+    <h1>404</h1>
+    <p id="message"></p>
+    <div class="group">
+      <button
+        class="action"
+        onclick="history.back()"
+        class="link-button"
+        style="margin-right: 10px;">Go Back</button
+      >
+      <a class="action" href="/">Go Home</a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const messages = [
+    "Oops! You broke the Internet. Just kidding… but this page is missing.",
+    "Well, this is awkward…",
+    "You had ONE job, Internet!",
+    "I think you took a wrong turn at Albuquerque.",
+    "Page not found… but Bigfoot is!",
+    "Error 404: The page escaped to the multiverse.",
+    "The page you’re looking for is in another castle.",
+    "Ctrl + Z won’t fix this one.",
+    "We searched high and low… but no page here.",
+    "Congratulations! You found a secret level… just kidding.",
+    "I blame the intern for this.",
+    "404: Error between chair and keyboard.",
+    "Try blowing on your screen like an old Nintendo cartridge.",
+    "These aren’t the droids you’re looking for.",
+    "Houston, we have a problem.",
+    "A wild 404 appeared! It used ‘Disappearing Act’!",
+    "If a 404 page loads in the forest and no one sees it, does it exist?",
+    "404: The page you seek is within you all along.",
+  ];
+
+  const messageElement = document.getElementById("message");
+  if (messageElement) {
+    messageElement.textContent =
+      messages[Math.floor(Math.random() * messages.length)];
+  }
+</script>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #101015;
+    color: #dbdbdb;
+  }
+  .container {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .action {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    background: #3182ce;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: center;
+  }
+
+  .action:hover {
+    background: #2c5282;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .action:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+</style>
