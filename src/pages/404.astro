@@ -1,22 +1,16 @@
----
-import Layout from "../layouts/Layout.astro";
----
-
-<Layout title="404">
-  <div class="container">
-    <h1>404</h1>
-    <p id="message"></p>
-    <div class="group">
-      <button
-        class="action"
-        onclick="history.back()"
-        class="link-button"
-        style="margin-right: 10px;">Go Back</button
-      >
-      <a class="action" href="/">Go Home</a>
-    </div>
+<div class="container">
+  <h1>404</h1>
+  <p id="message"></p>
+  <div class="group">
+    <button
+      class="action"
+      onclick="history.back()"
+      class="link-button"
+      style="margin-right: 10px;">Go Back</button
+    >
+    <a class="action" href="/">Go Home</a>
   </div>
-</Layout>
+</div>
 
 <script>
   const messages = [

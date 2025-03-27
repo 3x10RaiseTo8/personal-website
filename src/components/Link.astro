@@ -1,27 +1,27 @@
 ---
-interface Props {
-  href: string;
-}
+import type { HTMLAttributes } from "astro/types";
 
-const { href } = Astro.props;
+type Props = HTMLAttributes<"a">;
+const { href, ...attrs } = Astro.props;
 
 const isExternalLink = (url: string) => {
-  const currentHost = Astro.url.hostname;
-  const linkHost = new URL(url, Astro.url.href).hostname;
-  return currentHost !== linkHost;
+  try {
+    const currentHost = Astro.url.hostname;
+    const linkHost = new URL(url, Astro.url.href).hostname;
+    return currentHost !== linkHost;
+  } catch {
+    return false;
+  }
 };
 
-const external = isExternalLink(href);
+const external = href ? isExternalLink(href.toString()) : false;
 ---
 
-{
-  external ? (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      <slot />
-    </a>
-  ) : (
-    <a href={href}>
-      <slot />
-    </a>
-  )
-}
+<a
+  {...attrs}
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  <slot />
+</a>
