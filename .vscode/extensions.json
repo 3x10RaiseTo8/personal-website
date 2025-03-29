@@ -1,4 +1,10 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "formulahendry.auto-rename-tag",
+    "yzhang.markdown-all-in-one",
+    "albert.tabout",
+    "vscodevim.vim"
+  ],
   "unwantedRecommendations": []
 }

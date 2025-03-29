@@ -15,6 +15,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/rss": "^4.0.11",
     "astro": "^5.5.2",
+    "modern-normalize": "^3.0.1",
     "typescript": "^5.8.2"
   }
 }

@@ -1,4 +1,6 @@
-
+---
+layout: ../layouts/Layout.astro
+---
 # A Hodgepodge of Markdown Features
 
 This document showcases various Markdown features with randomly generated content.
