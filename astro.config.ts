@@ -6,4 +6,12 @@ export default defineConfig({
   site: SITE.website,
   integrations: [],
   output: "static",
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "catppuccin-latte",
+        dark: "aurora-x",
+      },
+    },
+  },
 });
