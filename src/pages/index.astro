@@ -22,175 +22,59 @@ const socials = [
 ---
 
 <Layout title="Abhishek Singh">
-  <div class="container">
-    <a class="logo" href="/">abhishe<span id="k">k singh</span>.</a>
-    <div class="container">
-      <blockquote>Specialization is for Insects</blockquote>
-      <span class="author">— Robert A. Heinlein</span>
-      <p>
-        Welcome to my digital garden. I code, I write, I build, I explore. Why
-        choose one path when the world is vast?
-      </p>
-      <div class="grid">
-        <li class="card">
-          <h3>Coding</h3>
-          <p>Building logic, breaking limits.</p>
+  <blockquote>
+    "Specialization is for Insects"
+
+    <footer>— Robert A. Heinlein</footer>
+  </blockquote>
+  <p>
+    Welcome to my digital garden. I code, I write, I build, I explore. Why
+    choose one path when the world is vast?
+  </p>
+  <section>
+    <aside>
+      <h3>Coding</h3>
+      <p>Building logic, breaking limits.</p>
+    </aside>
+    <aside>
+      <h3>Writing</h3>
+      <p>Ideas immortalized in words.</p>
+    </aside>
+    <aside>
+      <h3>Business</h3>
+      <p>Creating value in diverse fields.</p>
+    </aside>
+    <aside>
+      <h3>Exploration</h3>
+      <p>Curiosity leads the way.</p>
+    </aside>
+  </section>
+  <p>Recently, I've been</p>
+  <ul>
+    <li>Scaling sales hiring for a mid-sized company</li>
+    <li>Generative AI Agent with SQL, reasoning, complex branching.</li>
+    <li>Molecular docking on an inhibitor protein</li>
+  </ul>
+  <p>If you'd like to get in touch, DM on any platform</p>
+  <ul>
+    {
+      socials.map((social) => (
+        <li>
+          <Link href={social.href}>{social.title}</Link>
         </li>
-        <li class="card">
-          <h3>Writing</h3>
-          <p>Ideas immortalized in words.</p>
-        </li>
-        <li class="card">
-          <h3>Business</h3>
-          <p>Creating value in diverse fields.</p>
-        </li>
-        <li class="card">
-          <h3>Exploration</h3>
-          <p>Curiosity leads the way.</p>
-        </li>
-      </div>
-    </div>
-    <section>
-      <p>Recently, I've been</p>
-      <ul>
-        <li>Scaling sales hiring for a mid-sized company</li>
-        <li>Generative AI Agent with SQL, reasoning, complex branching.</li>
-        <li>Molecular docking on an inhibitor protein</li>
-      </ul>
-
-      <p>If you'd like to get in touch, DM on any platform</p>
-      <ul>
-        {
-          socials.map((social) => (
-            <li>
-              <Link href={social.href}>{social.title}</Link>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </div>
-  <footer>
-    {new Date().getFullYear()}; Abhishek Singh
-    <br />
-    <p>
-      The code of this site is licensed under AGPL-3.0 <a
-        href="https://github.com/3x10RaiseTo8/personal-website/">here</a
-      >
-    </p>
-    <p>
-      The content on this site is licensed under <a
-        href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"
-        target="_blank"
-        rel="license noopener noreferrer"
-        style="display:inline-block;"
-        >CC BY-NC-SA 4.0<img
-          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
-          alt=""
-        /><img
-          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-          src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
-          alt=""
-        /><img
-          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
-          alt=""
-        /><img
-          style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-          src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
-          alt=""
-        /></a
-      >
-    </p>
-    <p class="work-in-progress">
-      This website is a work in progress. Expect frequent updates and changes!
-    </p>
-  </footer>
-
-  <style>
-    .container {
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 0 15px;
+      ))
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(300px, 1fr)
-      ); /* Adjust min width for elongated cards */
-      gap: 10px;
-      margin-top: 10px;
-      list-style: none; /* Remove default list styling */
-      padding: 0;
-    }
-
-    .card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      height: 80px; /* Reduced height for horizontal shape */
-      width: 100%; /* Full width of the grid column */
-    }
-
-    .card h3 {
-      margin: 5px 5px 5px; /* Small margin for heading */
-      font-size: 1.2rem; /* Adjust heading size */
-    }
-
-    .card p {
-      margin: 5px; /* Remove extra margin */
-      font-size: 0.9rem; /* Adjust paragraph size */
-    }
-
-    .logo {
-      text-align: center;
-      width: fit-content;
-      margin: 0 auto;
-      display: block;
-      font-weight: bold;
-      font-stretch: condensed;
-      font-size: 1.5rem; /* Adjust size as needed */
-      font-weight: bold; /* Makes text stand out */
-      color: #000; /* Black (change to your brand color) */
-      text-decoration: none; /* Removes underline */
-    }
-
-    #k {
-      font-weight: 200;
-    }
-
-    blockquote {
-      font-family: "Times New Roman", Times, serif;
-      font-size: 1.5rem;
-      font-style: italic;
-    }
-    .author {
-      font-size: 0.9rem;
-      color: #555; /* Gray for author */
-      text-align: right;
-      display: block;
-    }
-    .work-in-progress {
-      font-size: 0.9rem;
-      color: #999; /* Subtle gray color */
-      margin-top: 10px;
-    }
-    footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.8rem; /* Smaller font size for footer */
-      color: #555; /* Gray color for footer */
-    }
-  </style>
+  </ul>
 </Layout>
+
+<style>
+  blockquote {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+
+  body {
+    background-color: aliceblue;
+  }
+</style>
