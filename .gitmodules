@@ -1,4 +1,4 @@
 [submodule "content"]
 	path = content
-	url = git@github.com:3x10RaiseTo8/content.git
-#	url = https://github.com/3x10RaiseTo8/content.git
+#	url = git@github.com:3x10RaiseTo8/content.git
+	url = https://github.com/3x10RaiseTo8/content.git
