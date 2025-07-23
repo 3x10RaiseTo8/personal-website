@@ -22,52 +22,59 @@ const socials = [
 ---
 
 <Layout title="Abhishek Singh">
-  <div class="container">
-    <h1>abhishe<span id="k">k</span>.</h1>
-    <section>
-      <p>
-        Hello! I'm Abhishek, a generalist. I love learning and exploring new
-        ideas.
-      </p>
-      <p>Here are some of the things I've been working on recently</p>
-      <ul>
-        <li>Hiring Pipelines</li>
-        <li>Generative AI Agent with SQL, reasoning, complex branching.</li>
-        <li>Molecular docking on an inhibitor protein</li>
-      </ul>
+  <blockquote>
+    "Specialization is for Insects"
 
-      <p>If you'd like to get in touch, DM on any platform</p>
-      <ul>
-        {
-          socials.map((social) => (
-            <li>
-              <Link href={social.href}>{social.title}</Link>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </div>
-
-  <style>
-    .container {
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 0 15px;
+    <footer>— Robert A. Heinlein</footer>
+  </blockquote>
+  <p>
+    Welcome to my digital garden. I code, I write, I build, I explore. Why
+    choose one path when the world is vast?
+  </p>
+  <section>
+    <aside>
+      <h3>Coding</h3>
+      <p>Building logic, breaking limits.</p>
+    </aside>
+    <aside>
+      <h3>Writing</h3>
+      <p>Ideas immortalized in words.</p>
+    </aside>
+    <aside>
+      <h3>Business</h3>
+      <p>Creating value in diverse fields.</p>
+    </aside>
+    <aside>
+      <h3>Exploration</h3>
+      <p>Curiosity leads the way.</p>
+    </aside>
+  </section>
+  <p>Recently, I've been</p>
+  <ul>
+    <li>Scaling sales hiring for a mid-sized company</li>
+    <li>Generative AI Agent with SQL, reasoning, complex branching.</li>
+    <li>Molecular docking on an inhibitor protein</li>
+  </ul>
+  <p>If you'd like to get in touch, DM on any platform</p>
+  <ul>
+    {
+      socials.map((social) => (
+        <li>
+          <Link href={social.href}>{social.title}</Link>
+        </li>
+      ))
     }
-
-    h1 {
-      text-align: right;
-      display: block;
-      font-family:
-        Bricolage Grotesque,
-        sans-serif;
-      font-weight: 800;
-      font-stretch: condensed;
-    }
-
-    #k {
-      font-weight: 200;
-    }
-  </style>
+  </ul>
 </Layout>
+
+<style>
+  blockquote {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+
+  body {
+    background-color: aliceblue;
+  }
+</style>
