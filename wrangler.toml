@@ -2,7 +2,7 @@ name = "personal-website"
 compatibility_date = "2025-07-22"
 preview_urls = true
 workers_dev = true
-routes = [{ pattern = "new.abhishe.com", custom_domain = true }]
+routes = [{ pattern = "abhishe.com", custom_domain = true }]
 
 [assets]
 directory = "./dist"
