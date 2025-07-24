@@ -10,6 +10,3 @@ not_found_handling = "404-page"
 
 [observability]
 enabled = true
-
-[vars]
-NODE_VERSION = "22.17.1"
