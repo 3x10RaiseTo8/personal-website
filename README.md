@@ -1,8 +1,8 @@
 # Personal Website
 
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
-![Hosted on Cloudflare](https://img.shields.io/badge/Hosted%20on-Cloudflare-orange?logo=cloudflare&logoColor=white&style=flat)
-![Uses Git Submodules](https://img.shields.io/badge/Uses-Git%20Submodules-lightgrey?logo=git&logoColor=white&style=flat)
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://docs.astro.build)
+[![Hosted on Cloudflare Worker](https://img.shields.io/badge/Hosted%20on-Cloudflare%20Worker-FBAD41?logo=cloudflare&color=F6821F&labelColor=azure&logoColor=FBAD41)](https://developers.cloudflare.com/workers/)
+[![Uses Git Submodules](https://img.shields.io/badge/Git%20Submodules-azure?logo=git&logoColor=red)](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 ## 🚀 Project Structure
 
