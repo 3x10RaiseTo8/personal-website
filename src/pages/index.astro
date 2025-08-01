@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Link from "../components/Link.astro";
 const socials = [
   {
     title: "GitHub",
@@ -22,33 +21,9 @@ const socials = [
 ---
 
 <Layout title="Abhishek Singh">
-  <blockquote>
-    "Specialization is for Insects"
+  <blockquote>"Specialization is for Insects"</blockquote>
+  <p>— Robert A. Heinlein</p>
 
-    <footer>— Robert A. Heinlein</footer>
-  </blockquote>
-  <p>
-    Welcome to my digital garden. I code, I write, I build, I explore. Why
-    choose one path when the world is vast?
-  </p>
-  <section>
-    <aside>
-      <h3>Coding</h3>
-      <p>Building logic, breaking limits.</p>
-    </aside>
-    <aside>
-      <h3>Writing</h3>
-      <p>Ideas immortalized in words.</p>
-    </aside>
-    <aside>
-      <h3>Business</h3>
-      <p>Creating value in diverse fields.</p>
-    </aside>
-    <aside>
-      <h3>Exploration</h3>
-      <p>Curiosity leads the way.</p>
-    </aside>
-  </section>
   <p>Recently, I've been</p>
   <ul>
     <li>Scaling sales hiring for a mid-sized company</li>
@@ -60,7 +35,7 @@ const socials = [
     {
       socials.map((social) => (
         <li>
-          <Link href={social.href}>{social.title}</Link>
+          <a href={social.href}>{social.title}</a>
         </li>
       ))
     }
