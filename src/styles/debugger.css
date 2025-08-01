@@ -1,0 +1,104 @@
+/* Outline all elements with a random color */
+* {
+    outline: 1px solid hsla(var(--hue, 0), 100%, 50%, 0.5);
+    background-color: hsla(var(--hue, 0), 100%, 50%, 0.1);
+}
+
+/* Use a different hue for different elements */
+html {
+    --hue: 0;
+}
+
+/* Red */
+body {
+    --hue: 20;
+}
+
+/* Orange */
+header {
+    --hue: 40;
+}
+
+/* Yellow */
+nav {
+    --hue: 60;
+}
+
+/* Lime */
+main {
+    --hue: 120;
+}
+
+/* Green */
+section {
+    --hue: 180;
+}
+
+/* Cyan */
+article {
+    --hue: 200;
+}
+
+/* Light blue */
+aside {
+    --hue: 220;
+}
+
+/* Blue */
+footer {
+    --hue: 280;
+}
+
+/* Purple */
+div {
+    --hue: 300;
+}
+
+/* Magenta */
+p,
+span,
+li,
+a,
+button,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    --hue: 340;
+    /* Pink */
+}
+
+/* Make box-sizing consistent */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Highlight grid and flex containers */
+[class*="grid"],
+[class*="flex"],
+[style*="display: grid"],
+[style*="display: flex"] {
+    border: 2px dashed black !important;
+    background-image: repeating-linear-gradient(45deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05) 5px,
+            transparent 5px,
+            transparent 10px);
+}
+
+/* Show spacing */
+* {
+    margin: 1px !important;
+    padding: 1px !important;
+}
+
+/* High visibility for selected elements */
+:focus {
+    outline: 3px solid red !important;
+    background-color: rgba(255, 0, 0, 0.2) !important;
+}
