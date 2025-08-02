@@ -2,16 +2,16 @@
 
 @import url(flexoki.css);
 
-@import url(debugger.css);
+/* @import url(debugger.css); */
 
 :root {
   /* Light Mode Color Scheme  */
-  --color-bg: var(--flexoki-100);
-  --color-text: #111827;
-  --color-muted: #6b7280;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-border: #e5e7eb;
+  --color-bg: var(--flexoki-50);
+  --color-text: var(--flexoki-black);
+  --color-muted: var(--flexoki-800);
+  --color-accent: var(--flexoki-purple-600);
+  --color-accent-hover: var(--flexoki-purple-800);
+  --color-border: var(--flexoki-purple-300);
 
   /* ✍️ Typography */
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -35,15 +35,9 @@
   --max-width: 768px;
   --border-radius: 0.5rem;
   --border-width: 1px;
-
-  /* 🎛️ Components */
-  --btn-bg: var(--color-accent);
-  --btn-text: #fff;
-  --btn-hover-bg: var(--color-accent-hover);
-  --btn-radius: var(--border-radius);
 }
 
-/* 🌙 Dark Mode Support */
+/* 🌙 Dark Mode Support
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0f172a;
@@ -54,7 +48,7 @@
     --color-border: #334155;
   }
 }
-
+*/
 
 body {
   display: grid;
@@ -62,9 +56,54 @@ body {
   height: 100vh;
   margin: 0;
   background-color: var(--color-bg);
+  line-height: var(--line-height-base);
+  padding: var(--space-4);
+}
+
+main {
+  max-width: var(--max-width);
+  padding: 0 var(--space-4)
 }
 
 .logo {
   width: 150px;
   height: auto;
+  margin: 1rem;
+}
+
+blockquote {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  margin: 1rem 0 0 0;
+  text-align: center;
+}
+
+blockquote+p {
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+footer {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  text-align: center;
+  padding: 1rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+
+a:visited {
+  color: var(--color-accent);
 }
