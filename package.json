@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "prebuild": "git submodule update --init --recursive --remote",
     "about:prebuild": "echo 'Track remote changes for content submodule'",
