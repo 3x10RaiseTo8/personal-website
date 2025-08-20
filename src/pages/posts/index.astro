@@ -1,33 +1,18 @@
 ---
+import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
-const posts = await getCollection("blog");
+const posts = await getCollection("posts");
 ---
 
-<h1>My Blogssssssss</h1>
-<p>Here are all my blog posts:</p>
-<p>Updated</p>
-<ul>
-  {
-    posts.map((post) => (
-      <li>
-        <a href={`/blog/${post.data.slug}`}>{post.data.title} built</a>
-      </li>
-    ))
-  }
-</ul>
-
-<style>
-  h1 {
-    color: red;
-    size: 50px;
-  }
-  p {
-    color: blue;
-  }
-  ul {
-    color: green;
-  }
-  li {
-    color: yellow;
-  }
-</style>
+<Layout>
+  <h1>Posts</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.id}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
