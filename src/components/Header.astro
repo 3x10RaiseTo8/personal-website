@@ -1,6 +1,13 @@
 <header>
-  <a href={Astro.site}>
-    <img class="logo" src="/logos/abhishek.svg" alt="abhishek" />
+  <a href="/">
+    <img class="logo" src="/logos/abhishek-thin-minified.svg" alt="abhishek" />
   </a>
   <hr />
 </header>
+
+<style>
+  a:focus .logo,
+  a:hover .logo {
+    content: url("/logos/abhishek-minified.svg");
+  }
+</style>
