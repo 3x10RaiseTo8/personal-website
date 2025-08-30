@@ -92,6 +92,16 @@ body {
   padding: 20px 0 20px;
 }
 
+p {
+  margin: 0;
+}
+
+i,
+em {
+
+  font-family: 'Times New Roman', Times, serif;
+}
+
 header,
 main,
 footer {
@@ -116,13 +126,19 @@ blockquote {
 
 blockquote+p {
   text-align: center;
-  margin: 0 0 1rem 0;
+  margin: 0.5rem 0 1.5rem 0;
   font-size: var(--font-size-sm)
 }
 
 ul,
 ol {
   padding: 0 0 0 1rem;
+  list-style-type: disc;
+}
+
+ul ul,
+ol ol {
+  padding-left: 2em;
 }
 
 a,
@@ -148,4 +164,14 @@ footer {
 
 footer a {
   color: inherit;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+th:last-child,
+td:last-child {
+  text-align: left;
 }
