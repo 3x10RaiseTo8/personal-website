@@ -1,16 +1,23 @@
-<div class="container">
-  <h1>404</h1>
-  <p id="message"></p>
-  <div class="group">
-    <button
-      class="action"
-      onclick="history.back()"
-      class="link-button"
-      style="margin-right: 10px;">Go Back</button
-    >
-    <a class="action" href="/">Go Home</a>
+---
+import Head from "@components/Head.astro";
+---
+
+<Head />
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <p id="message"></p>
+    <div class="group">
+      <button
+        class="action"
+        onclick="history.back()"
+        class="link-button"
+        style="margin-right: 10px;">Go Back</button
+      >
+      <a class="action" href="/">Go Home</a>
+    </div>
   </div>
-</div>
+</body>
 
 <script>
   const messages = [
