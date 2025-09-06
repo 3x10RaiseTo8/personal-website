@@ -1,23 +1,59 @@
 ---
-import Head from "@components/Head.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
-<Head />
-<body>
-  <div class="container">
+<Layout>
+  <section class="container">
     <h1>404</h1>
     <p id="message"></p>
     <div class="group">
-      <button
-        class="action"
-        onclick="history.back()"
-        class="link-button"
-        style="margin-right: 10px;">Go Back</button
-      >
-      <a class="action" href="/">Go Home</a>
+      <button onclick="history.back()"> Go Back </button>
+      <button>
+        <a href="/">Go Home</a>
+      </button>
     </div>
-  </div>
-</body>
+  </section>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: lighter;
+  }
+
+  p {
+    padding-bottom: 1rem;
+  }
+
+  .group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  button {
+    padding: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 0;
+    flex: 0 0 100%;
+  }
+
+  button:hover {
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>
 
 <script>
   const messages = [
@@ -47,63 +83,3 @@ import Head from "@components/Head.astro";
       messages[Math.floor(Math.random() * messages.length)];
   }
 </script>
-
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #101015;
-    color: #dbdbdb;
-  }
-  .container {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-  }
-  p {
-    font-size: 20px;
-    padding: 15px;
-  }
-
-  .group {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-
-  .action {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    background: #3182ce;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-family: inherit;
-    text-align: center;
-  }
-
-  .action:hover {
-    background: #2c5282;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .action:active {
-    transform: translateY(0);
-    box-shadow: none;
-  }
-</style>
