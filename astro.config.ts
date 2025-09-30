@@ -14,4 +14,8 @@ export default defineConfig({
       },
     },
   },
+  redirects: {
+    "/talent":
+      "https://docs.google.com/forms/d/e/1FAIpQLScYNoiJFctAxkgqDF564bJ_dij1HM4269V8S-9WcNla7PQVzA/viewform?usp=dialog",
+  },
 });
