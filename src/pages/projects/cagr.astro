@@ -1,0 +1,388 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="CAGR:Multiplier:Years">
+  <h2>CAGR:Multiplier:Years</h2>
+  <section class="form-section">
+    <form id="cagr-form" class="calculator-form">
+      <!-- CAGR Input -->
+      <div class="input-group">
+        <label for="cagr-input"> CAGR % </label>
+        <input
+          type="number"
+          id="cagr-input"
+          name="cagr"
+          placeholder="e.g., 12.5"
+          step="0.01"
+          min="-100"
+          max="500"
+        />
+        <span class="field-error" id="cagr-error"></span>
+      </div>
+
+      <!-- Multiplier Input -->
+      <div class="input-group">
+        <label for="multiplier-input"> Multiplier × </label>
+        <input
+          type="number"
+          id="multiplier-input"
+          name="multiplier"
+          placeholder="e.g., 2.5"
+          step="0.01"
+          min="0.01"
+          max="1000"
+        />
+        <span class="field-error" id="multiplier-error"></span>
+      </div>
+
+      <!-- Years Input -->
+      <div class="input-group">
+        <label for="years-input"> Years # </label>
+        <input
+          type="number"
+          id="years-input"
+          name="years"
+          placeholder="e.g., 10"
+          step="1"
+          min="1"
+          max="1000"
+        />
+        <span class="field-error" id="years-error"></span>
+      </div>
+
+      <button type="button" id="calculate-btn"> Calculate </button>
+      <button type="button" id="clear-btn"> Clear </button>
+    </form>
+  </section>
+
+  <!-- History Section -->
+  <section class="history-section">
+    <!-- Array of div cards placed horizontally -->
+  </section>
+
+  <!-- Results Section -->
+  <section class="results-section">
+    <h2 id="result-heading" class="result-heading hidden">
+      <!-- Dynamic headings as per calculations -->
+    </h2>
+
+    <div id="math-container" class="math-container hidden">
+      <!-- Calculated results will be inserted here -->
+    </div>
+
+    <div id="chart-container" class="chart-container hidden">
+      <!-- ECharts graph will be rendered here -->
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ===== CSS SKELETON FOR CAGR CALCULATOR ===== */
+
+  /* Reset and Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  /* Container and Layout */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+
+  /* Form Section */
+  .form-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .calculator-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    align-items: end;
+  }
+
+  /* Input Groups */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .input-group input {
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  /* Info Icons and Tooltips */
+  .info-icon {
+    cursor: help;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .info-icon:hover {
+    opacity: 1;
+  }
+
+  .tooltip {
+    position: absolute;
+    background: #1f2937;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 200px;
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: #1f2937;
+  }
+
+  /* Field Errors */
+  .field-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    min-height: 1.2rem;
+  }
+
+  /* Calculate Button */
+  .calculate-button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    justify-self: center;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .calculate-button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    transform: translateY(-1px);
+  }
+
+  .calculate-button:active {
+    transform: translateY(0);
+  }
+
+  /* Results Section */
+  .results-section {
+    margin-bottom: 2rem;
+  }
+
+  /* Message Container */
+  .message-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid black;
+  }
+
+  .message-container.success {
+    border-left-color: #10b981;
+    background-color: #f0fdf4;
+  }
+
+  .message-container.error {
+    border-left-color: #ef4444;
+    background-color: #fef2f2;
+  }
+
+  .message-container.warning {
+    border-left-color: #f59e0b;
+    background-color: #fffbeb;
+  }
+
+  /* Results Container */
+  .results-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  .result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .result-item:last-child {
+    border-bottom: none;
+  }
+
+  .result-label {
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .result-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2563eb;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+  }
+
+  /* Reference Section */
+  .reference-section {
+    margin-top: 2rem;
+  }
+
+  .reference-matrix {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .reference-matrix summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5rem;
+  }
+
+  .reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  .reference-table th,
+  .reference-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+  }
+
+  .reference-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+  }
+
+  /* Utility Classes */
+  .hidden {
+    display: none;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .calculator-form {
+      grid-template-columns: 1fr;
+    }
+
+    .form-section {
+      padding: 1.5rem;
+    }
+
+    .results-container {
+      padding: 1.5rem;
+    }
+
+    .result-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .chart-container {
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0.5rem;
+    }
+
+    .form-section,
+    .results-container {
+      padding: 1rem;
+    }
+
+    .reference-table {
+      font-size: 0.875rem;
+    }
+
+    .reference-table th,
+    .reference-table td {
+      padding: 0.5rem;
+    }
+  }
+</style>
+
+<script src="../../scripts/cagr.ts"></script>

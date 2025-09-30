@@ -1,0 +1,117 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Investment Growth Over Time</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+      }
+      #chart {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+
+    <!-- ECharts library -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script> -->
+    <script>
+      import * as echarts from "echarts";
+      const chartDom = document.getElementById("chart");
+      const myChart = echarts.init(chartDom);
+
+      // Years from 1 to 100
+      const years = [];
+      for (let t = 1; t <= 100; t++) {
+        years.push(t);
+      }
+
+      const series = [];
+
+      for (let rate = 0.01; rate <= 0.5; rate += 0.01) {
+        const ratePercent = Math.round(rate * 100);
+        const data = years.map((year) => {
+          const mult = Math.pow(1 + rate, year);
+          return [year, +mult.toFixed(2)];
+        });
+
+        series.push({
+          name: `${ratePercent}%`,
+          type: "line",
+          data: data,
+          showSymbol: false,
+          smooth: true,
+          emphasis: { focus: "series" },
+          lineStyle: { width: 2 },
+        });
+      }
+
+      const option = {
+        title: {
+          text: "Investment Growth Over Time (CAGR)",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "axis",
+          formatter: (params) => {
+            const year = params[0].data[0];
+            const tips = params.map(
+              (p) => `${p.marker} ${p.seriesName}: ${p.data[1]}×`
+            );
+            return `Year: ${year}<br/>${tips.join("<br/>")}`;
+          },
+        },
+        legend: {
+          type: "scroll",
+          top: 30,
+        },
+        grid: {
+          left: "8%",
+          right: "5%",
+          bottom: "10%",
+        },
+        dataZoom: [
+          {
+            type: "slider",
+            xAxisIndex: 0,
+            start: 0,
+            end: 100,
+          },
+          {
+            type: "inside",
+            xAxisIndex: 0,
+            start: 0,
+            end: 100,
+          },
+        ],
+        xAxis: {
+          type: "value",
+          name: "Years",
+          min: 0,
+          max: 100,
+        },
+        yAxis: {
+          type: "log",
+          name: "Multiplier (×)",
+          min: 1,
+          max: 100,
+        },
+        series: series,
+      };
+
+      myChart.setOption(option);
+      window.addEventListener("resize", myChart.resize);
+    </script>
+  </body>
+</html>

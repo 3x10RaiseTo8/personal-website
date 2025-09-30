@@ -1,0 +1,304 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="form-section">
+    <form id="cagr-form" class="calculator-form">
+      <!-- CAGR Input -->
+      <div class="input-group">
+        <label for="cagr-input"> CAGR % </label>
+        <input
+          type="number"
+          id="cagr-input"
+          name="cagr"
+          placeholder="e.g., 12.5"
+          step="0.01"
+          min="-100"
+          max="500"
+        />
+        <span class="field-error" id="cagr-error"></span>
+      </div>
+
+      <!-- Multiplier Input -->
+      <div class="input-group">
+        <label for="multiplier-input"> Multiplier × </label>
+        <input
+          type="number"
+          id="multiplier-input"
+          name="multiplier"
+          placeholder="e.g., 2.5"
+          step="0.01"
+          min="0.01"
+          max="1000"
+        />
+        <span class="field-error" id="multiplier-error"></span>
+      </div>
+
+      <!-- Years Input -->
+      <div class="input-group">
+        <label for="years-input"> Years # </label>
+        <input
+          type="number"
+          id="years-input"
+          name="years"
+          placeholder="e.g., 10"
+          step="1"
+          min="1"
+          max="1000"
+        />
+        <span class="field-error" id="years-error"></span>
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="calculate-btn">Calculate</button>
+        <button type="button" id="clear-btn">Clear</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="results-section">
+    <h2 id="result-heading" class="result-heading hidden">
+      <!-- Dynamic headings as per calculations -->
+    </h2>
+
+    <div id="math-container" class="math-container hidden">
+      <!-- Calculated results will be inserted here -->
+    </div>
+
+    <div id="chart-container" class="chart-container hidden">
+      <!-- ECharts graph will be rendered here -->
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section class="history-section">
+    <!-- Array of div cards placed horizontally -->
+  </section>
+</Layout>
+
+<script>
+  import * as echarts from "echarts";
+  // Constants
+  const MAX_YEARS = 50;
+  const MIN_MULTIPLIER = 0.01;
+  const MAX_MULTIPLIER = 10000;
+  const STEP = 0.5;
+  const TOLERANCE = 0.01;
+
+  // Helpers
+  function parseInput(id) {
+    const el = document.getElementById(id);
+    return el.value === "" ? null : parseFloat(el.value);
+  }
+
+  function saveHistory(entry) {
+    if (!entry) return;
+    const history = JSON.parse(sessionStorage.getItem("calcHistory") || "[]");
+    history.unshift(entry);
+    sessionStorage.setItem("calcHistory", JSON.stringify(history.slice(0, 10)));
+    renderHistory();
+  }
+
+  function renderHistory() {
+    const list = document.getElementById("history");
+    list.innerHTML = "";
+    const history = JSON.parse(sessionStorage.getItem("calcHistory") || "[]");
+    history.forEach((h) => {
+      const li = document.createElement("li");
+      li.textContent = JSON.stringify(h);
+      li.addEventListener("click", () => {
+        document.getElementById("cagr").value = h.cagr ?? "";
+        document.getElementById("multiplier").value = h.multiplier ?? "";
+        document.getElementById("years").value = h.years ?? "";
+        calculate();
+      });
+      list.appendChild(li);
+    });
+  }
+
+  function isUnrealistic(cagr, multiplier, years) {
+    return (
+      (years && years > 1000) || (multiplier && multiplier > MAX_MULTIPLIER)
+    );
+  }
+
+  // Calculation logic
+  function calculate() {
+    const cagr = parseInput("cagr");
+    const multiplier = parseInput("multiplier");
+    const years = parseInput("years");
+    const inputs = [cagr, multiplier, years].filter((v) => v != null).length;
+    const msgEl = document.getElementById("message");
+    msgEl.textContent = "";
+
+    if (inputs === 0) {
+      msgEl.textContent =
+        "Please provide at least one input or refer to the graph below.";
+      renderChartEmpty();
+      return;
+    }
+
+    if (isUnrealistic(cagr, multiplier, years)) {
+      msgEl.textContent =
+        "⚠️ Warning: Input values may be unrealistic (e.g. 1000 years or 10,000x multiplier).";
+    }
+
+    if (inputs === 1) {
+      renderChart({ cagr, multiplier, years });
+    } else if (inputs === 2) {
+      let result;
+      if (cagr != null && years != null) {
+        result = {
+          multiplier: +Math.pow(1 + cagr / 100, years).toFixed(4),
+        };
+      } else if (multiplier != null && years != null) {
+        result = {
+          cagr: +((Math.pow(multiplier, 1 / years) - 1) * 100).toFixed(2),
+        };
+      } else if (multiplier != null && cagr != null) {
+        result = {
+          years: +(Math.log(multiplier) / Math.log(1 + cagr / 100)).toFixed(2),
+        };
+      }
+      msgEl.textContent = "Calculated: " + JSON.stringify(result);
+      saveHistory({ cagr, multiplier, years, ...result });
+    } else {
+      // 3 inputs: verify
+      const expectedMultiplier = Math.pow(1 + cagr / 100, years);
+      const expectedCagr = (Math.pow(multiplier, 1 / years) - 1) * 100;
+      const expectedYears = Math.log(multiplier) / Math.log(1 + cagr / 100);
+      const checks = [];
+      checks.push(
+        Math.abs(cagr - expectedCagr) < TOLERANCE
+          ? "✅ CAGR correct"
+          : `❌ CAGR expected: ${expectedCagr.toFixed(4)}%`
+      );
+      checks.push(
+        Math.abs(multiplier - expectedMultiplier) < TOLERANCE
+          ? "✅ Multiplier correct"
+          : `❌ Multiplier expected: ${expectedMultiplier.toFixed(4)}`
+      );
+      checks.push(
+        Math.abs(years - expectedYears) < TOLERANCE
+          ? "✅ Years correct"
+          : `❌ Years expected: ${expectedYears.toFixed(4)}`
+      );
+      msgEl.innerHTML = checks.join("<br>");
+    }
+  }
+
+  // Chart rendering
+  const chart = echarts.init(document.getElementById("chart"));
+  function renderChart(vars) {
+    chart.clear();
+    const { cagr, multiplier, years } = vars;
+    let data = [];
+    let xAxis = [];
+    let seriesName;
+
+    if (cagr != null && multiplier == null && years == null) {
+      seriesName = "Multiplier";
+      for (let y = 0.1; y <= MAX_YEARS; y += STEP) {
+        xAxis.push(y.toFixed(1));
+        data.push(Math.pow(1 + cagr / 100, y).toFixed(4));
+      }
+    } else if (multiplier != null && cagr == null && years == null) {
+      seriesName = "CAGR %";
+      for (let y = 0.1; y <= MAX_YEARS; y += STEP) {
+        xAxis.push(y.toFixed(1));
+        data.push(((Math.pow(multiplier, 1 / y) - 1) * 100).toFixed(2));
+      }
+    } else if (years != null && cagr == null && multiplier == null) {
+      seriesName = "CAGR %";
+      for (let m = MIN_MULTIPLIER; m <= 100; m += 0.5) {
+        xAxis.push(m.toFixed(2));
+        data.push(((Math.pow(m, 1 / years) - 1) * 100).toFixed(2));
+      }
+    }
+
+    chart.setOption({
+      tooltip: { trigger: "axis" },
+      xAxis: {
+        type: "category",
+        data: xAxis,
+        name: cagr != null ? "Years" : "Input",
+      },
+      yAxis: { type: "value", name: seriesName },
+      series: [{ name: seriesName, type: "line", data: data }],
+    });
+  }
+
+  function renderChartEmpty() {
+    chart.clear();
+  }
+
+  document.getElementById("calc-btn").addEventListener("click", calculate);
+  document.getElementById("clear-btn").addEventListener("click", () => {
+    ["cagr", "multiplier", "years"].forEach(
+      (id) => (document.getElementById(id).value = "")
+    );
+    document.getElementById("message").textContent = "";
+    chart.clear();
+  });
+
+  renderHistory();
+</script>
+
+<style>
+  /* Grid layout for entire page */
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      grid-template-columns: 1fr 2fr; /* 1/3 form, 2/3 results */
+      align-items: start;
+    }
+  }
+
+  .form-section {
+    width: 100%;
+  }
+
+  .calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calculator-form button {
+    flex: 1;
+  }
+
+  .calculator-form .button-group {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .history-section {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+  }
+
+  .results-section {
+    width: 100%;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
