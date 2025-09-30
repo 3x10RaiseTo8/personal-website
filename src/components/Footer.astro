@@ -1,10 +1,6 @@
 <footer>
-  <p class="work-in-progress">
-    This website is a work in progress. Expect frequent updates and changes!
-  </p>
-
   <p>
-    Copyright © 2024—{new Date().getFullYear()} Abhishek Singh
+    Copyright © 2024—<span id="current-year"></span> Abhishek Singh
     <br />
     Content licensed under
     <a
@@ -21,3 +17,12 @@
     >.
   </p>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const yearSpan = document.getElementById("current-year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear().toString();
+    }
+  });
+</script>
