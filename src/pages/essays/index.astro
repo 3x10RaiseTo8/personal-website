@@ -1,11 +1,11 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-const posts = await getCollection("posts");
+const posts = await getCollection("essays");
 ---
 
 <Layout>
-  <h1>Posts</h1>
+  <h1>Essays</h1>
   <ul>
     {
       posts.map((post) => (

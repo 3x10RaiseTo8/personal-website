@@ -1,6 +1,7 @@
 /*! Copyright Abhishek Singh, abhishe.com */
 
 @import url(flexoki.css);
+/* @import url(markdown.css); */
 
 /* @import url(debugger.css); */
 
@@ -33,37 +34,6 @@
   --ma-2: var(--flexoki-magenta-400);
 }
 
-/* Dark Mode Color Variables */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --tx: var(--flexoki-200);
-    --bg: var(--flexoki-black);
-    --bg-2: var(--flexoki-950);
-    --ui: var(--flexoki-900);
-    --ui-2: var(--flexoki-850);
-    --ui-3: var(--flexoki-800);
-    --tx-2: var(--flexoki-500);
-    --tx-3: var(--flexoki-700);
-
-    --re: var(--flexoki-red-400);
-    --re-2: var(--flexoki-red-600);
-    --or: var(--flexoki-orange-400);
-    --or-2: var(--flexoki-orange-600);
-    --ye: var(--flexoki-yellow-400);
-    --ye-2: var(--flexoki-yellow-600);
-    --gr: var(--flexoki-green-400);
-    --gr-2: var(--flexoki-green-600);
-    --cy: var(--flexoki-cyan-400);
-    --cy-2: var(--flexoki-cyan-600);
-    --bl: var(--flexoki-blue-400);
-    --bl-2: var(--flexoki-blue-600);
-    --pu: var(--flexoki-purple-400);
-    --pu-2: var(--flexoki-purple-600);
-    --ma: var(--flexoki-magenta-400);
-    --ma-2: var(--flexoki-magenta-600);
-  }
-} */
-
 :root {
 
   /* Typography is set by Modern Normalize */
@@ -79,99 +49,18 @@
   --max-width: 768px;
 }
 
-
 body {
-  min-height: 100vh;
-  color: var(--tx);
-  background-color: var(--bg);
-  line-height: var(--line-height-base);
-  font-size: var(--font-size-base);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  justify-items: center;
-  padding: 20px 0 20px;
-}
-
-p {
-  margin: 0;
-}
-
-i,
-em {
-
-  font-family: 'Times New Roman', Times, serif;
-}
-
-header,
-main,
-footer {
-  width: 100%;
-  max-width: var(--max-width);
-  box-sizing: border-box;
+  font-family: 'EB Garamond';
+  margin: auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
   padding: 0 1rem;
+  color: var(--tx)
 }
 
-.logo {
-  height: auto;
-  width: clamp(4rem, 5rem + 5vw, 8rem);
-}
-
-blockquote {
-  font-family: "Times New Roman", Times, serif;
-  font-size: var(--font-size-xl);
-  font-style: italic;
-  margin: 1rem 0 0 0;
-  text-align: center;
-}
-
-blockquote+p {
-  text-align: center;
-  margin: 0.5rem 0 1.5rem 0;
-  font-size: var(--font-size-sm)
-}
-
-ul,
-ol {
-  padding: 0 0 0 1rem;
-  list-style-type: disc;
-}
-
-ul ul,
-ol ol {
-  padding-left: 2em;
-}
-
-a,
-a:visited {
-  color: var(--tx);
-  text-decoration: underline;
-}
-
-a:hover {
-  color: var(--cy);
-  text-decoration: underline;
-}
-
-a:focus {
-  background-color: var(--flexoki-cyan-50);
-}
-
-footer {
-  font-size: var(--font-size-xs);
-  color: var(--tx-2);
-  text-align: center;
-}
-
-footer a {
-  color: inherit;
-}
-
-th,
-td {
-  text-align: center;
-}
-
-th:last-child,
-td:last-child {
-  text-align: left;
+h1,
+h2,
+h3 {
+  line-height: 1.2
 }

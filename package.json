@@ -1,26 +1,26 @@
 {
   "name": "personal-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev",
     "prebuild": "git submodule update --init --recursive --remote",
-    "about:prebuild": "echo 'Track remote changes for content submodule'",
+    "about:prebuild": "echo 'Track remote changes for 'content' submodule'",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/rss": "^4.0.12",
-    "astro": "^5.15.9",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^5.16.6",
     "echarts": "^6.0.0",
     "modern-normalize": "^3.0.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "engines": {
-    "node": ">=22.17.1",
-    "npm": "10.9.2"
+    "node": ">=22.17.1"
   }
 }

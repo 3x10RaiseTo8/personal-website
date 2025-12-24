@@ -1,13 +1,28 @@
 <header>
-  <a href="/">
-    <img class="logo" src="/logos/abhishek-thin-minified.svg" alt="abhishek" />
-  </a>
-  <hr />
+  <div class="container">
+    <a href="/">
+      <img
+        class="logo"
+        src="/logos/abhishek-thin-minified.svg"
+        alt="abhishek"
+      />
+    </a>
+    <a href="/essays">essays</a>
+  </div>
 </header>
 
 <style>
-  a:focus .logo,
-  a:hover .logo {
-    content: url("/logos/abhishek-minified.svg");
+  .logo {
+    height: auto;
+    width: clamp(4rem, 5rem + 5vw, 8rem);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid black;
   }
 </style>

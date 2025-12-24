@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from "astro:content";
+import PostLayout from "@/layouts/PostLayout.astro";
+import { getLastModified } from "@/utils/git";
+import LastModified from "@/components/LastModified.astro";
+
+export async function getStaticPaths() {
+  const essays = await getCollection("essays");
+  return essays.map((essay) => ({
+    params: { id: essay.id },
+    props: { essay: essay },
+  }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { essay: essay } = Astro.props;
+const { Content } = await render(essay);
+
+const filePath = essay.filePath;
+const repoDir = "./content";
+---
+
+<PostLayout filePath={filePath} repoDir={repoDir}>
+  <Content />
+</PostLayout>
