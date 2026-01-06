@@ -1,28 +1,40 @@
+---
+import "@/styles/global.css";
+---
+
 <header>
-  <div class="container">
-    <a href="/">
-      <img
-        class="logo"
-        src="/logos/abhishek-thin-minified.svg"
-        alt="abhishek"
-      />
-    </a>
-    <a href="/essays">essays</a>
-  </div>
+  <a class="logo" href="/">
+    <img src="/logos/abhishek-minified.svg" alt="abhishek" />
+  </a>
+  <nav>
+    <ul>
+      <li><a href="/essays">essays</a></li>
+      <li><a href="/resources">resources</a></li>
+      <li><a href="/about">about</a></li>
+    </ul>
+  </nav>
 </header>
 
 <style>
-  .logo {
-    height: auto;
-    width: clamp(4rem, 5rem + 5vw, 8rem);
-  }
-
-  .container {
+  header {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
-    border-bottom: 1px solid black;
+    padding-block: 20px;
+    border-block-end: black solid 1px;
+    grid-row: view-start / main-start;
+  }
+  .logo,
+  .logo img {
+    max-block-size: 20px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    font-size: var(--font-size--1);
   }
 </style>

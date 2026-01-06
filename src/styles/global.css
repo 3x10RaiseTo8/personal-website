@@ -1,8 +1,8 @@
 /*! Copyright Abhishek Singh, abhishe.com */
 
 @import url(flexoki.css);
-/* @import url(markdown.css); */
-
+@import url(normalize.css);
+@import url(markdown.css);
 /* @import url(debugger.css); */
 
 /* Light Mode Color Variables */
@@ -15,52 +15,101 @@
   --ui-3: var(--flexoki-200);
   --tx-2: var(--flexoki-600);
   --tx-3: var(--flexoki-300);
-
-  --re: var(--flexoki-red-600);
-  --re-2: var(--flexoki-red-400);
-  --or: var(--flexoki-orange-600);
-  --or-2: var(--flexoki-orange-400);
-  --ye: var(--flexoki-yellow-600);
-  --ye-2: var(--flexoki-yellow-400);
-  --gr: var(--flexoki-green-600);
-  --gr-2: var(--flexoki-green-400);
-  --cy: var(--flexoki-cyan-600);
-  --cy-2: var(--flexoki-cyan-400);
-  --bl: var(--flexoki-blue-600);
-  --bl-2: var(--flexoki-blue-400);
-  --pu: var(--flexoki-purple-600);
-  --pu-2: var(--flexoki-purple-400);
-  --ma: var(--flexoki-magenta-600);
-  --ma-2: var(--flexoki-magenta-400);
 }
 
 :root {
 
-  /* Typography is set by Modern Normalize */
+  /* Font Sizes */
+  /* @link https://utopia.fyi/type/calculator?c=360,20,1.2,1240,21,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
-  --font-size-xs: clamp(0.7rem, 0.7rem + 0.2vw, 0.8rem);
-  --font-size-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
-  --font-size-base: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
-  --font-size-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  --font-size-xl: clamp(1.75rem, 1.2rem + 1.5vw, 2.25rem);
-  --font-size-xxl: clamp(2rem, 1.5rem + 2vw, 3rem);
+  /* Font Size -2: 13.8889px → 13.44px */
+  --font-size--2: clamp(0.84rem, 0.8795rem + -0.051vw, 0.8681rem);
+  /* Font Size -1: 16.6667px → 16.8px */
+  --font-size--1: clamp(1.0417rem, 1.0383rem + 0.0152vw, 1.05rem);
+  /* Font Size 0: 20px → 21px */
+  --font-size-0: clamp(1.25rem, 1.2244rem + 0.1136vw, 1.3125rem);
+  /* Font Size 1: 24px → 26.25px */
+  --font-size-1: clamp(1.5rem, 1.4425rem + 0.2557vw, 1.6406rem);
+  /* Font Size 2: 28.8px → 32.8125px */
+  --font-size-2: clamp(1.8rem, 1.6974rem + 0.456vw, 2.0508rem);
+  /* Font Size 3: 34.56px → 41.0156px */
+  --font-size-3: clamp(2.16rem, 1.9949rem + 0.7336vw, 2.5635rem);
+  /* Font Size 4: 41.472px → 51.2695px */
+  --font-size-4: clamp(2.592rem, 2.3415rem + 1.1134vw, 3.2043rem);
+  /* Font Size 5: 49.7664px → 64.0869px */
+  --font-size-5: clamp(3.1104rem, 2.7443rem + 1.6273vw, 4.0054rem);
 
-  --line-height-base: 1.6;
-  --max-width: 768px;
 }
 
-body {
-  font-family: 'EB Garamond';
-  margin: auto;
-  max-width: 650px;
-  line-height: 1.6;
-  font-size: 18px;
-  padding: 0 1rem;
-  color: var(--tx)
+/* @link https://utopia.fyi/type/calculator?c=360,20,1.2,1240,21,1.2,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  /* Step -2: 13.8889px → 14.5833px */
+  --font-size--2: clamp(0.8681rem, 0.8503rem + 0.0789vw, 0.9115rem);
+  /* Step -1: 16.6667px → 17.5px */
+  --font-size--1: clamp(1.0417rem, 1.0204rem + 0.0947vw, 1.0938rem);
+  /* Step 0: 20px → 21px */
+  --font-size-0: clamp(1.25rem, 1.2244rem + 0.1136vw, 1.3125rem);
+  /* Step 1: 24px → 25.2px */
+  --font-size-1: clamp(1.5rem, 1.4693rem + 0.1364vw, 1.575rem);
+  /* Step 2: 28.8px → 30.24px */
+  --font-size-2: clamp(1.8rem, 1.7632rem + 0.1636vw, 1.89rem);
+  /* Step 3: 34.56px → 36.288px */
+  --font-size-3: clamp(2.16rem, 2.1158rem + 0.1964vw, 2.268rem);
+  /* Step 4: 41.472px → 43.5456px */
+  --font-size-4: clamp(2.592rem, 2.539rem + 0.2356vw, 2.7216rem);
+  /* Step 5: 49.7664px → 52.2547px */
+  --font-size-5: clamp(3.1104rem, 3.0468rem + 0.2828vw, 3.2659rem);
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.2
+.site-grid {
+  --gap: 1rem;
+  --full: minmax(var(--gap), 1fr);
+  --content: min(65ch, 100% - var(--gap) * 2);
+  --popout: minmax(0, 2rem);
+  --feature: minmax(0, 5rem);
+
+  display: grid;
+  grid-template-rows: [view-start] auto [main-start] 1fr [main-end] auto [view-end];
+  grid-template-columns:
+    [full-start] var(--full) [feature-start] var(--feature) [popout-start] var(--popout) [content-start] var(--content) [content-end] var(--popout) [popout-end] var(--feature) [feature-end] var(--full) [full-end];
+
+
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+}
+
+
+.site-grid>* {
+  grid-column: content;
+}
+
+.popout {
+  grid-column: popout;
+}
+
+.feature {
+  grid-column: feature;
+}
+
+.full {
+  grid-column: full;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover,
+a:focus-visible {
+  color: blue
+}
+
+img {
+  display: block;
+  max-inline-size: 100%
+}
+
+ul {
+  list-style-type: square;
 }

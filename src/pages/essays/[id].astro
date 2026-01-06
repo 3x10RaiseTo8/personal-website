@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import PostLayout from "@/layouts/PostLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getLastModified } from "@/utils/git";
 import LastModified from "@/components/LastModified.astro";
 
@@ -15,11 +15,8 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { essay: essay } = Astro.props;
 const { Content } = await render(essay);
-
-const filePath = essay.filePath;
-const repoDir = "./content";
 ---
 
-<PostLayout filePath={filePath} repoDir={repoDir}>
+<Layout>
   <Content />
-</PostLayout>
+</Layout>

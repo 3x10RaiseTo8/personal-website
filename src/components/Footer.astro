@@ -1,14 +1,48 @@
-<footer>
-  <div class="container">
+---
+const socials = [
+  {
+    title: "k@abhishe.com",
+    href: "mailto:k@abhishe.com",
+  },
+  {
+    title: "twitter",
+    href: "https://twitter.com/now7x",
+  },
+  {
+    title: "github",
+    href: "https://github.com/3x10RaiseTo8",
+  },
+  {
+    title: "linkedin",
+    href: "https://www.linkedin.com/in/abhishek7x/",
+  },
+];
+---
+
+<footer class="popout">
+  <section class="socials">
+    {
+      socials.map((social, index) => (
+        <>
+          <a class="social" href={social.href}>
+            {social.title}
+          </a>
+
+          {index < socials.length - 1 && <span class="dot">•</span>}
+        </>
+      ))
+    }
+  </section>
+
+  <small>
+    <p>© 2024—present Abhishek Singh</p>
     <p>
-      Copyright © 2024—<span id="current-year"></span> Abhishek Singh
-      <br />
-      Content licensed under
+      The content is licensed under
       <a
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         target="_blank"
         rel="noopener">CC BY-NC-SA 4.0</a
-      >. Code licensed under
+      >. The code is licensed under
       <a
         href="https://www.gnu.org/licenses/agpl-3.0.html"
         target="_blank"
@@ -16,27 +50,22 @@
       > and available <a
         href="https://github.com/3x10RaiseTo8/personal-website/">here</a
       >.
-    </p>
-  </div>
+    </p></small
+  >
 </footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const yearSpan = document.getElementById("current-year");
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear().toString();
-    }
-  });
-</script>
 
 <style>
   footer {
-    font-size: var(--font-size-xs);
-    color: var(--tx-2);
+    font-size: var(--font-size--2);
     text-align: center;
+    grid-row: main-end / view-end;
   }
 
-  footer a {
-    color: inherit;
+  small p {
+    margin: 0;
+  }
+
+  .socials {
+    padding-block: 20px;
   }
 </style>

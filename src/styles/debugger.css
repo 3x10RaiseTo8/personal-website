@@ -1,6 +1,6 @@
 /* Outline all elements with a random color */
 * {
-    outline: 1px solid hsla(var(--hue, 0), 100%, 50%, 0.5);
+    border: 2px solid hsla(var(--hue, 0), 100%, 50%, 0.5);
     background-color: hsla(var(--hue, 0), 100%, 50%, 0.1);
 }
 
@@ -71,12 +71,7 @@ h6 {
     /* Pink */
 }
 
-/* Make box-sizing consistent */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+
 
 /* Highlight grid and flex containers */
 [class*="grid"],
@@ -89,16 +84,4 @@ h6 {
             rgba(0, 0, 0, 0.05) 5px,
             transparent 5px,
             transparent 10px);
-}
-
-/* Show spacing */
-* {
-    margin: 1px !important;
-    padding: 1px !important;
-}
-
-/* High visibility for selected elements */
-:focus {
-    outline: 3px solid red !important;
-    background-color: rgba(255, 0, 0, 0.2) !important;
 }
