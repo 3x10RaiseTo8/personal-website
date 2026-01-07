@@ -7,6 +7,18 @@
 ## 🚀 Project Structure
 
 ```text
+home (+ ListEssays)
+├── about (+ ListWorks)   
+├── post (ListPosts)
+│   └── slug
+├── tags (ListTags)
+│   └── slug
+├── essays (ListEssays)
+├── resources (ListResources)
+└── works (ListWorks)
+```
+
+```text
 /
 ├── public/
 │   └── favicon.svg
