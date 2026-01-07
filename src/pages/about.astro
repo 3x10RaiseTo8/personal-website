@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getEntry, render } from "astro:content";
+
+const aboutPage = await getEntry("pages", "about");
+const { Content } = aboutPage
+  ? await render(aboutPage)
+  : { Content: () => null };
+---
+
+<Layout>
+  <p><strong>about me</strong></p>
+  {Content && <Content />}
+</Layout>
