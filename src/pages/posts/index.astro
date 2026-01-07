@@ -1,16 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-const posts = await getCollection("essays");
+const posts = await getCollection("posts");
 ---
 
 <Layout>
-  <h1>Essays</h1>
+  <h1>Posts</h1>
   <ul>
     {
       posts.map((post) => (
         <li>
-          <a href={`/essays/${post.id}`}>{post.data.title}</a>
+          <a href={`/posts/${post.id}`}>{post.data.title}</a>
         </li>
       ))
     }
