@@ -1,14 +1,18 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-const posts = await getCollection("posts");
+import { getSortedPublishedPosts } from "@/utils/posts";
+
+import Layout from "@/layouts/Layout.astro";
+
+const allPosts = await getCollection("posts");
+const publishedPosts = getSortedPublishedPosts(allPosts);
 ---
 
 <Layout>
   <h1>Posts</h1>
   <ul>
     {
-      posts.map((post) => (
+      publishedPosts.map((post) => (
         <li>
           <a href={`/posts/${post.id}`}>{post.data.title}</a>
         </li>
