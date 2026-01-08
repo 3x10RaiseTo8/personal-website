@@ -1,13 +1,40 @@
+---
+import "@/styles/global.css";
+---
+
 <header>
-  <a href="/">
-    <img class="logo" src="/logos/abhishek-thin-minified.svg" alt="abhishek" />
+  <a class="logo" href="/">
+    <img src="/logos/abhishek-minified.svg" alt="abhishek" />
   </a>
-  <hr />
+  <nav>
+    <ul>
+      <li><a href="/essays">essays</a></li>
+      <li><a href="/resources">resources</a></li>
+      <li><a href="/about">about</a></li>
+    </ul>
+  </nav>
 </header>
 
 <style>
-  a:focus .logo,
-  a:hover .logo {
-    content: url("/logos/abhishek-minified.svg");
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 20px;
+    border-block-end: black solid 1px;
+    grid-row: view-start / main-start;
+  }
+  .logo,
+  .logo img {
+    max-block-size: 20px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    font-size: var(--font-size--1);
   }
 </style>

@@ -1,177 +1,110 @@
 /*! Copyright Abhishek Singh, abhishe.com */
 
 @import url(flexoki.css);
-
+@import url(normalize.css);
+@import url(typography.css);
 /* @import url(debugger.css); */
 
-/* Light Mode Color Variables */
+@import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&display=swap');
+
+
+*,
+*::before,
+*::after {
+  scrollbar-gutter: stable;
+  ;
+}
+
+/* @link https://utopia.fyi/type/calculator */
 :root {
+
+  --font-size--2: clamp(0.7378rem, 0.7023rem + 0.1578vw, 0.8247rem);
+  --font-size--1: clamp(0.8854rem, 0.8428rem + 0.1894vw, 0.9896rem);
+  --font-size-0: clamp(1.0625rem, 1.0114rem + 0.2273vw, 1.1875rem);
+  --font-size-1: clamp(1.275rem, 1.2136rem + 0.2727vw, 1.425rem);
+  --font-size-2: clamp(1.53rem, 1.4564rem + 0.3273vw, 1.71rem);
+  --font-size-3: clamp(1.836rem, 1.7476rem + 0.3927vw, 2.052rem);
+  --font-size-4: clamp(2.2032rem, 2.0972rem + 0.4713vw, 2.4624rem);
+  --font-size-5: clamp(2.6438rem, 2.5166rem + 0.5655vw, 2.9549rem);
+
+
+  /* Scrollbar vars */
+  --sb-size: 14px;
+  --sb-track-color: var(--bg);
+  --sb-thumb-color: var(--tx-2);
+
+  /* Colors */
   --tx: var(--flexoki-black);
   --bg: var(--flexoki-paper);
+  --tx-2: var(--flexoki-600);
   --bg-2: var(--flexoki-50);
   --ui: var(--flexoki-100);
-  --ui-2: var(--flexoki-150);
-  --ui-3: var(--flexoki-200);
-  --tx-2: var(--flexoki-600);
-  --tx-3: var(--flexoki-300);
-
-  --re: var(--flexoki-red-600);
-  --re-2: var(--flexoki-red-400);
-  --or: var(--flexoki-orange-600);
-  --or-2: var(--flexoki-orange-400);
-  --ye: var(--flexoki-yellow-600);
-  --ye-2: var(--flexoki-yellow-400);
-  --gr: var(--flexoki-green-600);
-  --gr-2: var(--flexoki-green-400);
-  --cy: var(--flexoki-cyan-600);
-  --cy-2: var(--flexoki-cyan-400);
-  --bl: var(--flexoki-blue-600);
-  --bl-2: var(--flexoki-blue-400);
-  --pu: var(--flexoki-purple-600);
-  --pu-2: var(--flexoki-purple-400);
-  --ma: var(--flexoki-magenta-600);
-  --ma-2: var(--flexoki-magenta-400);
+  --ac: var(--flexoki-cyan-600)
 }
 
-/* Dark Mode Color Variables */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --tx: var(--flexoki-200);
-    --bg: var(--flexoki-black);
-    --bg-2: var(--flexoki-950);
-    --ui: var(--flexoki-900);
-    --ui-2: var(--flexoki-850);
-    --ui-3: var(--flexoki-800);
-    --tx-2: var(--flexoki-500);
-    --tx-3: var(--flexoki-700);
+/* Scrollbar Styles
+======================= */
 
-    --re: var(--flexoki-red-400);
-    --re-2: var(--flexoki-red-600);
-    --or: var(--flexoki-orange-400);
-    --or-2: var(--flexoki-orange-600);
-    --ye: var(--flexoki-yellow-400);
-    --ye-2: var(--flexoki-yellow-600);
-    --gr: var(--flexoki-green-400);
-    --gr-2: var(--flexoki-green-600);
-    --cy: var(--flexoki-cyan-400);
-    --cy-2: var(--flexoki-cyan-600);
-    --bl: var(--flexoki-blue-400);
-    --bl-2: var(--flexoki-blue-600);
-    --pu: var(--flexoki-purple-400);
-    --pu-2: var(--flexoki-purple-600);
-    --ma: var(--flexoki-magenta-400);
-    --ma-2: var(--flexoki-magenta-600);
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 50px;
+  border: 2px solid var(--sb-track-color)
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
-} */
-
-:root {
-
-  /* Typography is set by Modern Normalize */
-
-  --font-size-xs: clamp(0.7rem, 0.7rem + 0.2vw, 0.8rem);
-  --font-size-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
-  --font-size-base: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
-  --font-size-lg: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  --font-size-xl: clamp(1.75rem, 1.2rem + 1.5vw, 2.25rem);
-  --font-size-xxl: clamp(2rem, 1.5rem + 2vw, 3rem);
-
-  --line-height-base: 1.6;
-  --max-width: 768px;
 }
 
+/* Site Grid
+============== */
 
-body {
-  min-height: 100vh;
-  color: var(--tx);
-  background-color: var(--bg);
-  line-height: var(--line-height-base);
-  font-size: var(--font-size-base);
+.site-grid {
+  --gap: 0.9rem;
+  --full: minmax(var(--gap), 1fr);
+  --content: min(45rem, 100% - var(--gap) * 2);
+  --popout: minmax(0, 2rem);
+  --feature: minmax(0, 5rem);
+
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  justify-items: center;
-  padding: 20px 0 20px;
+  grid-template-rows: [view-start] auto [main-start] 1fr [main-end] auto [view-end];
+  grid-template-columns:
+    [full-start] var(--full) [feature-start] var(--feature) [popout-start] var(--popout) [content-start] var(--content) [content-end] var(--popout) [popout-end] var(--feature) [feature-end] var(--full) [full-end];
+
+
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
 }
 
-p {
-  margin: 0;
+.site-grid>* {
+  grid-column: content;
 }
 
-i,
-em {
-
-  font-family: 'Times New Roman', Times, serif;
+.popout {
+  grid-column: popout;
 }
 
-header,
-main,
-footer {
-  width: 100%;
-  max-width: var(--max-width);
-  box-sizing: border-box;
-  padding: 0 1rem;
+.feature {
+  grid-column: feature;
 }
 
-.logo {
-  height: auto;
-  width: clamp(4rem, 5rem + 5vw, 8rem);
+.full {
+  grid-column: full;
 }
 
-blockquote {
-  font-family: "Times New Roman", Times, serif;
-  font-size: var(--font-size-xl);
-  font-style: italic;
-  margin: 1rem 0 0 0;
-  text-align: center;
-}
+/* ====================== */
 
-blockquote+p {
-  text-align: center;
-  margin: 0.5rem 0 1.5rem 0;
-  font-size: var(--font-size-sm)
-}
-
-ul,
-ol {
-  padding: 0 0 0 1rem;
-  list-style-type: disc;
-}
-
-ul ul,
-ol ol {
-  padding-left: 2em;
-}
-
-a,
-a:visited {
-  color: var(--tx);
-  text-decoration: underline;
-}
-
-a:hover {
-  color: var(--cy);
-  text-decoration: underline;
-}
-
-a:focus {
-  background-color: var(--flexoki-cyan-50);
-}
-
-footer {
-  font-size: var(--font-size-xs);
-  color: var(--tx-2);
-  text-align: center;
-}
-
-footer a {
-  color: inherit;
-}
-
-th,
-td {
-  text-align: center;
-}
-
-th:last-child,
-td:last-child {
-  text-align: left;
+/*  */
+main {
+  margin-block: 1.2rem;
 }

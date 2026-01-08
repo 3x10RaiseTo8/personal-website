@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import { SITE } from "./src/config";
+import { SITE } from "./src/siteConfig";
 
 // https://astro.build/config
 export default defineConfig({
