@@ -7,13 +7,13 @@
 ## 🚀 Project Structure
 
 ```text
-home (+ ListEssays)
+home (+ ListWritings)
 ├── about (+ ListWorks)   
 ├── post (ListPosts)
 │   └── slug
 ├── tags (ListTags)
 │   └── slug
-├── essays (ListEssays)
+├── writings (ListWritings)
 ├── resources (ListResources)
 └── works (ListWorks)
 ```

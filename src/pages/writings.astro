@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import { getSortedPublishedPosts, getFilteredPosts } from "@/utils/posts";
+
+import Layout from "@/layouts/Layout.astro";
+import ListPosts from "@/components/ListPosts.astro";
+
+const allPosts = await getCollection("posts");
+const allWritings = getFilteredPosts(allPosts, { category: "writings" });
+const filteredWritings = getSortedPublishedPosts(allWritings);
+---
+
+<Layout title="Writings">
+  <h1>Writings</h1>
+  <ListPosts posts={filteredWritings} />
+</Layout>
