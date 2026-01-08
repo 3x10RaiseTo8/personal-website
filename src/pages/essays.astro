@@ -10,21 +10,7 @@ const allEssays = getFilteredPosts(allPosts, { category: "essays" });
 const filteredEssays = getSortedPublishedPosts(allEssays);
 ---
 
-<Layout title="Abhishek Singh">
-  <h1>Abhishek Singh</h1>
-  <p>
-    <strong>hellooo kind human!!!</strong> wish you a great year of success (⁠＾⁠∇⁠＾⁠)⁠ﾉ
-  </p>
-  <blockquote>Specialization is for insects. — Robert A. Heinlein</blockquote>
-  <h2>Essays</h2>
+<Layout title="Essays">
+  <h1>Essays</h1>
   <ListPosts posts={filteredEssays} />
 </Layout>
-
-<style>
-  h1 {
-    display: none;
-  }
-  p {
-    text-wrap: auto;
-  }
-</style>

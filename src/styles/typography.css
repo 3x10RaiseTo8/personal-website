@@ -1,0 +1,92 @@
+body {
+    font-size: var(--font-size-0);
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+    line-height: 1.6;
+    text-wrap: balance;
+    background-color: var(--bg);
+    color: var(--tx);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 100;
+    font-family: ui-serif, serif;
+    line-height: 1.2;
+    letter-spacing: -0.04rem;
+    margin: 0.5rem 0 0.5rem;
+}
+
+h1 {
+    font-size: var(--font-size-5);
+}
+
+h2 {
+    font-size: var(--font-size-4);
+}
+
+h3 {
+    font-size: var(--font-size-3);
+
+}
+
+h4 {
+    font-size: var(--font-size-2)
+}
+
+h5 {
+    font-size: var(--font-size-1)
+}
+
+h6 {
+    font-size: var(--font-size-0)
+}
+
+/* Lists */
+ul {
+    margin: 0 0 1em 1em;
+    padding: 0;
+    list-style-type: square;
+}
+
+ol {
+    margin: 0 0 1em 1.3em;
+    padding: 0;
+}
+
+li {
+    margin: 0.25em 0;
+}
+
+/* Quotes */
+blockquote {
+    margin: 1.5em 0;
+    padding-left: 1em;
+    border-left: 3px solid var(--bg-2);
+    color: var(--tx-2);
+    font-style: italic;
+}
+
+/* Links */
+a {
+    color: inherit;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--ac);
+}
+
+/* Images */
+img {
+    display: block;
+    max-inline-size: 100%
+}

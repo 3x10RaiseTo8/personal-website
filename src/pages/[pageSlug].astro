@@ -15,7 +15,7 @@ const { singlePage } = Astro.props;
 const { Content } = await render(singlePage);
 ---
 
-<Layout>
+<Layout title={singlePage.data.title}>
   <h1>{singlePage.data.title}</h1>
   <Content />
 </Layout>

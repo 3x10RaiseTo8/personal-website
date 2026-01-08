@@ -6,15 +6,16 @@ import Footer from "@/components/Footer.astro";
 import "@/styles/global.css";
 
 export interface Props {
-  title?: string;
-  author?: string;
+  title: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
   pubDatetime?: Date;
   modDatetime?: Date | null;
-  scrollSmooth?: boolean;
 }
+
+const { title, description, ogImage, canonicalURL, pubDatetime, modDatetime } =
+  Astro.props;
 ---
 
 <html lang={SITE.lang} dir={SITE.dir}>

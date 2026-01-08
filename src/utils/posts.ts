@@ -2,65 +2,61 @@ import type { CollectionEntry } from "astro:content";
 
 type Post = CollectionEntry<"posts">;
 
-type GroupedPosts = {
-  byCategory: Record<string, Post[]>;
-  byTag: Record<string, Post[]>;
-};
-
-type GroupOptions = {
+type FilterParams = {
   category?: string;
   tag?: string;
 };
 
 /**
- * Filters out drafts & scheduled posts
- * Sorts by publishDate (newest first)
+ * Filters out drafts & scheduled posts, then sorts by publishDate (newest first)
  */
 export const getSortedPublishedPosts = (
   posts: Post[],
   now: Date = new Date()
 ): Post[] =>
   posts
-    .filter(
-      ({ data }) =>
-        data.draft !== true &&
-        data.publishDate instanceof Date &&
-        data.publishDate <= now
-    )
+    .filter(({ data }) => data.draft !== true && data.publishDate <= now)
     .sort(
       (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
     );
 
 /**
- * Groups posts by category and tags
- * Can also return posts for a single category or tag
+ * Filters posts by category and/or tag
  */
-export const groupPosts = (
+export const getFilteredPosts = (
   posts: Post[],
-  options: GroupOptions = {}
-): GroupedPosts | Post[] => {
-  const byCategory: Record<string, Post[]> = {};
-  const byTag: Record<string, Post[]> = {};
+  { category, tag }: FilterParams = {}
+): Post[] => {
+  if (category) {
+    posts = posts.filter(({ data }) => data.category === category);
+  }
+
+  if (tag) {
+    posts = posts.filter(({ data }) => data.tags?.includes(tag));
+  }
+
+  return posts;
+};
+
+/**
+ * Gets all unique categories or tags from the provided posts sorted alphabetically
+ */
+export const getUniqueValues = (
+  posts: Post[],
+  key: "category" | "tag"
+): string[] => {
+  const values = new Set<string>();
 
   for (const post of posts) {
-    const { category, tags = [] } = post.data;
-
-    if (category) {
-      (byCategory[category] ??= []).push(post);
+    if (key === "category") {
+      if (post.data.category) {
+        values.add(post.data.category);
+      }
+    } else {
+      const tags = post.data.tags ?? [];
+      tags.forEach((tag) => values.add(tag));
     }
-
-    for (const tag of tags) {
-      (byTag[tag] ??= []).push(post);
-    }
   }
 
-  if (options.category) {
-    return byCategory[options.category] ?? [];
-  }
-
-  if (options.tag) {
-    return byTag[options.tag] ?? [];
-  }
-
-  return { byCategory, byTag };
+  return Array.from(values).sort();
 };
