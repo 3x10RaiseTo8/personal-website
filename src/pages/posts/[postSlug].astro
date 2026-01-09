@@ -12,10 +12,41 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+const dateFormat = [
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  },
+] as const;
+
+const publishDate = post.data.publishDate;
+const publishDateString = publishDate.toDateString();
+const prettyPublishDate = publishDate.toLocaleDateString(...dateFormat);
+
+const lastModified =
+  post.data.lastModified ?? new Date(remarkPluginFrontmatter.lastModified);
+const lastModifiedString = lastModified.toDateString();
+const prettyLastModified = lastModified.toLocaleDateString(...dateFormat);
 ---
 
 <Layout title={post.data.title}>
   <h1>{post.data.title}</h1>
   <Content />
+  <div class="time">
+    Published on <time datetime={publishDateString}>{prettyPublishDate}</time>
+    <br />
+    Last Updated on <time datetime={lastModifiedString}
+      >{prettyLastModified}</time
+    >
+  </div>
 </Layout>
+
+<style>
+  .time {
+    font-size: var(--font-size--1);
+  }
+</style>
