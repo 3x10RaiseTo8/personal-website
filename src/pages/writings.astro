@@ -6,11 +6,11 @@ import Layout from "@/layouts/Layout.astro";
 import ListPosts from "@/components/ListPosts.astro";
 
 const allPosts = await getCollection("posts");
-const allResources = getFilteredPosts(allPosts, { category: "resources" });
-const filteredResources = getSortedPublishedPosts(allResources);
+const allWritings = getFilteredPosts(allPosts, { category: "writings" });
+const filteredWritings = getSortedPublishedPosts(allWritings);
 ---
 
-<Layout title="Resources">
-  <h1>Resources</h1>
-  <ListPosts posts={filteredResources} />
+<Layout title="Writings">
+  <h1>Writings</h1>
+  <ListPosts posts={filteredWritings} />
 </Layout>

@@ -1,12 +1,15 @@
 import { defineConfig } from "astro/config";
 import { SITE } from "./src/siteConfig";
 
+import { remarkModifiedTime } from "./src/utils/remark-modified-time";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
   integrations: [],
   output: "static",
   markdown: {
+    remarkPlugins: [remarkModifiedTime],
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",

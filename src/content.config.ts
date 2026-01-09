@@ -12,7 +12,7 @@ const posts = defineCollection({
     lastModified: z.coerce.date().optional(),
     tags: z.array(z.string()).optional(),
     category: z
-      .enum(["resources", "essays", "uncategorized"])
+      .enum(["resources", "writings", "uncategorized"])
       .default("uncategorized"),
   }),
 });
