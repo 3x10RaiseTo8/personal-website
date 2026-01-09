@@ -25,6 +25,6 @@
 
 
 User-Agent: *
-Content-signal: search=yes,ai-input=yes,ai-train=noo
+Content-signal: search=yes,ai-input=yes,ai-train=no
 Crawl-delay: 10
 Allow: /
