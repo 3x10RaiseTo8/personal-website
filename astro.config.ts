@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/siteConfig";
 
 import { remarkModifiedTime } from "./src/utils/remark-modified-time";
@@ -6,7 +7,7 @@ import { remarkModifiedTime } from "./src/utils/remark-modified-time";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  integrations: [],
+  integrations: [sitemap()],
   output: "static",
   markdown: {
     remarkPlugins: [remarkModifiedTime],

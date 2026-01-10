@@ -1,3 +1,6 @@
+import type { APIRoute } from "astro";
+
+const getRobotsTxt = (sitemapURL: URL) => `\
 # As a condition of accessing this website, you agree to abide by the following
 # content signals:
 
@@ -28,3 +31,11 @@ User-Agent: *
 Content-signal: search=yes,ai-input=yes,ai-train=no
 Crawl-delay: 10
 Allow: /
+
+Sitemap: ${sitemapURL.href}
+`;
+
+export const GET: APIRoute = ({ site }) => {
+  const sitemapURL = new URL("sitemap-index.xml", site);
+  return new Response(getRobotsTxt(sitemapURL));
+};
