@@ -7,6 +7,12 @@ export interface SiteConfig {
   dir: "ltr" | "rtl" | "auto";
   lang: string;
   timezone: string;
+  contacts: {
+    linkedin?: string;
+    twitter?: string;
+    github?: string;
+    email?: string;
+  };
 }
 
 export const SITE: SiteConfig = {
@@ -18,4 +24,10 @@ export const SITE: SiteConfig = {
   dir: "ltr",
   lang: "en",
   timezone: "Asia/Kolkata",
+  contacts: {
+    linkedin: "https://www.linkedin.com/in/abhishek7x/",
+    twitter: "https://x.com/now7x",
+    github: "https://github.com/3x10RaiseTo8",
+    email: "mailto:k@abhishe.com",
+  },
 } as const;
