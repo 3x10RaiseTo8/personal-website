@@ -4,6 +4,7 @@
   "version": "0.0.2",
   "scripts": {
     "dev": "astro dev --host",
+    "stage": "astro dev -- --host --mode staging",
     "start": "astro dev",
     "prebuild": "git submodule update --init --recursive --remote",
     "about:prebuild": "echo 'Track remote changes for 'content' submodule'",

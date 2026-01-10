@@ -8,17 +8,23 @@ type FilterParams = {
 };
 
 /**
- * Filters out drafts & scheduled posts, then sorts by publishDate (newest first)
+ * Filters out drafts & scheduled posts in non-development modes,
+ * then sorts by publishDate (newest first)
  */
 export const getSortedPublishedPosts = (
   posts: Post[],
   now: Date = new Date()
-): Post[] =>
-  posts
-    .filter(({ data }) => data.draft !== true && data.publishDate <= now)
+): Post[] => {
+  const shouldFilter = import.meta.env.MODE !== "development";
+
+  return posts
+    .filter(({ data }) =>
+      shouldFilter ? data.draft !== true && data.publishDate <= now : true
+    )
     .sort(
       (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
     );
+};
 
 /**
  * Filters posts by category and/or tag
