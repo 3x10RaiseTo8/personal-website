@@ -1,20 +1,21 @@
 ---
+import { SITE } from "@/siteConfig";
 const socials = [
   {
     title: "k@abhishe.com",
-    href: "mailto:k@abhishe.com",
+    href: SITE.contacts.email,
   },
   {
     title: "twitter",
-    href: "https://twitter.com/now7x",
+    href: "/x",
   },
   {
     title: "github",
-    href: "https://github.com/3x10RaiseTo8",
+    href: "/github",
   },
   {
     title: "linkedin",
-    href: "https://www.linkedin.com/in/abhishek7x/",
+    href: "/linkedin",
   },
 ];
 ---
@@ -23,12 +24,12 @@ const socials = [
   <section class="socials">
     {
       socials.map((social, index) => (
-        <>
-          <a class="social" href={social.href}>
+        <Fragment>
+          <a class="social" href={social.href} target="_blank" rel="noopener">
             {social.title}
           </a>
-          {index < socials.length - 1 && <span class="dot">•</span>}
-        </>
+          {index < socials.length - 1 && <span class="dot"> • </span>}
+        </Fragment>
       ))
     }
   </section>
