@@ -9,6 +9,7 @@ export default defineConfig({
   site: SITE.website,
   integrations: [sitemap()],
   output: "static",
+  trailingSlash: "never",
   markdown: {
     remarkPlugins: [remarkModifiedTime],
     shikiConfig: {
