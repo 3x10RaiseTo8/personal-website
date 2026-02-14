@@ -14,12 +14,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
-    "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "^3.6.1",
-    "astro": "^5.16.8",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@tanstack/table-core": "^8.21.3",
+    "astro": "^5.17.2",
     "echarts": "^6.0.0",
+    "mdx": "^0.3.1",
     "modern-normalize": "^3.0.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "unist-util-visit": "^5.1.0"
   },
   "engines": {
     "node": ">=22.17.1"

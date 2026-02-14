@@ -42,8 +42,9 @@
   --ac: var(--flexoki-cyan-600)
 }
 
-/* Scrollbar Styles
-======================= */
+/*     Scrollbar Styles
+==================================
+*/
 
 body::-webkit-scrollbar {
   width: var(--sb-size)
@@ -66,8 +67,9 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* Site Grid
-============== */
+/*     Site Grid
+======================== 
+*/
 
 .site-grid {
   --gap: 0.9rem;
@@ -102,9 +104,36 @@ body::-webkit-scrollbar-thumb {
   grid-column: full;
 }
 
-/* ====================== */
 
-/*  */
+/*     Random 
+====================
+*/
 main {
   margin-block: 1.2rem;
+}
+
+/*     Tables
+======================
+ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--tx);
+  vertical-align: top;
+  text-align: left;
+}
+
+thead {
+  background: var(--bg-2);
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
 }

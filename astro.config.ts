@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/siteConfig";
 
 import { remarkModifiedTime } from "./src/utils/remark-modified-time";
+import { rehypeWrapTable } from "./src/utils/rehype-wrap-table";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
   trailingSlash: "never",
   markdown: {
     remarkPlugins: [remarkModifiedTime],
+    rehypePlugins: [rehypeWrapTable],
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",
@@ -19,6 +21,7 @@ export default defineConfig({
       },
     },
   },
+  prefetch: { prefetchAll: true },
   redirects: {
     "/talent":
       "https://docs.google.com/forms/d/e/1FAIpQLScYNoiJFctAxkgqDF564bJ_dij1HM4269V8S-9WcNla7PQVzA/viewform?usp=dialog",
