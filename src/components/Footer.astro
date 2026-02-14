@@ -1,34 +1,18 @@
 ---
 import { SITE } from "@/siteConfig";
-const socials = [
-  {
-    title: "k@abhishe.com",
-    href: SITE.contacts.email,
-  },
-  {
-    title: "twitter",
-    href: "/x",
-  },
-  {
-    title: "github",
-    href: "/github",
-  },
-  {
-    title: "linkedin",
-    href: "/linkedin",
-  },
-];
+import { getFooterLinks } from "@/utils/links";
+const footerLinks = getFooterLinks(SITE.links);
 ---
 
 <footer>
-  <section class="socials">
+  <section class="footer-links">
     {
-      socials.map((social, index) => (
+      footerLinks.map((l, index) => (
         <Fragment>
-          <a class="social" href={social.href} target="_blank" rel="noopener">
-            {social.title}
+          <a class="social" href={l.url} target="_blank" rel="noopener">
+            {l.text}
           </a>
-          {index < socials.length - 1 && <span class="dot"> • </span>}
+          {index < footerLinks.length - 1 && <span class="dot"> • </span>}
         </Fragment>
       ))
     }
@@ -67,7 +51,7 @@ const socials = [
     color: var(--tx-2);
   }
 
-  .socials {
+  .footer-links {
     padding-block: 20px;
   }
 </style>

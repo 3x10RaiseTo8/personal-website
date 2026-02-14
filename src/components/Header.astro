@@ -1,4 +1,5 @@
 ---
+import { SITE } from "@/siteConfig";
 import "@/styles/global.css";
 ---
 
@@ -8,9 +9,13 @@ import "@/styles/global.css";
   </a>
   <nav>
     <ul>
-      <li><a href="/writings">writings</a></li>
-      <li><a href="/resources">resources</a></li>
-      <li><a href="/about">about</a></li>
+      {
+        SITE.headerLinks.map((item) => (
+          <li>
+            <a href={item.href}>{item.text}</a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>

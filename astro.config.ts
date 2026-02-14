@@ -4,13 +4,16 @@ import { SITE } from "./src/siteConfig";
 
 import { remarkModifiedTime } from "./src/utils/remark-modified-time";
 import { rehypeWrapTable } from "./src/utils/rehype-wrap-table";
+import { getRedirects } from "./src/utils/links";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
-  integrations: [sitemap()],
   output: "static",
   trailingSlash: "never",
+  prefetch: { prefetchAll: true, defaultStrategy: "load" },
+  integrations: [sitemap()],
+  redirects: getRedirects(SITE.links),
   markdown: {
     remarkPlugins: [remarkModifiedTime],
     rehypePlugins: [rehypeWrapTable],
@@ -20,14 +23,5 @@ export default defineConfig({
         dark: "aurora-x",
       },
     },
-  },
-  prefetch: { prefetchAll: true },
-  redirects: {
-    "/talent":
-      "https://docs.google.com/forms/d/e/1FAIpQLScYNoiJFctAxkgqDF564bJ_dij1HM4269V8S-9WcNla7PQVzA/viewform?usp=dialog",
-    "/linkedin": SITE.contacts.linkedin!,
-    "/twitter": SITE.contacts.twitter!,
-    "/x": SITE.contacts.twitter!,
-    "/github": SITE.contacts.github!,
   },
 });

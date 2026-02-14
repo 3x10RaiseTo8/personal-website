@@ -1,5 +1,4 @@
 ---
-import { SITE } from "@/siteConfig";
 import Head from "@/components/Head.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -18,7 +17,7 @@ const { title, description, ogImage, canonicalURL, pubDatetime, modDatetime } =
   Astro.props;
 ---
 
-<html lang={SITE.lang} dir={SITE.dir}>
+<html lang="en" dir="ltr">
   <Head />
   <body>
     <div class="site-grid">
