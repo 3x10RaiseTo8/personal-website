@@ -28,7 +28,13 @@ import "@/styles/global.css";
     padding-block: 20px;
     border-block-end: black solid 1px;
     grid-row: view-start / main-start;
+    color: var(--tx-2);
   }
+
+  a {
+    text-decoration: none;
+  }
+
   .logo,
   .logo img {
     max-block-size: 20px;
@@ -41,5 +47,9 @@ import "@/styles/global.css";
     display: flex;
     gap: 10px;
     font-size: var(--font-size--1);
+  }
+
+  li::marker {
+    content: "";
   }
 </style>

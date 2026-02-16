@@ -1,9 +1,9 @@
 body {
-    font-size: var(--font-size-0);
-    font-family: system-ui, sans-serif;
+    font-size: var(--font-size-1);
+    font-family: "Roboto Condensed", system-ui, sans-serif;
     font-weight: normal;
-    line-height: 1.6;
-    text-wrap: balance;
+    line-height: 1.4;
+    text-wrap: pretty;
     background-color: var(--bg);
     color: var(--tx);
     -webkit-font-smoothing: antialiased;
@@ -18,52 +18,38 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 100;
-    font-family: ui-serif, serif;
+    font-weight: 400;
+    font-family: "Playfair Display", ui-serif, serif;
     line-height: 1.2;
-    letter-spacing: -0.04rem;
     margin: 0.5rem 0 0.5rem;
+    text-wrap: wrap;
 }
 
 h1 {
     font-size: var(--font-size-5);
+    letter-spacing: -0.15rem;
 }
 
 h2 {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
+    letter-spacing: -0.1rem;
 }
 
 h3 {
-    font-size: var(--font-size-3);
-
+    font-size: var(--font-size-2);
+    letter-spacing: -0.05rem;
 }
 
 h4 {
-    font-size: var(--font-size-2)
-}
-
-h5 {
     font-size: var(--font-size-1)
 }
 
-h6 {
-    font-size: var(--font-size-0)
-}
-
-/* Lists */
-ul {
-    margin: 0 0 1em 1em;
-    padding: 0;
-    list-style-type: square;
-}
-
-ol {
-    margin: 0 0 1em 1.3em;
-    padding: 0;
-}
-
 li {
-    margin: 0.25em 0;
+    margin: 0.5em 0;
+}
+
+ul li::marker {
+    content: "￫  ";
 }
 
 /* Quotes */

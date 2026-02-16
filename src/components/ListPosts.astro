@@ -35,6 +35,11 @@ const { posts } = Astro.props;
     padding: 0.3rem 0.1rem;
     margin: 0;
     line-height: 1.6;
+    text-wrap: wrap;
+  }
+
+  li::marker {
+    content: "";
   }
 
   .post-list a {
@@ -57,5 +62,15 @@ const { posts } = Astro.props;
   .link {
     display: flex;
     align-items: baseline;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: reset;
+  }
+
+  .post-list a:hover .title,
+  .post-list a:focus-visible .title {
+    color: var(--ac);
   }
 </style>
