@@ -6,16 +6,18 @@ import Layout from "@/layouts/Layout.astro";
 import ListPosts from "@/components/ListPosts.astro";
 
 const allPosts = await getCollection("posts");
-const allWritings = getFilteredPosts(allPosts, { category: "Writings" });
+const allWritings = getFilteredPosts(allPosts, { category: "writings" });
 const filteredWritings = getSortedPublishedPosts(allWritings);
 ---
 
 <Layout title="Abhishek Singh">
   <h1>Abhishek Singh</h1>
   <p>
-    <strong>hellooo kind human!!!</strong> wish you a great year of success (⁠＾⁠∇⁠＾⁠)⁠ﾉ
+    <strong>(⁠＾⁠∇⁠＾⁠)⁠ﾉ&nbsp&nbsp</strong>
+    <i>hellooo kind human!!!</i>
+    <br />wish you a great year of success!
   </p>
-  <blockquote>Specialization is for insects. — Robert A. Heinlein</blockquote>
+
   <h2>Writings</h2>
   <ListPosts posts={filteredWritings} />
 </Layout>
@@ -24,7 +26,8 @@ const filteredWritings = getSortedPublishedPosts(allWritings);
   h1 {
     display: none;
   }
-  p {
-    text-wrap: auto;
+
+  .emoticon {
+    font-weight: 900;
   }
 </style>

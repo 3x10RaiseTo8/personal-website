@@ -5,6 +5,7 @@ export const SITE = {
   website: "https://abhishe.com",
   ogImage: "og.jpg",
   timezone: "Asia/Kolkata",
+  copyright: "© 2024—present Abhishek Singh",
   headerLinks: [
     {
       href: "/writings",
@@ -47,7 +48,13 @@ export const SITE = {
     {
       redirects: ["/talent"],
       href: "https://docs.google.com/forms/d/e/1FAIpQLScYNoiJFctAxkgqDF564bJ_dij1HM4269V8S-9WcNla7PQVzA/viewform?usp=dialog",
-      text: "Talent",
+      text: "Talent Database",
+      footer: false,
+    },
+    {
+      redirects: ["/source"],
+      href: "https://github.com/3x10RaiseTo8/personal-website/",
+      text: "source",
       footer: false,
     },
   ],

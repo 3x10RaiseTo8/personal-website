@@ -1,11 +1,13 @@
 ---
 import { SITE } from "@/siteConfig";
 import "@/styles/global.css";
+
+import Abhishek from "@/assets/logos/abhishek-minified.svg";
 ---
 
 <header>
   <a class="logo" href="/">
-    <img src="/logos/abhishek-minified.svg" alt="abhishek" />
+    <Abhishek height={20} width={"auto"} />
   </a>
   <nav>
     <ul>
@@ -23,6 +25,7 @@ import "@/styles/global.css";
 <style>
   header {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-block: 20px;
@@ -35,8 +38,7 @@ import "@/styles/global.css";
     text-decoration: none;
   }
 
-  .logo,
-  .logo img {
+  .logo {
     max-block-size: 20px;
   }
 

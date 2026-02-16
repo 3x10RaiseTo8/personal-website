@@ -1,5 +1,7 @@
 ---
 import { SITE } from "@/siteConfig";
+import Abhishek from "@/assets/logos/abhishek-minified.svg";
+
 import { getFooterLinks } from "@/utils/links";
 const footerLinks = getFooterLinks(SITE.links);
 ---
@@ -17,9 +19,14 @@ const footerLinks = getFooterLinks(SITE.links);
       ))
     }
   </section>
-
+  <Abhishek
+    class="abhishek"
+    fill-opacity={0.02}
+    width={"90vw"}
+    height={"auto"}
+  />
   <small>
-    <p>© 2024—present Abhishek Singh</p>
+    <p>{SITE.copyright}</p>
     <p>
       The content is licensed under
       <a
@@ -31,11 +38,9 @@ const footerLinks = getFooterLinks(SITE.links);
         href="https://www.gnu.org/licenses/agpl-3.0.html"
         target="_blank"
         rel="noopener">GNU AGPL v3.0</a
-      > and available <a
-        href="https://github.com/3x10RaiseTo8/personal-website/">here</a
-      >.
-    </p></small
-  >
+      > and available <a href="/source">here</a>.
+    </p>
+  </small>
 </footer>
 
 <style>
@@ -43,7 +48,11 @@ const footerLinks = getFooterLinks(SITE.links);
     font-size: var(--font-size--1);
     text-align: center;
     grid-row: main-end / view-end;
-    padding-block-end: 0.75rem;
+    padding-block-end: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    grid-column: full;
   }
 
   small p {
@@ -53,5 +62,18 @@ const footerLinks = getFooterLinks(SITE.links);
 
   .footer-links {
     padding-block: 20px;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+  }
+
+  .abhishek {
+    display: block;
+    align-self: center;
   }
 </style>
