@@ -47,12 +47,13 @@ const footerLinks = getFooterLinks(SITE.links);
   footer {
     font-size: var(--font-size--1);
     text-align: center;
-    grid-row: main-end / view-end;
+    /* grid-row: main-end / view-end; */
     padding-block-end: 0.9rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 5rem;
     grid-column: full;
+    min-block-size: 50vh;
   }
 
   small p {

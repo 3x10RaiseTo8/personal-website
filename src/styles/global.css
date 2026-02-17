@@ -107,7 +107,7 @@ body::-webkit-scrollbar-thumb {
   --feature: minmax(0, 5rem);
 
   display: grid;
-  grid-template-rows: [view-start] auto [main-start] 1fr [main-end] auto [view-end];
+  /* grid-template-rows: [view-start] auto [main-start] 1fr [main-end] auto [view-end]; */
   grid-template-columns:
     [full-start] var(--full) [feature-start] var(--feature) [popout-start] var(--popout) [content-start] var(--content) [content-end] var(--popout) [popout-end] var(--feature) [feature-end] var(--full) [full-end];
 
@@ -138,6 +138,7 @@ body::-webkit-scrollbar-thumb {
 */
 main {
   margin-block: 1.5rem;
+  min-height: 70vh;
 }
 
 main>*+* {
