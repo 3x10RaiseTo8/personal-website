@@ -19,12 +19,14 @@ const footerLinks = getFooterLinks(SITE.links);
       ))
     }
   </section>
-  <Abhishek
+
+  <!-- <Abhishek
     class="abhishek"
     fill-opacity={0.02}
     width={"90vw"}
     height={"auto"}
-  />
+  /> -->
+
   <small>
     <p>{SITE.copyright}</p>
     <p>
@@ -48,33 +50,34 @@ const footerLinks = getFooterLinks(SITE.links);
     font-size: var(--font-size--1);
     text-align: center;
     /* grid-row: main-end / view-end; */
-    padding-block-end: 0.9rem;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
-    grid-column: full;
-    min-block-size: 50vh;
+    gap: 2rem;
   }
 
+  small {
+    border-block-start: 1px var(--tx) solid;
+    padding-block: 1rem;
+  }
   small p {
     margin: 0;
     color: var(--tx-2);
   }
 
   .footer-links {
-    padding-block: 20px;
     display: flex;
     flex-direction: row;
     align-self: center;
     gap: 0.5rem;
+    font-size: var(--font-size-0);
   }
 
   .footer-links a {
     text-decoration: none;
   }
 
-  .abhishek {
+  /* .abhishek {
     display: block;
     align-self: center;
-  }
+  } */
 </style>
