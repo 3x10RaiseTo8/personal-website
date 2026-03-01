@@ -107,8 +107,8 @@ body {
   font-size: var(--font-size-1);
   font-family: "Roboto Condensed", system-ui, sans-serif;
   font-weight: normal;
-  line-height: 1.5;
-  text-wrap: pretty;
+  line-height: 1.4;
+  /* text-wrap: pretty; */
   background-color: var(--bg);
   color: var(--tx);
   -webkit-font-smoothing: antialiased;
@@ -153,9 +153,9 @@ body {
 main {
   margin-block: 1.5rem;
   min-height: 70vh;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.2rem; */
 }
 
 h1,
@@ -172,7 +172,7 @@ ol {
 }
 
 main>*+* {
-  /* margin-block-start: 1rem; */
+  margin-block: 1.5rem;
 }
 
 
@@ -188,6 +188,7 @@ h6 {
   font-family: "Playfair Display", ui-serif, serif;
   line-height: 1.2;
   text-wrap: wrap;
+  margin-block: 1.5rem;
 }
 
 h1 {
@@ -211,13 +212,17 @@ h4 {
 
 /* Lists */
 
-ul,
-ol {
-  margin-block: 0.3em;
+
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-block: 0.7rem;
 }
 
 li {
-  margin-block: 0.3em;
+  margin-block: 0.5em;
   margin-inline-start: 1.5em;
 }
 
