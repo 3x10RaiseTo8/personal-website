@@ -214,13 +214,15 @@ h4 {
 
 /* Lists */
 
-ol {}
-
 ul ul,
 ul ol,
 ol ul,
 ol ol {
   margin-block: 0.7rem;
+}
+
+ol li {
+  padding-left: 1rem;
 }
 
 li {
