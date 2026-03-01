@@ -12,14 +12,14 @@ const filteredWritings = getSortedPublishedPosts(allWritings);
 
 <Layout title="Abhishek Singh">
   <h1>Abhishek Singh</h1>
-  <p>
+  <p class="greeting">
     <strong>(⁠＾⁠∇⁠＾⁠)⁠ﾉ&nbsp&nbsp</strong>
     <i>hellooo kind human!!!</i>
     <br />wish you a great year of success!
   </p>
 
   <h2>Writings</h2>
-  <ListPosts posts={filteredWritings} />
+  <ListPosts posts={filteredWritings} listStyle="date" />
 </Layout>
 
 <style>
@@ -29,5 +29,9 @@ const filteredWritings = getSortedPublishedPosts(allWritings);
 
   .emoticon {
     font-weight: 900;
+  }
+
+  .greeting {
+    align-self: center;
   }
 </style>
