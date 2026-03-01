@@ -2,7 +2,6 @@
 
 @import url(flexoki.css);
 @import url(normalize.css);
-@import url(typography.css);
 /* @import url(debugger.css); */
 
 /* @import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&display=swap');
@@ -67,8 +66,11 @@
   --tx-2: var(--flexoki-600);
   --bg-2: var(--flexoki-50);
   --ui: var(--flexoki-100);
-  --ac: var(--flexoki-cyan-600)
+  --ac: var(--flexoki-cyan-600);
+  --ac-2: var(--flexoki-cyan-200);
 }
+
+
 
 /*     Scrollbar Styles
 ==================================
@@ -95,9 +97,24 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/*     Site Grid
+
+
+/*     body
 ======================== 
 */
+
+body {
+  font-size: var(--font-size-1);
+  font-family: "Roboto Condensed", system-ui, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  text-wrap: pretty;
+  background-color: var(--bg);
+  color: var(--tx);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 
 .site-grid {
   --gap: 0.9rem;
@@ -133,16 +150,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-/*     Random 
-====================
-*/
 main {
   margin-block: 1.5rem;
   min-height: 70vh;
 }
 
 main>*+* {
-  margin-top: 1.5rem;
+  margin-block: 1.5rem;
 }
 
 /*     Tables
@@ -169,4 +183,90 @@ thead {
 .table-wrap {
   width: 100%;
   overflow-x: auto;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  font-family: "Playfair Display", ui-serif, serif;
+  line-height: 1.2;
+  margin: 0.5rem 0 0.5rem;
+  text-wrap: wrap;
+}
+
+h1 {
+  font-size: var(--font-size-5);
+  letter-spacing: -0.15rem;
+}
+
+h2 {
+  font-size: var(--font-size-3);
+  letter-spacing: -0.1rem;
+}
+
+h3 {
+  font-size: var(--font-size-2);
+  letter-spacing: -0.05rem;
+}
+
+h4 {
+  font-size: var(--font-size-1)
+}
+
+/* Lists */
+
+ul,
+ol {
+  padding: 0;
+}
+
+li {
+  margin-block: 0.5em;
+  margin-inline-start: 1.2em;
+}
+
+ul li::marker {
+  content: "•  ";
+}
+
+li:has(input[type="checkbox"]) {
+  list-style-type: none;
+  margin-inline-start: 0.75em;
+
+  &::marker {
+    content: none;
+  }
+}
+
+/* Quotes */
+blockquote {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--bg-2);
+  color: var(--tx-2);
+  font-style: italic;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration-color: var(--ac-2);
+  text-underline-offset: 3px;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--ac);
+}
+
+/* Images */
+img {
+  display: block;
+  max-inline-size: 100%
 }

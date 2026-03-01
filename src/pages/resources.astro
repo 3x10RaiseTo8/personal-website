@@ -8,9 +8,11 @@ import ListPosts from "@/components/ListPosts.astro";
 const allPosts = await getCollection("posts");
 const allResources = getFilteredPosts(allPosts, { category: "resources" });
 const filteredResources = getSortedPublishedPosts(allResources);
+
+const pageTitle = "Resources";
 ---
 
-<Layout title="Resources">
-  <h1>Resources</h1>
-  <ListPosts posts={filteredResources} />
+<Layout title={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <ListPosts posts={filteredResources} listStyle="date" />
 </Layout>

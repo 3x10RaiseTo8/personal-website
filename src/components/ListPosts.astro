@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   posts: CollectionEntry<"posts">[];
+  listStyle: "date" | "ul" | "ol";
 }
 
 const { posts } = Astro.props;
@@ -17,7 +18,7 @@ const { posts } = Astro.props;
 
       return (
         <li>
-          <a href={`/p/${post.id}`} class="link row">
+          <a href={`/p/${post.id}`} class="link-row">
             <span class="date">
               {year} · {month}
             </span>
@@ -36,6 +37,10 @@ const { posts } = Astro.props;
     margin: 0;
     line-height: 1.6;
     text-wrap: wrap;
+  }
+
+  li {
+    margin-left: 0;
   }
 
   li::marker {
@@ -57,9 +62,12 @@ const { posts } = Astro.props;
 
   .title {
     text-decoration: underline;
+    color: inherit;
+    text-decoration-color: var(--ac-2);
+    text-underline-offset: 3px;
   }
 
-  .link {
+  .link-row {
     display: flex;
     align-items: baseline;
   }
