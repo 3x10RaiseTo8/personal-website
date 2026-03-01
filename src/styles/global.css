@@ -155,37 +155,26 @@ main {
   min-height: 70vh;
   display: flex;
   flex-direction: column;
+  gap: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  padding: 0;
+  margin: 0;
 }
 
 main>*+* {
-  margin-block-start: 1rem;
+  /* margin-block-start: 1rem; */
 }
 
-/*     Tables
-======================
- */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-th,
-td {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--tx);
-  vertical-align: top;
-  text-align: left;
-}
-
-thead {
-  background: var(--bg-2);
-}
-
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-}
 
 /* Headings */
 
@@ -198,7 +187,6 @@ h6 {
   font-weight: 400;
   font-family: "Playfair Display", ui-serif, serif;
   line-height: 1.2;
-  margin: 0.5rem 0 0.5rem;
   text-wrap: wrap;
 }
 
@@ -225,11 +213,11 @@ h4 {
 
 ul,
 ol {
-  padding: 0;
+  margin-block: 0.3em;
 }
 
 li {
-  margin-block: 0.2em;
+  margin-block: 0.3em;
   margin-inline-start: 1.5em;
 }
 
@@ -266,8 +254,48 @@ a:focus-visible {
   color: var(--ac);
 }
 
+a.external::after {
+  content: "\00A0";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: middle;
+  align-self: center;
+  background-color: currentColor;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" /><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" /></svg>') no-repeat center / contain;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" /><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" /></svg>') no-repeat center / contain;
+}
+
+/* 
+*/
 /* Images */
 img {
   display: block;
   max-inline-size: 100%
+}
+
+/*     Tables
+======================
+ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--tx);
+  vertical-align: top;
+  text-align: left;
+}
+
+thead {
+  background: var(--bg-2);
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
 }
