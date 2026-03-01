@@ -151,8 +151,10 @@ body {
 
 
 main {
-  margin-block: 1.5rem;
-  min-height: 70vh;
+  min-height: 75vh;
+  position: relative;
+  /* match padding-block-end with timestamp in postSlug */
+  padding-block-end: 6rem;
   /* display: flex;
   flex-direction: column;
   gap: 1.2rem; */
@@ -171,7 +173,7 @@ ol {
   margin: 0;
 }
 
-main>*+* {
+main>* {
   margin-block: 1.5rem;
 }
 
@@ -212,7 +214,7 @@ h4 {
 
 /* Lists */
 
-
+ol {}
 
 ul ul,
 ul ol,

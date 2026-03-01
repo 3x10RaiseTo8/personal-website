@@ -52,9 +52,15 @@ const prettyLastModified = lastModified.toLocaleDateString(...dateFormat);
 <style>
   .timestamp {
     font-size: var(--font-size--1);
-    padding-block: 3rem 1rem;
     text-align: center;
     color: var(--tx-2);
-    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    block-size: 50px;
+  }
+
+  main {
+    padding-block-end: 50px;
   }
 </style>
