@@ -8,7 +8,7 @@ export const SITE = {
   copyright: "© 2024—present Abhishek Singh",
   headerLinks: [
     {
-      href: "/writings",
+      href: "/",
       text: "writings",
     },
     {
