@@ -7,7 +7,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900');
+
 
 *,
 *::before,
@@ -29,6 +30,16 @@
   --font-size-3: clamp(1.836rem, 1.7476rem + 0.3927vw, 2.052rem);
   --font-size-4: clamp(2.2032rem, 2.0972rem + 0.4713vw, 2.4624rem);
   --font-size-5: clamp(2.6438rem, 2.5166rem + 0.5655vw, 2.9549rem);
+
+  /* 18 to 20 px 1.2 to 1.25 */
+  --font-size--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
+  --font-size--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
+  --font-size-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --font-size-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
+  --font-size-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+  --font-size-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+  --font-size-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+  --font-size-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
 
   /* 1.2 to 1.25 */
 
@@ -104,10 +115,12 @@ body::-webkit-scrollbar-thumb {
 */
 
 body {
-  font-size: var(--font-size-1);
-  font-family: "Roboto Condensed", system-ui, sans-serif;
+  font-size: var(--font-size-0);
+  font-family: "Inter", system-ui, sans-serif;
   font-weight: normal;
-  line-height: 1.4;
+  line-height: 1.6;
+  /* letter-spacing: -0.01rem; */
+  font-weight: 400;
   /* text-wrap: pretty; */
   background-color: var(--bg);
   color: var(--tx);
@@ -154,7 +167,8 @@ main {
   min-height: 75vh;
   position: relative;
   /* match padding-block-end with timestamp in postSlug */
-  padding-block-end: 6rem;
+  padding-block-end: 10rem;
+  /* margin-block-end: 10rem; */
   /* display: flex;
   flex-direction: column;
   gap: 1.2rem; */
@@ -194,17 +208,22 @@ h6 {
 }
 
 h1 {
-  font-size: var(--font-size-5);
-  letter-spacing: -0.15rem;
+  font-size: var(--font-size-4);
+  letter-spacing: -0.17rem;
+  font-weight: 100;
+  text-align: center;
+  margin-block-start: 4rem;
+  text-wrap: pretty;
+  margin-block-end: 5rem;
 }
 
 h2 {
-  font-size: var(--font-size-3);
+  font-size: var(--font-size-2);
   letter-spacing: -0.1rem;
 }
 
 h3 {
-  font-size: var(--font-size-2);
+  font-size: var(--font-size-1);
   letter-spacing: -0.05rem;
 }
 
