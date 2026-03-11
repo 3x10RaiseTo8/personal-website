@@ -7,8 +7,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900');
-
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 *,
 *::before,
@@ -191,6 +190,15 @@ main>* {
   margin-block: 1.5rem;
 }
 
+h1+p::first-letter {
+  font-size: 3em;
+  font-weight: normal;
+  font-family: "Ballet", ui-serif, serif;
+  line-height: .7;
+  margin-right: 5px;
+  padding: 0 4px 7px 4px;
+
+}
 
 /* Headings */
 
@@ -210,6 +218,7 @@ h6 {
 h1 {
   font-size: var(--font-size-4);
   letter-spacing: -0.17rem;
+  word-spacing: 20%;
   font-weight: 100;
   text-align: center;
   margin-block-start: 4rem;
