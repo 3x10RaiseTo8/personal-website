@@ -1,5 +1,6 @@
 ---
 import { SITE } from "@/siteConfig";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -91,4 +92,5 @@ const structuredData = {
     href={new URL("rss.xml", Astro.site)}
   />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  <ClientRouter />
 </head>

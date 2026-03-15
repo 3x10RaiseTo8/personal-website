@@ -21,11 +21,11 @@ const { title, description, ogImage, canonicalURL, pubDatetime, modDatetime } =
   <Head />
   <body>
     <div class="site-grid">
-      <Header />
-      <main>
+      <Header transition:persist />
+      <main transition:animate="slide">
         <slot />
       </main>
-      <Footer />
+      <Footer transition:persist />
     </div>
   </body>
 </html>
