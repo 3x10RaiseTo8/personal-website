@@ -1,5 +1,6 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import { SITE } from "./src/siteConfig";
 
 import { remarkModifiedTime } from "./src/utils/remark-modified-time";
@@ -16,7 +17,7 @@ export default defineConfig({
   redirects: getRedirects(SITE.links),
   markdown: {
     remarkPlugins: [remarkModifiedTime],
-    rehypePlugins: [rehypeWrapTable],
+    rehypePlugins: [rehypeHeadingIds, rehypeWrapTable],
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",
@@ -24,4 +25,21 @@ export default defineConfig({
       },
     },
   },
+  fonts: [
+    {
+      name: "Inter",
+      provider: fontProviders.google(),
+      cssVariable: "--font-inter",
+    },
+    {
+      name: "Ballet",
+      cssVariable: "--font-ballet",
+      provider: fontProviders.google(),
+    },
+    {
+      name: "Playfair Display",
+      cssVariable: "--font-playfair-display",
+      provider: fontProviders.google(),
+    },
+  ],
 });
