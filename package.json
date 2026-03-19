@@ -13,11 +13,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
     "@tanstack/table-core": "^8.21.3",
-    "astro": "^5.17.2",
+    "astro": "^6.0.5",
     "echarts": "^6.0.0",
     "mdx": "^0.3.1",
     "modern-normalize": "^3.0.1",
