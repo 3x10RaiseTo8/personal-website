@@ -195,8 +195,8 @@ h1+p::first-letter {
   font-weight: normal;
   font-family: var(--font-ballet), ui-serif, serif;
   line-height: .7;
-  margin-right: 5px;
-  padding: 0 4px 7px 4px;
+  /* margin-right: 5px; */
+  padding: 0 1px 7px 4px;
 
 }
 
