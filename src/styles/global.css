@@ -4,11 +4,6 @@
 @import url(normalize.css);
 /* @import url(debugger.css); */
 
-/* @import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap'); */
-
-@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
 *,
 *::before,
 *::after {
@@ -115,7 +110,7 @@ body::-webkit-scrollbar-thumb {
 
 body {
   font-size: var(--font-size-0);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), var(--font-symbols), system-ui, sans-serif;
   font-weight: normal;
   line-height: 1.6;
   /* letter-spacing: -0.01rem; */
@@ -126,6 +121,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ac-2);
+  color: var(--tx);
 }
 
 .site-grid {
@@ -194,7 +194,7 @@ main>* {
 h1+p::first-letter {
   font-size: 3em;
   font-weight: normal;
-  font-family: var(--font-ballet), ui-serif, serif;
+  font-family: var(--font-first-character), ui-serif, serif;
   line-height: .7;
   /* margin-right: 5px; */
   padding: 0 1px 7px 4px;
@@ -209,18 +209,18 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
-  font-family: var(--font-playfair-display), ui-serif, serif;
+  font-family: var(--font-display), ui-serif, serif;
+  font-weight: normal;
   line-height: 1.2;
   text-wrap: wrap;
   margin-block: 1.5rem;
+  word-spacing: 20%;
 }
 
 h1 {
   font-size: var(--font-size-4);
-  letter-spacing: -0.17rem;
+  letter-spacing: -0.10rem;
   word-spacing: 20%;
-  font-weight: 100;
   text-align: center;
   margin-block-start: 4rem;
   text-wrap: pretty;
@@ -228,12 +228,12 @@ h1 {
 }
 
 h2 {
-  font-size: var(--font-size-2);
-  letter-spacing: -0.1rem;
+  font-size: var(--font-size-3);
+  letter-spacing: -0.05rem;
 }
 
 h3 {
-  font-size: var(--font-size-1);
+  font-size: var(--font-size-2);
   letter-spacing: -0.05rem;
 }
 
@@ -241,27 +241,63 @@ h4 {
   font-size: var(--font-size-1)
 }
 
-/* Lists */
+/* Ordered Lists */
 
-ul ul,
-ul ol,
-ol ul,
-ol ol {
-  margin-block: 0.7rem;
+ol {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: item;
+  /* <-> before number dot (+ top & bottom) */
+  margin: 1rem 0 1rem 1rem;
 }
 
 ol li {
-  padding-left: 1rem;
+  counter-increment: item;
+  position: relative;
+  /* number dot <-> li content */
+  padding-left: 1.7rem;
+  /* vertical spacing between 2 li */
+  margin: 0.4rem 0;
 }
 
-li {
+ol li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Unordered Lists */
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0 1rem 1rem;
+}
+
+ul li {
+  position: relative;
+  /* number dot <-> li content */
+  padding-left: 1.5rem;
+  /* vertical spacing between 2 li */
+  margin: 0.4rem 0;
+}
+
+ul li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ul li {
   margin-block: 0.5em;
   margin-inline-start: 1.5em;
 }
 
 ul li::marker {
   content: "-   ";
-}
+} */
 
 li:has(input[type="checkbox"]) {
   list-style-type: none;

@@ -27,19 +27,48 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Inter",
+      name: "Noto Sans",
       provider: fontProviders.google(),
-      cssVariable: "--font-inter",
+      cssVariable: "--font-body",
+      // Default included:
+      // weights: [400] ,
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      // fallbacks: ["sans-serif"],
+      // formats: ["woff2"],
+    },
+    {
+      name: "Noto Sans",
+      provider: fontProviders.google(),
+      cssVariable: "--font-symbols",
+      // Default included:
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      // fallbacks: ["sans-serif"],
+      // formats: ["woff2"],
     },
     {
       name: "Ballet",
-      cssVariable: "--font-ballet",
+      cssVariable: "--font-first-character",
       provider: fontProviders.google(),
+      // Default included:
+      // weights: [400] ,
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      fallbacks: ["serif"],
+      // formats: ["woff2"],
     },
     {
-      name: "Playfair Display",
-      cssVariable: "--font-playfair-display",
+      name: "Instrument Serif",
+      cssVariable: "--font-display",
       provider: fontProviders.google(),
+      // Default included:
+      weights: [400],
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      fallbacks: ["serif"],
+      // formats: ["woff2"],
     },
   ],
 });
