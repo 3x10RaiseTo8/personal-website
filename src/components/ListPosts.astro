@@ -31,6 +31,14 @@ const { posts } = Astro.props;
 </ul>
 
 <style>
+  ul,
+  ol,
+  li,
+  li::before {
+    all: revert;
+    padding: 0;
+    margin: 0;
+  }
   .post-list {
     list-style: none;
     margin: auto;
@@ -40,6 +48,7 @@ const { posts } = Astro.props;
 
   li {
     margin-left: 0;
+    margin-block: 0.5rem;
   }
 
   li::marker {
