@@ -73,6 +73,15 @@
   --ui: var(--flexoki-100);
   --ac: var(--flexoki-cyan-600);
   --ac-2: var(--flexoki-cyan-200);
+
+  /* Dark Mode Colors */
+  --tx: var(--flexoki-200);
+  --bg: var(--flexoki-black);
+  --tx-2: var(--flexoki-200);
+  --bg-2: var(--flexoki-950);
+  --ui: var(--flexoki-900);
+  --ac: var(--flexoki-cyan-200);
+  --ac-2: var(--flexoki-cyan-600);
 }
 
 
