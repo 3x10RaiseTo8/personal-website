@@ -37,7 +37,7 @@
 
   color-scheme: light dark;
 
-  /* Colors */
+  /* Light mode Colors */
   --tx: var(--flexoki-black);
   --bg: var(--flexoki-paper);
   --tx-2: var(--flexoki-600);
@@ -50,6 +50,28 @@
   --sb-size: 14px;
   --sb-track-color: var(--bg);
   --sb-thumb-color: var(--tx-2);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Colors */
+  --tx: var(--flexoki-200);
+  --bg: var(--flexoki-black);
+  --tx-2: var(--flexoki-400);
+  --bg-2: var(--flexoki-950);
+  --ui: var(--flexoki-900);
+  --ac: var(--flexoki-cyan-200);
+  --ac-2: var(--flexoki-cyan-600);
+}
+
+[data-theme="light"] {
+  /* Light mode Colors */
+  --tx: var(--flexoki-black);
+  --bg: var(--flexoki-paper);
+  --tx-2: var(--flexoki-600);
+  --bg-2: var(--flexoki-50);
+  --ui: var(--flexoki-100);
+  --ac: var(--flexoki-cyan-600);
+  --ac-2: var(--flexoki-cyan-200);
 }
 
 @media (prefers-color-scheme: dark) {
