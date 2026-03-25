@@ -38,11 +38,11 @@ export default defineConfig({
       // formats: ["woff2"],
     },
     {
-      name: "Noto Sans",
+      name: "Noto Sans JP",
       provider: fontProviders.google(),
       cssVariable: "--font-symbols",
       // Default included:
-      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      weights: [300],
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       // fallbacks: ["sans-serif"],
