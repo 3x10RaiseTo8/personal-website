@@ -1,10 +1,14 @@
 {
-  "name": "Abhishek's Personal Website",
+  "name": "Abhishek's Personal Website - abhishe.com",
   "short_name": "abhishe.com",
+  "description": "brain made thoughts",
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "natural",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#FFFCF0",
+  "theme_color": "#FFFCF0",
   "icons": [
     {
       "src": "/favicon-16.png",
