@@ -214,13 +214,12 @@ main>* {
 }
 
 h1+p::first-letter {
-  font-size: 3em;
+  font-size: calc(var(--font-size-0)*2);
   font-weight: normal;
-  font-family: var(--font-first-character), ui-serif, serif;
-  line-height: .7;
-  /* margin-right: 5px; */
-  padding: 0 1px 7px 4px;
-
+  font-family: var(--font-first-character), var(--font-display), ui-serif, serif;
+  line-height: 0.7;
+  padding: 0 2px 2px 4px;
+  float: left;
 }
 
 /* Headings */
@@ -270,14 +269,14 @@ ol {
   padding-left: 0;
   counter-reset: item;
   /* <-> before number dot (+ top & bottom) */
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0 1rem 0.2rem;
 }
 
 ol li {
   counter-increment: item;
   position: relative;
   /* number dot <-> li content */
-  padding-left: 1.7rem;
+  padding-left: 2rem;
   /* vertical spacing between 2 li */
   margin: 0.4rem 0;
 }
@@ -294,7 +293,7 @@ ol li::before {
 ul {
   list-style: none;
   padding-left: 0;
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0 1rem 0.4rem;
 }
 
 ul li {
@@ -311,15 +310,6 @@ ul li::before {
   left: 0;
   top: 0;
 }
-
-/* ul li {
-  margin-block: 0.5em;
-  margin-inline-start: 1.5em;
-}
-
-ul li::marker {
-  content: "-   ";
-} */
 
 li:has(input[type="checkbox"]) {
   list-style-type: none;
