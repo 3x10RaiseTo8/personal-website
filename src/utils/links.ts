@@ -19,9 +19,9 @@ export function getFooterLinks<
 }
 
 /**
- * Astro redirects config
+ * For Astro redirects config
  */
-export function getRedirects<
+export function getRedirectsMap<
   T extends {
     redirects: readonly string[];
     href: string;
@@ -30,4 +30,15 @@ export function getRedirects<
   return Object.fromEntries(
     links.flatMap((l) => l.redirects.map((path) => [path, l.href] as const)),
   );
+}
+
+/**
+ * For rehype external links plugin to mark redirects as external as well
+ */
+export function getRedirectsList<
+  T extends {
+    redirects: readonly string[];
+  },
+>(links: readonly T[]) {
+  return links.flatMap((l) => l.redirects);
 }

@@ -35,6 +35,10 @@
   --font-size-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
   --font-size-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
 
+  --font-body: var(--font-sans), var(--font-jp), var(--font-symbols), var(--font-symbols-2), system-ui, sans-serif;
+  --font-display: var(--font-serif-display), var(--font-jp), var(--font-symbols), var(--font-symbols-2), ui-serif, serif;
+  --font-first-character: var(--font-fancy), var(--font-jp), var(--font-symbols), var(--font-symbols-2), ui-serif, serif;
+
   color-scheme: light dark;
 
   /* Light mode Colors */
@@ -132,7 +136,7 @@ body::-webkit-scrollbar-thumb {
 
 body {
   font-size: var(--font-size-0);
-  font-family: var(--font-body), var(--font-symbols), system-ui, sans-serif;
+  font-family: var(--font-body);
   font-weight: normal;
   line-height: 1.6;
   /* letter-spacing: -0.01rem; */
@@ -216,7 +220,7 @@ main>* {
 h1+p::first-letter {
   font-size: calc(var(--font-size-0)*2);
   font-weight: normal;
-  font-family: var(--font-first-character), var(--font-display), ui-serif, serif;
+  font-family: var(--font-first-character);
   line-height: 0.7;
   padding: 0 2px 2px 4px;
   float: left;
@@ -230,7 +234,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display), ui-serif, serif;
+  font-family: var(--font-display);
   font-weight: normal;
   line-height: 1.2;
   text-wrap: wrap;
@@ -260,6 +264,19 @@ h3 {
 
 h4 {
   font-size: var(--font-size-1)
+}
+
+:is(h2, h3, h4, h5, h6) a {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 0.65em;
+  vertical-align: middle;
+}
+
+:is(h2, h3, h4, h5, h6):hover a {
+  opacity: 1;
 }
 
 /* Ordered Lists */

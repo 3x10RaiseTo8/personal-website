@@ -5,7 +5,9 @@ import { SITE } from "./src/siteConfig";
 
 import { remarkModifiedTime } from "./src/utils/remark-modified-time";
 import { rehypeWrapTable } from "./src/utils/rehype-wrap-table";
-import { getRedirects } from "./src/utils/links";
+import { getRedirectsList, getRedirectsMap } from "./src/utils/links";
+import rehypeExternalLinks from "./src/utils/rehype-external-links";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,10 +16,26 @@ export default defineConfig({
   trailingSlash: "never",
   prefetch: { prefetchAll: true, defaultStrategy: "load" },
   integrations: [sitemap()],
-  redirects: getRedirects(SITE.links),
+  redirects: getRedirectsMap(SITE.links),
   markdown: {
     remarkPlugins: [remarkModifiedTime],
-    rehypePlugins: [rehypeHeadingIds, rehypeWrapTable],
+    rehypePlugins: [
+      rehypeHeadingIds,
+      rehypeWrapTable,
+      [
+        rehypeExternalLinks,
+        {
+          rel: ["noopener", "noreferrer", "nofollow"],
+          target: "_blank",
+          content: { type: "text", value: "🡕" },
+          redirectPaths: getRedirectsList(SITE.links),
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        { behavior: "append", content: { type: "text", value: "¶" } },
+      ],
+    ],
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",
@@ -29,7 +47,7 @@ export default defineConfig({
     {
       name: "Noto Sans",
       provider: fontProviders.google(),
-      cssVariable: "--font-body",
+      cssVariable: "--font-sans",
       // Default included:
       // weights: [400] ,
       // styles: ["normal", "italic"],
@@ -40,6 +58,17 @@ export default defineConfig({
     {
       name: "Noto Sans JP",
       provider: fontProviders.google(),
+      cssVariable: "--font-jp",
+      // Default included:
+      weights: [300],
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      // fallbacks: ["sans-serif"],
+      // formats: ["woff2"],
+    },
+    {
+      name: "Noto Sans Symbols",
+      provider: fontProviders.google(),
       cssVariable: "--font-symbols",
       // Default included:
       weights: [300],
@@ -49,8 +78,19 @@ export default defineConfig({
       // formats: ["woff2"],
     },
     {
+      name: "Noto Sans Symbols",
+      provider: fontProviders.google(),
+      cssVariable: "--font-symbols-2",
+      // Default included:
+      weights: [300],
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      // fallbacks: ["sans-serif"],
+      // formats: ["woff2"],
+    },
+    {
       name: "Ballet",
-      cssVariable: "--font-first-character",
+      cssVariable: "--font-fancy",
       provider: fontProviders.google(),
       // Default included:
       // weights: [400] ,
@@ -61,7 +101,7 @@ export default defineConfig({
     },
     {
       name: "Instrument Serif",
-      cssVariable: "--font-display",
+      cssVariable: "--font-serif-display",
       provider: fontProviders.google(),
       // Default included:
       weights: [400],
