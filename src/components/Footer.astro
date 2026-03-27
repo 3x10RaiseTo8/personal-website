@@ -1,6 +1,5 @@
 ---
 import { SITE } from "@/siteConfig";
-import Abhishek from "@/assets/logos/abhishek-minified.svg";
 
 import { getFooterLinks } from "@/utils/links";
 const footerLinks = getFooterLinks(SITE.links);
@@ -8,24 +7,19 @@ const footerLinks = getFooterLinks(SITE.links);
 
 <footer>
   <section class="footer-links">
+    <!-- prettier-ignore: Always save the file again without formatting -->
     {
-      footerLinks.map((l, index) => (
-        <Fragment>
-          <a class="social" href={l.url} target="_blank" rel="noopener">
-            {l.text}
-          </a>
-          {index < footerLinks.length - 1 && <span class="dot"> • </span>}
-        </Fragment>
+      footerLinks.map((l) => (
+        <a
+          class="social external-link"
+          href={l.url}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >{l.text}</a>
       ))
     }
+    <a href="/p/blogroll">blogroll</a>
   </section>
-
-  <!-- <Abhishek
-    class="abhishek"
-    fill-opacity={0.02}
-    width={"90vw"}
-    height={"auto"}
-  /> -->
 
   <small>
     <p>{SITE.copyright}</p>
@@ -34,13 +28,23 @@ const footerLinks = getFooterLinks(SITE.links);
       <a
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         target="_blank"
-        rel="noopener">CC BY-NC-SA 4.0</a
-      >. The code is licensed under
+        rel="noopener"
+      >
+        CC BY-NC-SA 4.0
+      </a>. The code is licensed under
       <a
         href="https://www.gnu.org/licenses/agpl-3.0.html"
         target="_blank"
-        rel="noopener">GNU AGPL v3.0</a
-      > and available <a href="/source" target="_blank" rel="noopener">here</a>.
+        rel="noopener"
+      >
+        GNU AGPL v3.0
+      </a> and available <a
+        href="/source"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        here
+      </a>.
     </p>
   </small>
 </footer>
@@ -49,7 +53,6 @@ const footerLinks = getFooterLinks(SITE.links);
   footer {
     font-size: var(--font-size--2);
     text-align: center;
-    /* grid-row: main-end / view-end; */
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -72,17 +75,13 @@ const footerLinks = getFooterLinks(SITE.links);
   .footer-links {
     display: flex;
     flex-direction: row;
-    align-self: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
     font-size: var(--font-size--1);
   }
 
   .footer-links a {
-    text-decoration: none;
+    /* text-decoration: inherit; */
   }
-
-  /* .abhishek {
-    display: block;
-    align-self: center;
-  } */
 </style>
