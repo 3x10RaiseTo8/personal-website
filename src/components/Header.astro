@@ -6,8 +6,8 @@ import Abhishek from "@/assets/logos/abhishek-minified.svg";
 ---
 
 <header>
-  <a class="logo" href="/">
-    <Abhishek height={20} width={"auto"} />
+  <a class="logo-link" href="/">
+    <Abhishek class={"logo"} />
   </a>
   <nav>
     <ul>
@@ -43,12 +43,17 @@ import Abhishek from "@/assets/logos/abhishek-minified.svg";
     color: var(--tx);
   }
 
+  .logo {
+    height: 20px;
+    width: auto;
+  }
+
   a {
     text-decoration: none;
   }
 
-  .logo {
-    max-block-size: 24px;
+  .logo-link {
+    max-block-size: var(--font-size-1);
   }
 
   ul {

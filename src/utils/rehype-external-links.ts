@@ -1,6 +1,7 @@
 import type { Element, ElementContent, Properties, Root } from "hast";
 import type { Test } from "hast-util-is-element";
 import { convertElement } from "hast-util-is-element";
+import { fromHtml } from "hast-util-from-html";
 import { visit } from "unist-util-visit";
 
 // --- Types ---
@@ -10,9 +11,13 @@ export type Target = "_blank" | "_parent" | "_self" | "_top";
 type MaybeFactory<T, R> = T | ((element: R) => T);
 
 export interface Options {
-  /** Content to insert at the end of external links, wrapped in a `<span>`. */
+  /**
+   * Content to insert at the end of external links, wrapped in a `<span>`.
+   * Accepts a hast node, an array of hast nodes, or a raw HTML/SVG string
+   * (e.g. the contents of an `.svg` file).
+   */
   content?: MaybeFactory<
-    Array<ElementContent> | ElementContent | null | undefined,
+    Array<ElementContent> | ElementContent | string | null | undefined,
     Element
   >;
   /** Properties for the `<span>` wrapping `content`. */
@@ -101,6 +106,24 @@ function isRedirectPath(
   return (redirectPaths as string[]).includes(url);
 }
 
+/**
+ * Normalise the `content` option into an array of hast nodes.
+ * Accepts a hast node, an array of hast nodes, or a raw HTML/SVG string.
+ * String parsing is done once at plugin init time, not per-node.
+ */
+function parseContent(
+  raw: Array<ElementContent> | ElementContent | string | null | undefined,
+): Array<ElementContent> | null {
+  if (raw == null) return null;
+  if (typeof raw === "string") {
+    // fromHtml wraps content in <html><head/><body>…</body></html>.
+    // We want just the children of <body>.
+    const root = fromHtml(raw, { fragment: true });
+    return root.children as Array<ElementContent>;
+  }
+  return Array.isArray(raw) ? raw : [raw];
+}
+
 // --- Plugin ---
 
 /**
@@ -127,6 +150,11 @@ export default function rehypeExternalLinks(
   } = options ?? {};
 
   const isMatch = convertElement(test);
+
+  // If content is a static string or node (not a factory), parse it once here
+  // rather than on every visited link.
+  const staticContent =
+    typeof content !== "function" ? parseContent(content) : null;
 
   return function transform(tree: Root): undefined {
     visit(tree, "element", function (node, index, parent) {
@@ -173,11 +201,12 @@ export default function rehypeExternalLinks(
 
       // --- content span ---
       if (content != null) {
-        const contentRaw = resolve(content, node);
-        if (contentRaw != null) {
-          const contentArray = Array.isArray(contentRaw)
-            ? contentRaw
-            : [contentRaw];
+        const contentArray =
+          typeof content === "function"
+            ? parseContent(resolve(content, node))
+            : staticContent;
+
+        if (contentArray != null) {
           const spanProps =
             (contentProperties != null
               ? resolve(contentProperties, node)

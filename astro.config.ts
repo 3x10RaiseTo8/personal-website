@@ -25,10 +25,12 @@ export default defineConfig({
       [
         rehypeExternalLinks,
         {
-          rel: ["noopener", "noreferrer", "nofollow"],
-          target: "_blank",
-          content: { type: "text", value: "🡕" },
           redirectPaths: getRedirectsList(SITE.links),
+          target: "_blank",
+          rel: ["noopener", "noreferrer", "nofollow"],
+          properties: {
+            className: ["external-link"], // styles in globals.css
+          },
         },
       ],
       [
@@ -52,7 +54,7 @@ export default defineConfig({
       // weights: [400] ,
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
-      // fallbacks: ["sans-serif"],
+      fallbacks: ["sans-serif"],
       // formats: ["woff2"],
     },
     {
@@ -60,7 +62,7 @@ export default defineConfig({
       provider: fontProviders.google(),
       cssVariable: "--font-jp",
       // Default included:
-      weights: [300],
+      // weights: [300],
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       // fallbacks: ["sans-serif"],
@@ -71,18 +73,18 @@ export default defineConfig({
       provider: fontProviders.google(),
       cssVariable: "--font-symbols",
       // Default included:
-      weights: [300],
+      // weights: [300],
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       // fallbacks: ["sans-serif"],
       // formats: ["woff2"],
     },
     {
-      name: "Noto Sans Symbols",
+      name: "Noto Sans Symbols 2",
       provider: fontProviders.google(),
       cssVariable: "--font-symbols-2",
       // Default included:
-      weights: [300],
+      // weights: [300],
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       // fallbacks: ["sans-serif"],
