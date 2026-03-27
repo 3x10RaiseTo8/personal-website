@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/rss": "^4.0.17",
-    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
     "@tanstack/table-core": "^8.21.3",
-    "astro": "^6.0.8",
+    "astro": "^6.1.1",
     "echarts": "^6.0.0",
     "mdx": "^0.3.1",
     "modern-normalize": "^3.0.1",
