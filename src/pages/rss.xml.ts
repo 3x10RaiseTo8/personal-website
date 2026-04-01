@@ -3,7 +3,7 @@ import { SITE } from "../siteConfig";
 
 export function GET(context: { site: string }) {
   return rss({
-    title: "abhishe blog",
+    title: SITE.title.concat(SITE.titleSuffix),
     description: SITE.description,
 
     // Pull in your project "site" from the endpoint context
@@ -15,5 +15,6 @@ export function GET(context: { site: string }) {
 
     // (optional) inject custom xml
     customData: `<language>en-us</language>`,
+    stylesheet: "/rss/pretty-feed-v3.xsl",
   });
 }

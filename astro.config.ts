@@ -55,7 +55,7 @@ export default defineConfig({
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       fallbacks: ["sans-serif"],
-      // formats: ["woff2"],
+      formats: ["woff2", "woff"],
     },
     {
       name: "Noto Sans JP",
@@ -110,7 +110,7 @@ export default defineConfig({
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       fallbacks: ["serif"],
-      // formats: ["woff2"],
+      formats: ["woff2", "woff"],
     },
   ],
 });

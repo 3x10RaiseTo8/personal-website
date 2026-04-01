@@ -65,6 +65,7 @@
   --ui: var(--flexoki-900);
   --ac: var(--flexoki-cyan-200);
   --ac-2: var(--flexoki-cyan-600);
+
 }
 
 [data-theme="light"] {
@@ -78,9 +79,10 @@
   --ac-2: var(--flexoki-cyan-200);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: cyan) {
+
+  /* Dark Mode Colors */
   :root {
-    /* Dark Mode Colors */
     --tx: var(--flexoki-200);
     --bg: var(--flexoki-black);
     --tx-2: var(--flexoki-400);
