@@ -31,7 +31,7 @@ export async function generateOgImage(title: string): Promise<Buffer> {
           display: "flex",
           flexDirection: "column",
           backgroundColor: SITE.websiteBackgroundColor,
-          padding: "48px",
+          padding: "72px",
         },
         children: [
           {
@@ -45,12 +45,13 @@ export async function generateOgImage(title: string): Promise<Buffer> {
                 alignContent: "center",
                 justifyContent: "flex-start",
                 margin: "0",
-                fontSize: "120px",
+                fontSize: "110px",
                 fontFamily: "Instrument Serif",
                 fontWeight: "400",
                 color: "black",
                 lineHeight: "1.2",
                 letterSpacing: "-0.04em",
+                paddingBottom: "40px",
               },
               children: titleToSpans(title, 28),
             },
@@ -64,7 +65,7 @@ export async function generateOgImage(title: string): Promise<Buffer> {
                 justifyContent: "flex-end",
                 alignItems: "flex-end",
                 borderTop: "1px solid black",
-                paddingTop: "24px",
+                paddingTop: "40px",
                 width: "100%",
               },
               children: [
