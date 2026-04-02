@@ -11,7 +11,7 @@ const footerLinks = getFooterLinks(SITE.links);
     {
       footerLinks.map((l) => (
         <a
-          class="social external-link"
+          class="external-link"
           href={l.url}
           target="_blank"
           rel="noopener noreferrer nofollow"
@@ -19,6 +19,7 @@ const footerLinks = getFooterLinks(SITE.links);
       ))
     }
     <a href="/p/blogroll">blogroll</a>
+    <a class="external-link" target="_blank" href="/rss.xml">rss</a>
   </section>
 
   <small>
