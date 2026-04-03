@@ -142,7 +142,7 @@ body {
   font-weight: normal;
   line-height: 1.6;
   letter-spacing: -0.02em;
-  word-spacing: 15%;
+  word-spacing: 10%;
   font-weight: 400;
   /* text-wrap: pretty; */
   background-color: var(--bg);
