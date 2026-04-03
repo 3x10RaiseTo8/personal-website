@@ -325,7 +325,7 @@ ul li {
 }
 
 ul li::before {
-  content: "-";
+  content: "–";
   position: absolute;
   left: 0;
   top: 0;
@@ -412,4 +412,32 @@ thead {
 .table-wrap {
   width: 100%;
   overflow-x: auto;
+}
+
+/* Footnotes */
+[data-footnote-ref] {
+  margin-left: 0.2rem;
+
+  &::before {
+    content: "[";
+  }
+
+  &::after {
+    content: "]";
+  }
+}
+
+[data-footnote-backref] {
+  font-size: 0;
+  position: relative;
+  text-decoration: none;
+}
+
+[data-footnote-backref]::before {
+  content: "⤴";
+  font-size: var(--font-size--1);
+}
+
+[data-footnote-backref] sup {
+  font-size: var(--font-size--2);
 }
