@@ -48,19 +48,21 @@ export default defineConfig({
   fonts: [
     {
       name: "Noto Sans",
-      provider: fontProviders.google(),
       cssVariable: "--font-sans",
+      provider: fontProviders.google(),
+      display: "block",
+      // variationSettings: "'wdth' 75",
       // Default included:
       // weights: [400] ,
       // styles: ["normal", "italic"],
-      // subsets: ["latin"],
+      // subsets: [],
       fallbacks: ["sans-serif"],
       formats: ["woff2"],
     },
     {
       name: "Noto Sans JP",
-      provider: fontProviders.google(),
       cssVariable: "--font-jp",
+      provider: fontProviders.google(),
       // Default included:
       // weights: [300],
       // styles: ["normal", "italic"],
@@ -70,8 +72,8 @@ export default defineConfig({
     },
     {
       name: "Noto Sans Symbols",
-      provider: fontProviders.google(),
       cssVariable: "--font-symbols",
+      provider: fontProviders.google(),
       // Default included:
       // weights: [300],
       // styles: ["normal", "italic"],
@@ -81,8 +83,8 @@ export default defineConfig({
     },
     {
       name: "Noto Sans Symbols 2",
-      provider: fontProviders.google(),
       cssVariable: "--font-symbols-2",
+      provider: fontProviders.google(),
       // Default included:
       // weights: [300],
       // styles: ["normal", "italic"],
@@ -91,11 +93,12 @@ export default defineConfig({
       // formats: ["woff2"],
     },
     {
-      name: "Ballet",
+      name: "MonteCarlo",
       cssVariable: "--font-fancy",
       provider: fontProviders.google(),
+      display: "block",
       // Default included:
-      // weights: [400] ,
+      // weights: [400],
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       fallbacks: ["serif"],
@@ -105,12 +108,13 @@ export default defineConfig({
       name: "Instrument Serif",
       cssVariable: "--font-serif-display",
       provider: fontProviders.google(),
+      display: "block",
       // Default included:
       weights: [400],
       // styles: ["normal", "italic"],
       // subsets: ["latin"],
       fallbacks: ["serif"],
-      formats: ["woff2"],
+      formats: ["woff2", "woff"],
     },
   ],
 });

@@ -143,6 +143,7 @@ body {
   line-height: 1.6;
   letter-spacing: -0.02em;
   word-spacing: 10%;
+  /* font-variation-settings: "wdth" 75; */
   font-weight: 400;
   /* text-wrap: pretty; */
   background-color: var(--bg);
@@ -221,10 +222,10 @@ main>* {
 }
 
 h1+p::first-letter {
-  font-size: calc(var(--font-size-0)*2);
+  font-size: calc(var(--font-size-0)*2.5);
   font-weight: normal;
   font-family: var(--font-first-character);
-  line-height: 0.7;
+  line-height: 0.2;
   padding: 0 2px 2px 4px;
   float: left;
 }
