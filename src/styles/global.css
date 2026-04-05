@@ -418,6 +418,8 @@ thead {
 /* Footnotes */
 [data-footnote-ref] {
   margin-left: 0.2rem;
+  text-decoration: none;
+  color: var(--ac);
 
   &::before {
     content: "[";
