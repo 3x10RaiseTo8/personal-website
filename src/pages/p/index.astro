@@ -7,10 +7,9 @@ import ListPosts from "@/components/ListPosts.astro";
 
 const allPosts = await getCollection("posts");
 const publishedPosts = getSortedPublishedPosts(allPosts);
-// const publishedPosts = allPosts;
 ---
 
 <Layout title="Posts">
   <h1>Posts</h1>
-  <ListPosts posts={publishedPosts} listStyle="date" />
+  <ListPosts posts={publishedPosts} />
 </Layout>
