@@ -353,7 +353,7 @@ blockquote {
 a {
   color: inherit;
   text-decoration-color: var(--ac-2);
-  text-underline-offset: 3px;
+  text-underline-offset: 0.15em;
 }
 
 a:hover,
