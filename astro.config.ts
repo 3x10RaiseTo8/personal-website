@@ -35,7 +35,11 @@ export default defineConfig({
       ],
       [
         rehypeAutolinkHeadings,
-        { behavior: "append", content: { type: "text", value: "¶" } },
+        {
+          behavior: "append",
+          properties: { className: ["heading-link"] },
+          content: { type: "text", value: "" },
+        },
       ],
     ],
     shikiConfig: {
