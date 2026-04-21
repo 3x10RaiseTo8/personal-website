@@ -1,0 +1,63 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+const {
+  title,
+  description,
+  publishDate,
+  lastModified = new Date(remarkPluginFrontmatter.lastModified),
+} = post.data;
+
+const dateFormat = [
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  },
+] as const;
+const publishDateString = publishDate.toDateString();
+const prettyPublishDate = publishDate.toLocaleDateString(...dateFormat);
+const lastModifiedString = lastModified.toDateString();
+const prettyLastModified = lastModified.toLocaleDateString(...dateFormat);
+---
+
+<Layout
+  title={title}
+  description={description}
+  pubDatetime={publishDate}
+  modDatetime={lastModified}
+  ogImage={`/og/p/${post.id}.png`}
+>
+  <h1>{title}</h1>
+  <Content />
+  <div class="timestamp">
+    Published on <time datetime={publishDateString}>{prettyPublishDate}</time>
+    <br />
+    Last Updated on <time datetime={lastModifiedString}>
+      {prettyLastModified}
+    </time>
+  </div>
+</Layout>
+
+<style>
+  .timestamp {
+    font-size: var(--font-size--1);
+    text-align: center;
+    color: var(--tx-2);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    block-size: 50px;
+    margin-block: 3rem;
+  }
+</style>
