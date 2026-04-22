@@ -7,6 +7,7 @@ import { Font } from "astro:assets";
 
 import { SITE } from "@/siteConfig";
 import { ClientRouter } from "astro:transitions";
+
 const headSnippet = import.meta.env.HEAD_SNIPPET;
 
 export interface Props {
@@ -17,7 +18,7 @@ export interface Props {
   ogImage?: string;
   canonicalURL?: string;
   pubDatetime?: Date;
-  modDatetime?: Date | null;
+  modDatetime?: Date;
 }
 
 const {
@@ -217,6 +218,27 @@ const ogImageURL = new URL(ogImage, Astro.url);
     <Font cssVariable="--font-symbols" />
     <Font cssVariable="--font-symbols-2" />
 
+    <script>
+      (function () {
+        const title = "(^ᴗ^)⁠ﾉﾞ Hello there, curious human !!";
+        const subtitle = `Feel free to explore around! This CSS Grid and Subgrid took a lot of my brain. (×_×)
+Anyway, code here is pretty janky, checkout the source code here: https://abhishe.com/source`;
+        const footer = "What is life without some ERRORS (^_^;)";
+
+        const titleStyle =
+          "color: #fff;background: linear-gradient(90deg, #667eea, #764ba2);font-size: 22px;padding: 18px 24px;border-radius: 180px;margin-block: 2px";
+
+        const subtitleStyle =
+          "color: #cecdc3;background: #100f0f;font-size: 18px;font-family: serif;padding: 10px 15px;";
+
+        const footerStyle =
+          "color: #888;background: #000;font-size: 15px;padding: 5px 10px;border-radius: 7px;margin-block: 2px";
+
+        console.log(`%c${title}`, titleStyle);
+        console.log(`%c${subtitle}`, subtitleStyle);
+        console.log(`%c${footer}`, footerStyle);
+      })();
+    </script>
     <ClientRouter />
   </head>
   <body>
