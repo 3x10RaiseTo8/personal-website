@@ -19,7 +19,9 @@ const { posts } = Astro.props;
         <li>
           <a href={`/p/${post.id}`} class="link-row">
             <span class="date">
-              {year} · {month}
+              {year}
+              {" · "}
+              {month}
             </span>
             <span class="title">{post.data.title}</span>
           </a>
