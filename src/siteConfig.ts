@@ -1,3 +1,5 @@
+const isDev = import.meta.env.MODE == "development";
+
 export const SITE = {
   title: "",
   titleSuffix: "Abhishek Singh",
@@ -11,6 +13,18 @@ export const SITE = {
   dir: "ltr",
   copyrightText: "© 2024—present Abhishek Singh",
   headerLinks: [
+    ...(isDev
+      ? [
+          {
+            href: "/t",
+            text: "tags",
+          },
+          {
+            href: "/p",
+            text: "posts",
+          },
+        ]
+      : []),
     {
       href: "/",
       text: "writings",
