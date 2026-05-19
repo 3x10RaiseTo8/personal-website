@@ -1,11 +1,9 @@
 import rss from "@astrojs/rss";
 import { SITE } from "../siteConfig";
-import { getCollection } from "astro:content";
-import { getSortedPublishedPosts } from "@/utils/posts";
+import { getPosts } from "@/utils/posts";
 
 export async function GET(context: { site: string }) {
-  const allPosts = await getCollection("posts");
-  const sortedPublishedPosts = await getSortedPublishedPosts(allPosts);
+  const posts = await getPosts();
 
   return rss({
     title: SITE.title.concat(SITE.titleSuffix),
@@ -17,12 +15,12 @@ export async function GET(context: { site: string }) {
     trailingSlash: false,
 
     // Array of `<item>`s in output xml
-    items: sortedPublishedPosts.map((post) => ({
+    items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
       link: `/p/${post.id}`,
       pubDate: post.data.publishDate,
-      categories: [post.data.category, ...(post.data.tags || [])],
+      categories: [...(post.data.tags || [])],
       author: SITE.author,
     })),
 

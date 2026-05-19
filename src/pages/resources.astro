@@ -1,18 +1,15 @@
 ---
-import { getCollection } from "astro:content";
-import { getSortedPublishedPosts, getFilteredPosts } from "@/utils/posts";
+import { getPostsByTags } from "@/utils/posts";
 
 import Layout from "@/layouts/Layout.astro";
 import ListPosts from "@/components/ListPosts.astro";
 
-const allPosts = await getCollection("posts");
-const allResources = getFilteredPosts(allPosts, { category: "resources" });
-const filteredResources = getSortedPublishedPosts(allResources);
+const resources = await getPostsByTags(["resources"]);
 
 const pageTitle = "Resources";
 ---
 
 <Layout title={pageTitle}>
   <h1>{pageTitle}</h1>
-  <ListPosts posts={filteredResources} />
+  <ListPosts posts={resources} />
 </Layout>

@@ -1,17 +1,15 @@
 ---
-import { getCollection } from "astro:content";
-import { getSortedPublishedPosts, getFilteredPosts } from "@/utils/posts";
+import { SITE } from "@/siteConfig";
+import { getPostsByTags } from "@/utils/posts";
 
 import Layout from "@/layouts/Layout.astro";
 import ListPosts from "@/components/ListPosts.astro";
 
-const allPosts = await getCollection("posts");
-const allWritings = getFilteredPosts(allPosts, { category: "writings" });
-const filteredWritings = getSortedPublishedPosts(allWritings);
+const writings = await getPostsByTags(["writings"]);
 ---
 
 <Layout>
-  <h1>Abhishek Singh</h1>
+  <h1>{SITE.author}</h1>
   <div class="greeting">
     <strong class="emoticon">(⁠＾⁠∇⁠＾⁠)⁠ﾉ&nbsp&nbsp</strong>
     <i>hellooo kind human!!!</i>
@@ -19,7 +17,7 @@ const filteredWritings = getSortedPublishedPosts(allWritings);
   </div>
 
   <h2>Writings</h2>
-  <ListPosts posts={filteredWritings} />
+  <ListPosts posts={writings} />
 </Layout>
 
 <style>

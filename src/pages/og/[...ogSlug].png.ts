@@ -1,11 +1,11 @@
 import type { APIContext } from "astro";
-import { getCollection } from "astro:content";
+import { getPosts } from "@/utils/posts";
 import { SITE } from "@/siteConfig";
 
 import { generateOgImage } from "@/utils/og";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getPosts();
 
   const postsParams = posts.map((post) => {
     return {

@@ -7,7 +7,6 @@ const footerLinks = getFooterLinks(SITE.links);
 
 <footer>
   <section class="footer-links">
-    <!-- prettier-ignore: Always save the file again without formatting -->
     {
       footerLinks.map((l) => (
         <a
@@ -15,7 +14,9 @@ const footerLinks = getFooterLinks(SITE.links);
           href={l.url}
           target="_blank"
           rel="noopener noreferrer nofollow"
-        >{l.text}</a>
+        >
+          {l.text}
+        </a>
       ))
     }
     <a href="/p/blogroll">blogroll</a>
