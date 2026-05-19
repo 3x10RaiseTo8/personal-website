@@ -1,8 +1,9 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
-import { SITE } from "./src/siteConfig";
+import { qrcode } from "vite-plugin-qrcode";
 
+import { SITE } from "./src/siteConfig";
 import { remarkModifiedTime } from "./src/utils/remark-modified-time";
 import { rehypeWrapTable } from "./src/utils/rehype-wrap-table";
 import { getRedirectsList, getRedirectsMap } from "./src/utils/links";
@@ -14,6 +15,7 @@ export default defineConfig({
   site: SITE.website,
   output: "static",
   trailingSlash: "never",
+  compressHTML: "jsx",
   prefetch: { prefetchAll: true, defaultStrategy: "load" },
   integrations: [sitemap()],
   redirects: getRedirectsMap(SITE.links),
@@ -51,50 +53,44 @@ export default defineConfig({
   },
   fonts: [
     {
+      name: "Noto Serif",
+      cssVariable: "--font-serif",
+      provider: fontProviders.google(),
+      display: "block",
+      // variationSettings: "'wdth' 25",
+      // stretch: "75%",
+      // Default included:
+      weights: ["100 900"],
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      fallbacks: ["serif"],
+      // formats: ["woff2"],
+    },
+    {
       name: "Noto Sans",
       cssVariable: "--font-sans",
       provider: fontProviders.google(),
       display: "block",
-      // variationSettings: "'wdth' 75",
+      variationSettings: "'wdth' 25",
+      // stretch: "75%",
       // Default included:
-      // weights: [400] ,
+      weights: ["100 900"],
       // styles: ["normal", "italic"],
-      // subsets: [],
+      // subsets: ["latin-ext"],
       fallbacks: ["sans-serif"],
+      // formats: ["woff2"],
+    },
+    {
+      name: "Instrument Serif",
+      cssVariable: "--font-serif-display",
+      provider: fontProviders.google(),
+      display: "block",
+      // Default included:
+      // weights: [400],
+      // styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      fallbacks: ["serif"],
       formats: ["woff2"],
-    },
-    {
-      name: "Noto Sans JP",
-      cssVariable: "--font-jp",
-      provider: fontProviders.google(),
-      // Default included:
-      // weights: [300],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin"],
-      // fallbacks: ["sans-serif"],
-      // formats: ["woff2"],
-    },
-    {
-      name: "Noto Sans Symbols",
-      cssVariable: "--font-symbols",
-      provider: fontProviders.google(),
-      // Default included:
-      // weights: [300],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin"],
-      // fallbacks: ["sans-serif"],
-      // formats: ["woff2"],
-    },
-    {
-      name: "Noto Sans Symbols 2",
-      cssVariable: "--font-symbols-2",
-      provider: fontProviders.google(),
-      // Default included:
-      // weights: [300],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin"],
-      // fallbacks: ["sans-serif"],
-      // formats: ["woff2"],
     },
     {
       name: "MonteCarlo",
@@ -108,17 +104,8 @@ export default defineConfig({
       fallbacks: ["serif"],
       // formats: ["woff2"],
     },
-    {
-      name: "Instrument Serif",
-      cssVariable: "--font-serif-display",
-      provider: fontProviders.google(),
-      display: "block",
-      // Default included:
-      weights: [400],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin"],
-      fallbacks: ["serif"],
-      formats: ["woff2", "woff"],
-    },
   ],
+  vite: {
+    plugins: [qrcode()],
+  },
 });
