@@ -1,0 +1,16 @@
+---
+import { getTags } from "@/utils/posts";
+
+import Layout from "@/layouts/Layout.astro";
+import TagList from "@/components/TagList.astro";
+
+const allTags = await getTags();
+
+const title = "All Tags";
+const description = "Browse all post tags";
+---
+
+<Layout title={title} description={description}>
+  <h1>{title}</h1>
+  <TagList tags={allTags} />
+</Layout>

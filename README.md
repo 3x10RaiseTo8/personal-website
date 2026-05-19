@@ -9,12 +9,10 @@
 ```text
 home (+ ListWritings)
 ├── about (+ ListWorks)   
-├── post (ListPosts)
+├── p (ListPosts)
 │   └── slug
-├── tags (ListTags)
+├── t (ListTags)
 │   └── slug
-├── writings (ListWritings)
-├── resources (ListResources)
 └── works (ListWorks)
 ```
 
@@ -50,3 +48,9 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## Decisions
+
+- Tags will be named after the bucket, not the item. So, always plural. Reason is because of hierarchical URL structure.
+- In content schema, there will be no specialized categories. If you want to categorize, use tags only.
+- `works` or `projects`
