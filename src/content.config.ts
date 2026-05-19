@@ -1,6 +1,6 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
-import { glob } from "astro/loaders"; // Not available with legacy API
+import { glob } from "astro/loaders";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./content/posts/" }),
@@ -8,14 +8,14 @@ const posts = defineCollection({
     title: z.string(),
     description: z.string(),
     draft: z.boolean(),
-    slug: z.string(),
     publishDate: z.coerce.date(),
     lastModified: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),
 
     category: z
       .enum(["resources", "writings", "uncategorized"])
-      .default("uncategorized"),
+      .default("uncategorized")
+      .optional(),
   }),
 });
 
@@ -25,7 +25,7 @@ const pages = defineCollection({
     title: z.string(),
     description: z.string().optional().nullable(),
     draft: z.boolean().optional().default(true),
-    slug: z.string(),
+    slug: z.string().slugify(),
     publishDate: z.coerce.date().optional(),
     lastModified: z.coerce.date().optional(),
   }),
