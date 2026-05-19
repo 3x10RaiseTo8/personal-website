@@ -2,29 +2,16 @@
 
 @import url(flexoki.css);
 @import url(normalize.css);
-/* @import url(debugger.css); */
 
 *,
 *::before,
 *::after {
   scrollbar-gutter: stable;
-  ;
+
 }
 
 :root {
-
   /* @link https://utopia.fyi/type/calculator */
-  /* 17 font on 360px --- 19 font on 1240px */
-  /* 1.2 to 1.2 */
-  --font-size--2: clamp(0.7378rem, 0.7023rem + 0.1578vw, 0.8247rem);
-  --font-size--1: clamp(0.8854rem, 0.8428rem + 0.1894vw, 0.9896rem);
-  --font-size-0: clamp(1.0625rem, 1.0114rem + 0.2273vw, 1.1875rem);
-  --font-size-1: clamp(1.275rem, 1.2136rem + 0.2727vw, 1.425rem);
-  --font-size-2: clamp(1.53rem, 1.4564rem + 0.3273vw, 1.71rem);
-  --font-size-3: clamp(1.836rem, 1.7476rem + 0.3927vw, 2.052rem);
-  --font-size-4: clamp(2.2032rem, 2.0972rem + 0.4713vw, 2.4624rem);
-  --font-size-5: clamp(2.6438rem, 2.5166rem + 0.5655vw, 2.9549rem);
-
   /* 18 to 20 px 1.2 to 1.25 */
   --font-size--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
   --font-size--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
@@ -35,9 +22,10 @@
   --font-size-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
   --font-size-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
 
-  --font-body: var(--font-sans), var(--font-jp), var(--font-symbols), var(--font-symbols-2), system-ui, sans-serif;
-  --font-display: var(--font-serif-display), var(--font-jp), var(--font-symbols), var(--font-symbols-2), ui-serif, serif;
-  --font-first-character: var(--font-fancy), var(--font-jp), var(--font-symbols), var(--font-symbols-2), ui-serif, serif;
+  --font-ui: var(--font-sans);
+  --font-prose: var(--font-serif);
+  --font-display: var(--font-serif-display);
+  --font-first-character: var(--font-fancy);
 
   color-scheme: light dark;
 
@@ -68,18 +56,8 @@
 
 }
 
-[data-theme="light"] {
-  /* Light mode Colors */
-  --tx: var(--flexoki-black);
-  --bg: var(--flexoki-paper);
-  --tx-2: var(--flexoki-600);
-  --bg-2: var(--flexoki-50);
-  --ui: var(--flexoki-100);
-  --ac: var(--flexoki-cyan-600);
-  --ac-2: var(--flexoki-cyan-200);
-}
 
-@media (prefers-color-scheme: cyan) {
+@media (prefers-color-scheme: dark) {
 
   /* Dark Mode Colors */
   :root {
@@ -103,7 +81,13 @@
   }
 }
 
+[data-font="serif"] {
+  --font-prose: var(--font-serif);
+}
 
+[data-font="sans"] {
+  --font-prose: var(--font-sans);
+}
 
 /*     Scrollbar Styles
 ==================================
@@ -138,7 +122,7 @@ body::-webkit-scrollbar-thumb {
 
 body {
   font-size: var(--font-size-0);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-weight: normal;
   line-height: 1.6;
   letter-spacing: -0.02em;
@@ -191,6 +175,12 @@ body {
   grid-column: full;
 }
 
+main,
+article {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full;
+}
 
 main {
   min-height: 75vh;
@@ -202,6 +192,15 @@ main {
   flex-direction: column;
   gap: 1.2rem; */
   overflow-wrap: break-word;
+}
+
+/*     prose
+========================
+  Styles for blog post / article content
+*/
+
+article {
+  font-family: var(--font-prose);
 }
 
 h1,
@@ -217,11 +216,7 @@ ol {
   margin: 0;
 }
 
-main>* {
-  margin-block: 1.5rem;
-}
-
-h1+p::first-letter {
+article h1+p::first-letter {
   font-size: calc(var(--font-size-0)*2.5);
   font-weight: normal;
   font-family: var(--font-first-character);
@@ -380,6 +375,7 @@ a:focus-visible {
 a.external-link::after {
   content: '';
   display: inline-block;
+
   width: 0.7em;
   height: 1em;
 
@@ -397,8 +393,6 @@ a.external-link::after {
   -webkit-mask-size: contain;
 }
 
-/* 
-*/
 /* Images */
 img {
   display: block;
