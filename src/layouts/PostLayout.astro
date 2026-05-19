@@ -38,15 +38,17 @@ const prettyLastModified = lastModified.toLocaleDateString(...dateFormat);
   modDatetime={lastModified}
   ogImage={`/og/p/${post.id}.png`}
 >
-  <h1>{title}</h1>
-  <Content />
-  <div class="timestamp">
-    Published on <time datetime={publishDateString}>{prettyPublishDate}</time>
-    <br />
-    Last Updated on <time datetime={lastModifiedString}>
-      {prettyLastModified}
-    </time>
-  </div>
+  <article>
+    <h1>{title}</h1>
+    <Content />
+    <div class="timestamp">
+      Published on <time datetime={publishDateString}>{prettyPublishDate}</time>
+      <br />
+      Last Updated on <time datetime={lastModifiedString}>
+        {prettyLastModified}
+      </time>
+    </div>
+  </article>
 </Layout>
 
 <style>
