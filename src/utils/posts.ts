@@ -112,7 +112,10 @@ export const getTags = async (
     }
   }
 
-  return [...tagMap.values()].sort((a, b) => a.slug.localeCompare(b.slug));
+  // Sort alphabetically ⬇️
+  // return [...tagMap.values()].sort((a, b) => a.slug.localeCompare(b.slug));
+  // Sort by postCount descending ⬇️
+  return [...tagMap.values()].sort((a, b) => b.postCount - a.postCount);
 };
 
 /**
