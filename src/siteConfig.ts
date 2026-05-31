@@ -19,19 +19,12 @@ export const SITE = {
             href: "/t",
             text: "tags",
           },
-          {
-            href: "/p",
-            text: "posts",
-          },
         ]
       : []),
+
     {
-      href: "/",
-      text: "writings",
-    },
-    {
-      href: "/resources",
-      text: "resources",
+      href: "/p",
+      text: "archive",
     },
     {
       href: "/about",

@@ -17,8 +17,9 @@
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.3.5",
+    "@astrojs/sitemap": "^3.7.3",
+    "@lucide/astro": "^1.16.0",
+    "astro": "^6.4.2",
     "github-slugger": "^2.0.0",
     "mdx": "^0.3.1",
     "rehype-autolink-headings": "^7.1.0",

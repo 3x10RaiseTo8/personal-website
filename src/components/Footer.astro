@@ -1,17 +1,28 @@
 ---
 import { SITE } from "@/siteConfig";
 
+import { getTags } from "@/utils/posts";
 import { getFooterLinks } from "@/utils/links";
+
+import TagList from "./TagList.astro";
+
+import happy from "@/assets/happy.gif";
+
+const tags = await getTags();
 const footerLinks = getFooterLinks(SITE.links);
 ---
 
 <footer>
+  <TagList tags={tags} />
+
+  <img src={happy.src} width={happy.width} height={happy.height} alt="happy" />
+
   <section class="footer-links">
     {
       footerLinks.map((l) => (
         <a
           class="external-link"
-          href={l.url}
+          href={`${l.url}?utm_source=personal_website&utm_campaign=footer`}
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
@@ -26,14 +37,14 @@ const footerLinks = getFooterLinks(SITE.links);
   <small>
     <p>{SITE.copyrightText}</p>
     <p>
-      The content is licensed under
+      The content is licensed under{" "}
       <a
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         target="_blank"
         rel="noopener"
       >
         CC BY-NC-SA 4.0
-      </a>. The code is licensed under
+      </a>. The code is licensed under{" "}
       <a
         href="https://www.gnu.org/licenses/agpl-3.0.html"
         target="_blank"
@@ -57,21 +68,10 @@ const footerLinks = getFooterLinks(SITE.links);
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--gap);
+    margin-block-start: 1.5rem;
+    border-top: 1px solid var(--tx);
     padding-block-start: 1.5rem;
-  }
-
-  small a {
-    text-decoration-color: inherit;
-  }
-
-  small {
-    border-block-start: 1px var(--tx) solid;
-    padding-block: 1rem;
-  }
-  small p {
-    margin: 0;
-    color: var(--tx-2);
   }
 
   .footer-links {
@@ -79,11 +79,25 @@ const footerLinks = getFooterLinks(SITE.links);
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.3rem 1rem;
     font-size: var(--font-size--1);
   }
 
-  .footer-links a {
-    text-decoration: none;
+  img {
+    align-self: center;
+  }
+
+  small {
+    /* border-block-start: 1px var(--tx) solid; */
+    /* padding-block: 1rem; */
+  }
+
+  small p {
+    margin: 0;
+    color: var(--tx-2);
+  }
+
+  small a {
+    text-decoration-color: inherit;
   }
 </style>

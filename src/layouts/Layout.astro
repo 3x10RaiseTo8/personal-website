@@ -240,12 +240,10 @@ Anyway, code here is pretty janky, checkout the source code here: https://abhish
     <ClientRouter />
   </head>
   <body>
-    <div class="site-grid">
-      <Header transition:persist />
-      <main transition:animate="slide">
-        <slot />
-      </main>
-      <Footer transition:persist />
-    </div>
+    <Header transition:persist />
+    <main transition:animate="slide">
+      <slot />
+    </main>
+    <Footer transition:persist />
   </body>
 </html>

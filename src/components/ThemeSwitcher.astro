@@ -1,0 +1,92 @@
+---
+/**
+ * ThemeSwitcher.astro
+ *
+ * Radio-group switcher for light | dark | system themes.
+ * Reads initial state from localStorage on the client to stay in sync.
+ *
+ * Usage:
+ *   <ThemeSwitcher />
+ *
+ * The component hydrates itself via a module <script>.
+ * For FOUC prevention, also call initTheme() in a separate inline <head> script:
+ *
+ *   <script is:inline>
+ *     // must be plain JS – no imports in is:inline
+ *     const stored = localStorage.getItem('theme') ?? 'system';
+ *     document.documentElement.setAttribute('data-theme', stored);
+ *     const resolved = stored === 'system'
+ *       ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+ *       : stored;
+ *     document.documentElement.setAttribute('data-theme-effective', resolved);
+ *   </script>
+ */
+
+export interface Props {
+  /** Optional extra class(es) for the wrapper element. */
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const options = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "system", label: "System" },
+] as const;
+---
+
+<fieldset class:list={["theme-switcher", className]}>
+  <legend>Theme</legend>
+
+  {
+    options.map(({ value, label }) => (
+      <label>
+        <input type="radio" name="theme" value={value} data-theme-option />
+        {label}
+      </label>
+    ))
+  }
+</fieldset>
+
+<script>
+  import {
+    type Theme,
+    readStorage,
+    applyTheme,
+    watchSystemTheme,
+    DEFAULTS,
+  } from "@/utils/client";
+
+  function init() {
+    const stored = readStorage("theme") as Theme | null;
+    const current: Theme =
+      stored && ["light", "dark", "system"].includes(stored)
+        ? stored
+        : DEFAULTS.theme;
+
+    // Sync radio state to current preference
+    const radios = document.querySelectorAll<HTMLInputElement>(
+      "[data-theme-option]",
+    );
+
+    radios.forEach((radio) => {
+      radio.checked = radio.value === current;
+
+      radio.addEventListener("change", () => {
+        if (radio.checked) {
+          applyTheme(radio.value as Theme);
+        }
+      });
+    });
+
+    // Keep "system" in sync with OS changes
+    watchSystemTheme();
+  }
+
+  // Re-run after Astro view transitions swap the DOM
+  document.addEventListener("astro:page-load", init);
+
+  // Fallback for non-view-transition navigation
+  init();
+</script>

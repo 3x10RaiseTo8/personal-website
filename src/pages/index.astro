@@ -1,23 +1,26 @@
 ---
 import { SITE } from "@/siteConfig";
-import { getPostsByTags } from "@/utils/posts";
+import { getPostsByTags, getTags } from "@/utils/posts";
 
 import Layout from "@/layouts/Layout.astro";
 import ListPosts from "@/components/ListPosts.astro";
 
 const writings = await getPostsByTags(["writings"]);
+const resources = await getPostsByTags(["resources"]);
 ---
 
 <Layout>
   <h1>{SITE.author}</h1>
   <div class="greeting">
-    <strong class="emoticon">(⁠＾⁠∇⁠＾⁠)⁠ﾉ&nbsp&nbsp</strong>
+    <strong class="emoticon">＾＾&nbsp&nbsp</strong>
     <i>hellooo kind human!!!</i>
     <br />wish you a great year of success!
   </div>
 
   <h2>Writings</h2>
   <ListPosts posts={writings} />
+  <h2>Resources</h2>
+  <ListPosts posts={resources} />
 </Layout>
 
 <style>
@@ -27,6 +30,6 @@ const writings = await getPostsByTags(["writings"]);
 
   .greeting {
     text-align: center;
-    margin-block: 3rem;
+    padding-block: 2rem;
   }
 </style>

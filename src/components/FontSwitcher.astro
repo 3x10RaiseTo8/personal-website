@@ -1,0 +1,74 @@
+---
+/**
+ * FontSwitcher.astro
+ *
+ * Radio-group switcher for serif | sans font preferences.
+ * Reads initial state from localStorage on the client to stay in sync.
+ *
+ * Usage:
+ *   <FontSwitcher />
+ *
+ * For FOUC prevention, also call initFont() in a separate inline <head> script:
+ *
+ *   <script is:inline>
+ *     // must be plain JS – no imports in is:inline
+ *     const stored = localStorage.getItem('font') ?? 'sans';
+ *     document.documentElement.setAttribute('data-font', stored);
+ *   </script>
+ */
+
+export interface Props {
+  /** Optional extra class(es) for the wrapper element. */
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const options = [
+  { value: "sans", label: "Sans-serif" },
+  { value: "serif", label: "Serif" },
+] as const;
+---
+
+<fieldset class:list={["font-switcher", className]}>
+  <legend>Font</legend>
+
+  {
+    options.map(({ value, label }) => (
+      <label>
+        <input type="radio" name="font" value={value} data-font-option />
+        {label}
+      </label>
+    ))
+  }
+</fieldset>
+
+<script>
+  import { type Font, readStorage, applyFont, DEFAULTS } from "@/utils/client";
+
+  function init() {
+    const stored = readStorage("font") as Font | null;
+    const current: Font =
+      stored && ["serif", "sans"].includes(stored) ? stored : DEFAULTS.font;
+
+    // Sync radio state to current preference
+    const radios =
+      document.querySelectorAll<HTMLInputElement>("[data-font-option]");
+
+    radios.forEach((radio) => {
+      radio.checked = radio.value === current;
+
+      radio.addEventListener("change", () => {
+        if (radio.checked) {
+          applyFont(radio.value as Font);
+        }
+      });
+    });
+  }
+
+  // Re-run after Astro view transitions swap the DOM
+  document.addEventListener("astro:page-load", init);
+
+  // Fallback for non-view-transition navigation
+  init();
+</script>

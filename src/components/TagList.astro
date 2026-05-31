@@ -8,29 +8,35 @@ interface Props {
 const { tags = [] } = Astro.props;
 ---
 
-<div class="tag-list">
-  {
-    tags.map((tag) => (
-      <a href={`/t/${tag.slug}`} class="tag">
-        <span class="hashtag">#</span>
-        {tag.label}
-      </a>
-    ))
-  }
-</div>
-
+<Fragment>
+  <h2>All Tags</h2>
+  <div class="tag-list">
+    {
+      tags.map((tag) => (
+        <a href={`/t/${tag.slug}`} class="tag">
+          <span class="hashtag">#</span>
+          {tag.label}
+        </a>
+      ))
+    }
+  </div>
+</Fragment>
 <style>
+  h2 {
+    display: none;
+  }
+
   .tag-list {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    gap: 0.5rem;
-  }
-  .tag {
-    /* display: inline-flex; */
-  }
-  .hashtag {
+    gap: 0.3rem 1rem;
     font-size: var(--font-size--1);
+    justify-content: center;
+  }
+
+  .hashtag {
+    font-size: var(--font-size--2);
     text-decoration: none;
     color: var(--tx-2);
   }

@@ -1,0 +1,55 @@
+---
+// FontToggle.astro
+// No props — state is managed via localStorage and data-font on <html>
+---
+
+<button id="font-toggle" aria-label="Toggle font style">serif</button>
+
+<style>
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    type FontType = "sans" | "serif";
+
+    const STORAGE_KEY = "font";
+    const FALLBACK: FontType = "sans";
+
+    const root = document.documentElement;
+    const btn = document.getElementById(
+      "font-toggle",
+    ) as HTMLButtonElement | null;
+
+    if (!btn)
+      throw new Error("[FontToggle] #font-toggle button not found in DOM.");
+
+    /** Read and validate stored font preference. Falls back to FALLBACK. */
+    const readStorage = (): FontType => {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored === "serif" || stored === "sans" ? stored : FALLBACK;
+    };
+
+    /** Apply font to <html> + sync button label + persist — single source of truth. */
+    const applyFont = (type: FontType): void => {
+      root.dataset.font = type;
+      btn.textContent = type === "serif" ? "sans" : "serif";
+      localStorage.setItem(STORAGE_KEY, type);
+    };
+
+    /** Derive current font from DOM (avoids redundant storage reads). */
+    const currentFont = (): FontType => {
+      return root.dataset.font === "serif" ? "serif" : "sans";
+    };
+
+    btn.addEventListener("click", () => {
+      applyFont(currentFont() === "serif" ? "sans" : "serif");
+    });
+
+    // Initialise from stored preference on page load
+    applyFont(readStorage());
+  });
+</script>

@@ -1,8 +1,12 @@
 ---
 import { SITE } from "@/siteConfig";
-import "@/styles/global.css";
 
 import Abhishek from "@/assets/logos/abhishek-minified.svg";
+import ToggleFont from "@/components/ToggleFont.astro";
+import ToggleTheme from "./ToggleTheme.astro";
+
+import ThemeSwitcher from "@/components/ThemeSwitcher.astro";
+import FontSwitcher from "@/components/FontSwitcher.astro";
 ---
 
 <header>
@@ -18,6 +22,8 @@ import Abhishek from "@/assets/logos/abhishek-minified.svg";
           </li>
         ))
       }
+      <!-- <FontSwitcher /> -->
+      <!-- <ThemeSwitcher /> -->
     </ul>
   </nav>
 </header>

@@ -1,0 +1,208 @@
+---
+import { Sun, Moon, Monitor } from "@lucide/astro";
+
+type Theme = "light" | "dark" | "system";
+
+const STORAGE_KEY = "theme-preference" as const;
+---
+
+<theme-toggle>
+  <fieldset>
+    <legend class="sr-only">Theme</legend>
+
+    <label class="theme-option" title="Light">
+      <input type="radio" name="theme" value="light" />
+      <span class="theme-icon">
+        <Sun size={16} stroke-width={2} />
+      </span>
+    </label>
+
+    <label class="theme-option" title="System">
+      <input type="radio" name="theme" value="system" />
+      <span class="theme-icon">
+        <Monitor size={16} stroke-width={2} />
+      </span>
+    </label>
+
+    <label class="theme-option" title="Dark">
+      <input type="radio" name="theme" value="dark" />
+      <span class="theme-icon">
+        <Moon size={16} stroke-width={2} />
+      </span>
+    </label>
+
+    <span class="slider" aria-hidden="true"></span>
+  </fieldset>
+</theme-toggle>
+
+<script>
+  type Theme = "light" | "dark" | "system";
+  const STORAGE_KEY = "theme-preference";
+  const THEMES = ["light", "system", "dark"] as const;
+
+  const isTheme = (value: unknown): value is Theme =>
+    typeof value === "string" && (THEMES as readonly string[]).includes(value);
+
+  const getStoredTheme = (): Theme => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return isTheme(stored) ? stored : "system";
+  };
+
+  const resolveTheme = (theme: Theme): "light" | "dark" => {
+    if (theme !== "system") return theme;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const applyTheme = (theme: Theme): void => {
+    document.documentElement.setAttribute("data-theme", resolveTheme(theme));
+  };
+
+  const getSliderPosition = (theme: Theme): number =>
+    ({ light: 0, system: 1, dark: 2 })[theme];
+
+  class ThemeToggle extends HTMLElement {
+    #mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    #currentTheme: Theme = getStoredTheme();
+
+    connectedCallback(): void {
+      this.#init();
+    }
+
+    disconnectedCallback(): void {
+      this.#mediaQuery.removeEventListener("change", this.#onSystemChange);
+    }
+
+    #init(): void {
+      this.#applyAndSync(this.#currentTheme, false);
+      this.#mediaQuery.addEventListener("change", this.#onSystemChange);
+
+      this.querySelectorAll<HTMLInputElement>('input[type="radio"]').forEach(
+        (input) => {
+          input.addEventListener("change", this.#onRadioChange);
+        },
+      );
+    }
+
+    #onSystemChange = (): void => {
+      if (this.#currentTheme === "system") applyTheme("system");
+    };
+
+    #onRadioChange = (e: Event): void => {
+      const { value } = e.target as HTMLInputElement;
+      if (!isTheme(value)) return;
+      this.#applyAndSync(value, true);
+    };
+
+    #applyAndSync(theme: Theme, persist: boolean): void {
+      this.#currentTheme = theme;
+      applyTheme(theme);
+
+      if (persist) localStorage.setItem(STORAGE_KEY, theme);
+
+      const radio = this.querySelector<HTMLInputElement>(
+        `input[value="${theme}"]`,
+      );
+      if (radio) radio.checked = true;
+
+      const position = getSliderPosition(theme);
+      this.style.setProperty("--slider-index", String(position));
+    }
+  }
+
+  customElements.define("theme-toggle", ThemeToggle);
+</script>
+
+<!-- Inline script to block render and prevent flash of wrong theme -->
+<script is:inline>
+  (function () {
+    const stored = localStorage.getItem("theme-preference");
+    const valid = ["light", "dark", "system"];
+    const theme = valid.includes(stored) ? stored : "system";
+    const resolved =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme;
+    document.documentElement.setAttribute("data-theme", resolved);
+  })();
+</script>
+
+<style>
+  theme-toggle {
+    --item-size: 2rem;
+    --gap: 0.25rem;
+    --count: 3;
+    --slider-index: 1; /* default: system (middle) */
+
+    display: inline-block;
+  }
+
+  fieldset {
+    all: unset;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    padding: var(--gap);
+    border-radius: calc(var(--item-size) / 2 + var(--gap));
+    background-color: var(--bg-2);
+    border: 1px solid color-mix(in srgb, var(--tx) 12%, transparent);
+  }
+
+  /* The animated slider pill */
+  .slider {
+    position: absolute;
+    inset-block: var(--gap);
+    width: var(--item-size);
+    border-radius: calc(var(--item-size) / 2);
+    background-color: var(--ac);
+    translate: calc(var(--slider-index) * (var(--item-size) + var(--gap)));
+    transition: translate 200ms cubic-bezier(0.34, 1.2, 0.64, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .theme-option {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: var(--item-size);
+    height: var(--item-size);
+    cursor: pointer;
+    border-radius: calc(var(--item-size) / 2);
+  }
+
+  /* Hide native radio but keep it accessible */
+  .theme-option input[type="radio"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .theme-icon {
+    display: grid;
+    place-items: center;
+    color: var(--tx-2);
+    pointer-events: none;
+    transition: color 150ms ease;
+  }
+
+  /* Icon becomes accent-contrasted when its option is selected */
+  .theme-option:has(input:checked) .theme-icon {
+    color: var(--ac-2);
+  }
+
+  /* Keyboard focus ring on the label */
+  .theme-option:has(input:focus-visible) {
+    outline: 2px solid var(--ac);
+    outline-offset: 2px;
+  }
+</style>
