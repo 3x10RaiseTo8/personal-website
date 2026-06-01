@@ -12,21 +12,40 @@ export function remarkModifiedTime() {
 
     try {
       const result = execSync(
-        `git log -1 --pretty="format:%cI" "${filepath}"`,
+        `git log -1 --pretty="format:%cI" -- "${filepath}"`,
         {
           encoding: "utf-8",
           cwd: dirName,
-        }
-      );
+          // Prevent the command from hanging indefinitely
+          timeout: 5000,
+        },
+      ).trim(); // <-- always trim whitespace/newlines
 
-      // We use type assertion (as any) here because Astro's internal
-      // frontmatter type isn't always exported in a standard way
       const data = file.data as any;
-      if (data.astro?.frontmatter) {
-        data.astro.frontmatter.lastModified = result.toString();
+      if (!data.astro?.frontmatter) return;
+
+      if (!result) {
+        // File is untracked or has no commits — fall back to now, or skip
+        console.warn(
+          `[remarkModifiedTime] No git history for: ${filepath}. Falling back to current time.`,
+        );
+        data.astro.frontmatter.lastModified = new Date().toISOString();
+        return;
       }
+
+      // Validate the date before storing it
+      const date = new Date(result);
+      if (isNaN(date.getTime())) {
+        console.warn(
+          `[remarkModifiedTime] Git returned an invalid date "${result}" for: ${filepath}`,
+        );
+        data.astro.frontmatter.lastModified = new Date().toISOString();
+        return;
+      }
+
+      data.astro.frontmatter.lastModified = date.toISOString();
     } catch (error) {
-      console.warn(`Remark Plugin errrrrrror for ${filepath}:`, error);
+      console.warn(`[remarkModifiedTime] Error for ${filepath}:`, error);
     }
   };
 }
