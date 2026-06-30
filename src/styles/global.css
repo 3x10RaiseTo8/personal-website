@@ -13,21 +13,31 @@
 :root {
   /* @link https://utopia.fyi/type/calculator */
   /* 18 to 20 px 1.2 to 1.25 */
-  --font-size--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
+  /* --font-size--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
   --font-size--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
   --font-size-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
   --font-size-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
   --font-size-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
   --font-size-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
   --font-size-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
-  --font-size-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+  --font-size-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem); */
+
+  /* @link https://utopia.fyi/type/calculator?c=360,20,1.2,1240,22,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --font-size--2: clamp(0.8681rem, 0.8632rem + 0.0217vw, 0.88rem);
+  --font-size--1: clamp(1.0417rem, 1.0178rem + 0.1061vw, 1.1rem);
+  --font-size-0: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem);
+  --font-size-1: clamp(1.5rem, 1.4105rem + 0.3977vw, 1.7188rem);
+  --font-size-2: clamp(1.8rem, 1.6575rem + 0.6335vw, 2.1484rem);
+  --font-size-3: clamp(2.16rem, 1.945rem + 0.9555vw, 2.6855rem);
+  --font-size-4: clamp(2.592rem, 2.2791rem + 1.3908vw, 3.3569rem);
+  --font-size-5: clamp(3.1104rem, 2.6662rem + 1.9741vw, 4.1962rem);
 
   --font-ui: system-ui, sans-serif;
   --font-prose: var(--font-serif);
   --font-display: var(--font-serif-display);
   --font-first-character: var(--font-fancy);
 
-  color-scheme: dark light;
+  color-scheme: light dark;
 
   /* Light mode Colors */
   --tx: var(--flexoki-black);
@@ -257,13 +267,13 @@ h6 {
   font-weight: normal;
   line-height: 1.2;
   text-wrap: wrap;
-  word-spacing: 20%;
+  /* word-spacing: 20%; */
 }
 
 h1 {
   font-size: var(--font-size-4);
-  letter-spacing: -0.10rem;
-  word-spacing: 20%;
+  /* letter-spacing: -0.10rem; */
+  /* word-spacing: 20%; */
   text-align: center;
   text-wrap: pretty;
 
@@ -272,12 +282,12 @@ h1 {
 
 h2 {
   font-size: var(--font-size-3);
-  letter-spacing: -0.05rem;
+  /* letter-spacing: -0.05rem; */
 }
 
 h3 {
   font-size: var(--font-size-2);
-  letter-spacing: -0.05rem;
+  /* letter-spacing: -0.05rem; */
 }
 
 h4 {

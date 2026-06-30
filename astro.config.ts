@@ -53,50 +53,83 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Noto Serif",
+      provider: fontProviders.local(),
+      name: "Latin Modern Roman 10",
       cssVariable: "--font-serif",
-      provider: fontProviders.google(),
-      display: "block",
-      // variationSettings: "'wdth' 25",
-      // stretch: "75%",
-      // Default included:
-      weights: ["100 900"],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin"],
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/lmfont/lmroman10-regular.woff2"],
+            weight: "normal",
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/lmfont/lmroman10-bold.woff2"],
+            weight: "bold",
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/lmfont/lmroman10-italic.woff2"],
+            weight: "normal",
+            style: "italic",
+          },
+          {
+            src: ["./src/assets/fonts/lmfont/lmroman10-bolditalic.woff2"],
+            weight: "bold",
+            style: "italic",
+          },
+        ],
+      },
       fallbacks: ["serif"],
-      // formats: ["woff2"],
     },
     {
-      name: "Noto Sans",
-      cssVariable: "--font-sans",
-      provider: fontProviders.google(),
-      display: "block",
-      variationSettings: "'wdth' 25",
-      // stretch: "75%",
-      // Default included:
-      weights: ["100 900"],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin-ext"],
-      fallbacks: ["sans-serif"],
-      // formats: ["woff2"],
-    },
-    {
-      name: "Instrument Serif",
+      provider: fontProviders.local(),
+      name: "Latin Modern Roman 17",
       cssVariable: "--font-serif-display",
-      provider: fontProviders.google(),
-      display: "block",
-      // Default included:
-      // weights: [400],
-      // styles: ["normal", "italic"],
-      // subsets: ["latin"],
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/lmfont/lmroman17-regular.woff2"],
+            weight: "normal",
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/lmfont/lmroman17-oblique.woff2"],
+            weight: "normal",
+            style: "italic",
+          },
+        ],
+      },
       fallbacks: ["serif"],
-      formats: ["woff2"],
     },
+    // {
+    //   name: "Old Standard TT",
+    //   cssVariable: "--font-serif",
+    //   provider: fontProviders.google(),
+    //   display: "block",
+    //   // Default included:
+    //   // weights: [400],
+    //   // styles: ["normal", "italic"],
+    //   // subsets: ["latin"],
+    //   fallbacks: ["serif"],
+    //   formats: ["woff2"],
+    // },
+    // {
+    //   name: "Instrument Serif",
+    //   cssVariable: "--font-serif-display",
+    //   provider: fontProviders.google(),
+    //   display: "block",
+    //   // Default included:
+    //   // weights: [400],
+    //   // styles: ["normal", "italic"],
+    //   // subsets: ["latin"],
+    //   fallbacks: ["serif"],
+    //   formats: ["woff2"],
+    // },
     {
       name: "MonteCarlo",
       cssVariable: "--font-fancy",
       provider: fontProviders.google(),
-      display: "block",
       // Default included:
       // weights: [400],
       // styles: ["normal", "italic"],
