@@ -1,6 +1,6 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+import { unified, rehypeHeadingIds } from "@astrojs/markdown-remark";
 import { qrcode } from "vite-plugin-qrcode";
 
 import { SITE } from "./src/siteConfig";
@@ -20,30 +20,32 @@ export default defineConfig({
   integrations: [sitemap()],
   redirects: getRedirectsMap(SITE.links),
   markdown: {
-    remarkPlugins: [remarkModifiedTime],
-    rehypePlugins: [
-      rehypeHeadingIds,
-      rehypeWrapTable,
-      [
-        rehypeExternalLinks,
-        {
-          redirectPaths: getRedirectsList(SITE.links),
-          target: "_blank",
-          rel: ["noopener", "noreferrer", "nofollow"],
-          properties: {
-            className: ["external-link"], // styles in globals.css
+    processor: unified({
+      remarkPlugins: [remarkModifiedTime],
+      rehypePlugins: [
+        rehypeHeadingIds,
+        rehypeWrapTable,
+        [
+          rehypeExternalLinks,
+          {
+            redirectPaths: getRedirectsList(SITE.links),
+            target: "_blank",
+            rel: ["noopener", "noreferrer", "nofollow"],
+            properties: {
+              className: ["external-link"], // styles in globals.css
+            },
           },
-        },
+        ],
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "append",
+            properties: { className: ["heading-link"] },
+            content: { type: "text", value: "" },
+          },
+        ],
       ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "append",
-          properties: { className: ["heading-link"] },
-          content: { type: "text", value: "" },
-        },
-      ],
-    ],
+    }),
     shikiConfig: {
       themes: {
         light: "catppuccin-latte",
