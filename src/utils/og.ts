@@ -46,11 +46,11 @@ export async function generateOgImage(title: string): Promise<Buffer> {
                 justifyContent: "flex-start",
                 margin: "0",
                 fontSize: "110px",
-                fontFamily: "Instrument Serif",
+                fontFamily: "Imbue",
                 fontWeight: "400",
                 color: "black",
                 lineHeight: "1.2",
-                letterSpacing: "-0.04em",
+                letterSpacing: "-0.03em",
                 paddingBottom: "40px",
               },
               children: titleToSpans(title, 28),
@@ -115,9 +115,9 @@ export async function generateOgImage(title: string): Promise<Buffer> {
       height: 630,
       fonts: [
         {
-          name: "Instrument Serif",
+          name: "Imbue",
           data: await fetch(
-            "https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff",
+            "https://cdn.jsdelivr.net/npm/@fontsource/imbue/files/imbue-latin-400-normal.woff",
           ).then((res) => res.arrayBuffer()),
           weight: 400,
           style: "normal",
