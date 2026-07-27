@@ -1,20 +1,14 @@
 ---
 import { SITE } from "@/siteConfig";
 
-import { getTags } from "@/utils/posts";
 import { getFooterLinks } from "@/utils/links";
-
-import TagList from "./TagList.astro";
 
 import happy from "@/assets/happy.gif";
 
-const tags = await getTags();
 const footerLinks = getFooterLinks(SITE.links);
 ---
 
 <footer>
-  <TagList tags={tags} />
-
   <img src={happy.src} width={happy.width} height={happy.height} alt="happy" />
 
   <section class="footer-links">
@@ -69,9 +63,9 @@ const footerLinks = getFooterLinks(SITE.links);
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    margin-block-start: 5rem;
+    margin-block-start: 3rem;
     border-top: 1px solid var(--tx);
-    padding-block-start: 1.5rem;
+    padding-block-start: 3rem;
   }
 
   .footer-links {
