@@ -247,12 +247,14 @@ ol {
 }
 
 article h1+p::first-letter {
-  font-size: calc(var(--font-size-0)*2.5);
-  font-weight: normal;
   font-family: var(--font-first-character);
+  font-size: var(--font-size-3);
   line-height: 0.2;
-  padding: 0 2px 2px 4px;
-  float: left;
+  padding: 2px 3px 0 3px;
+  border: 1px outset var(--bg-2);
+  border-radius: 5%;
+  margin-right: 3px;
+  background-color: var(--bg-2);
 }
 
 /* Headings */
@@ -272,8 +274,9 @@ h6 {
 
 h1 {
   font-size: var(--font-size-4);
-  /* letter-spacing: -0.10rem; */
-  /* word-spacing: 20%; */
+  letter-spacing: -0.15rem;
+
+  word-spacing: 20%;
   text-align: center;
   text-wrap: pretty;
 
@@ -282,12 +285,12 @@ h1 {
 
 h2 {
   font-size: var(--font-size-3);
-  /* letter-spacing: -0.05rem; */
+  letter-spacing: -0.1rem;
 }
 
 h3 {
   font-size: var(--font-size-2);
-  /* letter-spacing: -0.05rem; */
+  letter-spacing: -0.05rem;
 }
 
 h4 {

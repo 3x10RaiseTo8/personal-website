@@ -55,89 +55,42 @@ export default defineConfig({
   },
   fonts: [
     {
-      provider: fontProviders.local(),
-      name: "Latin Modern Roman 10",
-      cssVariable: "--font-serif",
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/lmfont/lmroman10-regular.woff2"],
-            weight: "normal",
-            style: "normal",
-          },
-          {
-            src: ["./src/assets/fonts/lmfont/lmroman10-bold.woff2"],
-            weight: "bold",
-            style: "normal",
-          },
-          {
-            src: ["./src/assets/fonts/lmfont/lmroman10-italic.woff2"],
-            weight: "normal",
-            style: "italic",
-          },
-          {
-            src: ["./src/assets/fonts/lmfont/lmroman10-bolditalic.woff2"],
-            weight: "bold",
-            style: "italic",
-          },
-        ],
-      },
-      fallbacks: ["serif"],
-    },
-    {
-      provider: fontProviders.local(),
-      name: "Latin Modern Roman 17",
+      name: "Libertinus Serif Display",
       cssVariable: "--font-serif-display",
-      options: {
-        variants: [
-          {
-            src: ["./src/assets/fonts/lmfont/lmroman17-regular.woff2"],
-            weight: "normal",
-            style: "normal",
-          },
-          {
-            src: ["./src/assets/fonts/lmfont/lmroman17-oblique.woff2"],
-            weight: "normal",
-            style: "italic",
-          },
-        ],
-      },
-      fallbacks: ["serif"],
-    },
-    // {
-    //   name: "Old Standard TT",
-    //   cssVariable: "--font-serif",
-    //   provider: fontProviders.google(),
-    //   display: "block",
-    //   // Default included:
-    //   // weights: [400],
-    //   // styles: ["normal", "italic"],
-    //   // subsets: ["latin"],
-    //   fallbacks: ["serif"],
-    //   formats: ["woff2"],
-    // },
-    // {
-    //   name: "Instrument Serif",
-    //   cssVariable: "--font-serif-display",
-    //   provider: fontProviders.google(),
-    //   display: "block",
-    //   // Default included:
-    //   // weights: [400],
-    //   // styles: ["normal", "italic"],
-    //   // subsets: ["latin"],
-    //   fallbacks: ["serif"],
-    //   formats: ["woff2"],
-    // },
-    {
-      name: "MonteCarlo",
-      cssVariable: "--font-fancy",
-      provider: fontProviders.google(),
+      provider: fontProviders.fontsource(),
       // Default included:
-      // weights: [400],
-      // styles: ["normal", "italic"],
+      weights: [400],
       // subsets: ["latin"],
       fallbacks: ["serif"],
-      // formats: ["woff2"],
+      formats: ["woff2"],
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Libertinus Serif Initials",
+      cssVariable: "--font-fancy",
+      options: {
+        variants: [
+          {
+            src: [
+              "./src/assets/fonts/Libertinus/LibertinusSerifInitials-Regular-subset.woff2",
+            ],
+            weight: "normal",
+            style: "normal",
+          },
+        ],
+      },
+      fallbacks: ["serif"],
+    },
+    {
+      name: "Libertinus Serif",
+      cssVariable: "--font-serif",
+      provider: fontProviders.fontsource(),
+      // Default included:
+      weights: [400, 700],
+      styles: ["normal", "italic"],
+      // subsets: ["latin"],
+      fallbacks: ["serif"],
+      formats: ["woff2"],
     },
   ],
   vite: {
