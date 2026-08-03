@@ -277,8 +277,7 @@ h6 {
 
 h1 {
   font-size: var(--font-size-4);
-  letter-spacing: -0.15rem;
-
+  /* letter-spacing: -0.15rem; */
   word-spacing: 20%;
   text-align: center;
   text-wrap: pretty;
@@ -288,12 +287,12 @@ h1 {
 
 h2 {
   font-size: var(--font-size-3);
-  letter-spacing: -0.1rem;
+  /* letter-spacing: -0.1rem; */
 }
 
 h3 {
   font-size: var(--font-size-2);
-  letter-spacing: -0.05rem;
+  /* letter-spacing: -0.05rem; */
 }
 
 h4 {

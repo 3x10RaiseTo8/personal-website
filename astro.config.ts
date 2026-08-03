@@ -126,6 +126,23 @@ export default defineConfig({
         ],
       },
     },
+    {
+      name: "Libertinus Serif Display",
+      cssVariable: "--font-serif-display",
+      provider: fontProviders.local(),
+      fallbacks: ["serif"],
+      options: {
+        variants: [
+          {
+            src: [
+              "./src/assets/fonts/Libertinus/LibertinusSerifDisplay-Regular.woff2",
+            ],
+            weight: 400,
+            style: "normal",
+          },
+        ],
+      },
+    },
   ],
 
   vite: {
