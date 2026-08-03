@@ -153,6 +153,9 @@ body {
   font-size: var(--font-size-0);
   font-family: var(--font-ui);
   font-weight: normal;
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  font-feature-settings:
+    "ss05" 1;
   line-height: 1.6;
   background-color: var(--bg);
   color: var(--tx);

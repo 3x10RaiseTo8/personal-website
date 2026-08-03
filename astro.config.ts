@@ -92,7 +92,42 @@ export default defineConfig({
       fallbacks: ["serif"],
       formats: ["woff2"],
     },
+    {
+      name: "Libertinus Serif",
+      cssVariable: "--font-serif",
+      provider: fontProviders.local(),
+      fallbacks: ["serif"],
+      options: {
+        variants: [
+          {
+            src: [
+              "./src/assets/fonts/Libertinus/LibertinusSerif-Regular.woff2",
+            ],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/Libertinus/LibertinusSerif-Italic.woff2"],
+            weight: 400,
+            style: "italic",
+          },
+          {
+            src: ["./src/assets/fonts/Libertinus/LibertinusSerif-Bold.woff2"],
+            weight: 700,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/Libertinus/LibertinusSerif-BoldItalic.woff2",
+            ],
+            weight: 700,
+            style: "italic",
+          },
+        ],
+      },
+    },
   ],
+
   vite: {
     plugins: [qrcode()],
   },
