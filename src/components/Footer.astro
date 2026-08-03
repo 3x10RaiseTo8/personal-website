@@ -2,30 +2,44 @@
 import { SITE } from "@/siteConfig";
 
 import { getFooterLinks } from "@/utils/links";
+import { getTags } from "@/utils/posts";
 
+import TagList from "@/components/TagList.astro";
 import happy from "@/assets/happy.gif";
 
 const footerLinks = getFooterLinks(SITE.links);
+const tags = await getTags();
 ---
 
 <footer>
-  <img src={happy.src} width={happy.width} height={happy.height} alt="happy" />
+  <section class="tag-list-section">
+    <TagList tags={tags} class:list={"tag-list-section"} />
+  </section>
 
-  <section class="footer-links">
-    {
-      footerLinks.map((l) => (
-        <a
-          class="external-link"
-          href={`${l.url}?utm_source=personal_website&utm_campaign=footer`}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          {l.text}
-        </a>
-      ))
-    }
-    <a href="/p/blogroll">blogroll</a>
-    <a class="external-link" target="_blank" href="/rss.xml">rss</a>
+  <section class="social-links-section">
+    <img
+      src={happy.src}
+      width={happy.width}
+      height={happy.height}
+      alt="happy"
+    />
+
+    <div class="footer-links">
+      {
+        footerLinks.map((l) => (
+          <a
+            class="external-link"
+            href={`${l.url}?utm_source=personal_website&utm_campaign=footer`}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            {l.text}
+          </a>
+        ))
+      }
+      <a href="/p/blogroll">blogroll</a>
+      <a class="external-link" target="_blank" href="/rss.xml">rss</a>
+    </div>
   </section>
 
   <small>
@@ -58,14 +72,27 @@ const footerLinks = getFooterLinks(SITE.links);
 
 <style>
   footer {
+    block-size: calc(100vh - var(--pad));
     font-size: var(--font-size--2);
     text-align: center;
     display: flex;
     flex-direction: column;
+    margin-block-start: 5.5rem;
+  }
+
+  .tag-list-section {
+    padding-block: var(--gap);
+  }
+
+  .social-links-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--tx);
+    padding: var(--pad);
     gap: var(--gap);
-    margin-block-start: 3rem;
-    border-top: 1px solid var(--tx);
-    padding-block-start: 3rem;
   }
 
   .footer-links {
@@ -82,8 +109,7 @@ const footerLinks = getFooterLinks(SITE.links);
   }
 
   small {
-    /* border-block-start: 1px var(--tx) solid; */
-    /* padding-block: 1rem; */
+    padding-block-start: var(--pad);
   }
 
   small p {

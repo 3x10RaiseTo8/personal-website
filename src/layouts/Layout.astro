@@ -1,6 +1,5 @@
 ---
 import Header from "@/components/Header.astro";
-import TagList from "@/components/TagList.astro";
 import Footer from "@/components/Footer.astro";
 import "@/styles/global.css";
 
@@ -8,11 +7,8 @@ import { Font } from "astro:assets";
 
 import { SITE } from "@/siteConfig";
 import { ClientRouter } from "astro:transitions";
-import { getTags } from "@/utils/posts";
 
 const headSnippet = import.meta.env.HEAD_SNIPPET;
-
-const tags = await getTags();
 
 export interface Props {
   title?: string;
@@ -247,13 +243,6 @@ Anyway, code here is pretty janky, checkout the source code here: https://abhish
     <main transition:animate="slide">
       <slot />
     </main>
-    <TagList tags={tags} />
     <Footer transition:persist />
   </body>
 </html>
-
-<style>
-  main {
-    margin-block-end: 15rem;
-  }
-</style>
