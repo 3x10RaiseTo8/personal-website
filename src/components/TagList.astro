@@ -11,6 +11,7 @@ const { tags = [] } = Astro.props;
 <Fragment>
   <h2>All Tags</h2>
   <div class="tag-list">
+    <a href="/p" class="tag">All Posts</a>
     {
       tags.map((tag) => (
         <a href={`/t/${tag.slug}`} class="tag">
