@@ -406,7 +406,7 @@ li:has(input[type="checkbox"]) {
 
 /* Quotes */
 blockquote {
-  margin: 1.5em 0;
+  margin: 0;
   padding-left: 1em;
   border-left: 3px solid var(--ac-2);
   color: var(--tx-2);
