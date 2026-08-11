@@ -332,7 +332,7 @@ h4 {
 
 ol {
   list-style: none;
-  counter-reset: item;
+  counter-reset: ol-counter;
   /* <-> before number dot (+ top & bottom) */
   margin: 0 0 0 0.2rem;
 }
@@ -342,8 +342,8 @@ li ol {
   margin-block: 1rem;
 }
 
-ol li {
-  counter-increment: item;
+ol>li {
+  counter-increment: ol-counter;
   position: relative;
   /* number dot <-> li content */
   padding-left: 2rem;
@@ -351,8 +351,8 @@ ol li {
   margin: 0.4rem 0;
 }
 
-ol li::before {
-  content: counter(item) ".";
+ol>li::before {
+  content: counter(ol-counter) ".";
   position: absolute;
   left: 0;
   top: 0;
