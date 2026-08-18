@@ -1,3 +1,5 @@
 allowBuilds:
   esbuild: true
   workerd: true
+overrides:
+  trim-newlines@<3.0.1: ^3.0.1
