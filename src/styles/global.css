@@ -272,7 +272,7 @@ h6 {
   font-weight: normal;
   line-height: 1.2;
   text-wrap: wrap;
-  /* word-spacing: 20%; */
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual historical-ligatures;
 }
 
 h1 {
