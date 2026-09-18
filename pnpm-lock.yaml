@@ -17,6 +17,9 @@ importers:
       '@astrojs/markdown-remark':
         specifier: ^7.3.1
         version: 7.3.1(supports-color@10.2.2)
+      '@astrojs/markdown-satteri':
+        specifier: ^0.4.1
+        version: 0.4.1
       '@astrojs/rss':
         specifier: ^4.0.19
         version: 4.0.19
@@ -47,6 +50,18 @@ importers:
       satori:
         specifier: ^0.26.0
         version: 0.26.0
+      satteri:
+        specifier: ^0.10.5
+        version: 0.10.5
+      satteri-autolink-headings:
+        specifier: ^0.1.1
+        version: 0.1.1(satteri@0.10.5)
+      satteri-external-links:
+        specifier: ^0.1.1
+        version: 0.1.1(satteri@0.10.5)
+      satteri-slug:
+        specifier: ^0.1.1
+        version: 0.1.1(satteri@0.10.5)
       sharp:
         specifier: ^0.35.3
         version: 0.35.3(@types/node@24.13.3)
@@ -1167,13 +1182,6 @@ packages:
 
   '@mdx-js/mdx@3.1.1':
     resolution: {integrity: sha512-f6ZO2ifpwAQIpzGWaBQT2TXxPv6z3RBzQKpVftEWN78Vl/YweF1uwussDx8ECAXVtr3Rs89fKyG9YlzUs9DyGQ==}
-
-  '@napi-rs/wasm-runtime@1.2.3':
-    resolution: {integrity: sha512-UMduMbqO5s5zF2NkNacMT/yK5Y5QiKvWr2+50bzIIxFDwVJ2h49b+oyjaCGPhJxd2/gC2x39EHv/gHVuu36x2Q==}
-    engines: {node: ^20.19.0 || ^22.13.0 || >=23.5.0}
-    peerDependencies:
-      '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
-      '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
 
   '@napi-rs/wasm-runtime@1.2.4':
     resolution: {integrity: sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g==}
@@ -2566,6 +2574,23 @@ packages:
     resolution: {integrity: sha512-tkMFrfIs3l2mQ2JEcyW0ADTy3zGggFRFzi6Ef8YozQSFsFKEqaSO1Y8F9wJg4//PJGQauMalHGTUEkPrFwhVPA==}
     engines: {node: '>=16'}
 
+  satteri-autolink-headings@0.1.1:
+    resolution: {integrity: sha512-3sBgrW6VKIMh6irVZ7BCF384pUQAlhD+4m5yqXdKRxfX7rxKe5qp+yFM0a7AEo6bU0Pc/NK7+7daHZgctpZeFA==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      satteri: ^0.9.5
+
+  satteri-external-links@0.1.1:
+    resolution: {integrity: sha512-E9jTXX4eYPLO2XaEQxd+/Ulhi4Q9ZA42ig+i4ZgnutNp9XomqN+wN8TFlyaEf8XT//D8jrW2NFwtKb0bHE0xiw==}
+    peerDependencies:
+      satteri: '>=0.7.0'
+
+  satteri-slug@0.1.1:
+    resolution: {integrity: sha512-8iSNtN/9JqK4SicXqm0srOar4VgtgfAh2hXzMrvbZDXkopa0wodOoB8mMVDfcqLnhOEYmIYyn6dlC3z04iui7w==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      satteri: ^0.9.5
+
   satteri@0.10.5:
     resolution: {integrity: sha512-Ao1LKpAEa9Wdg0otgbVKViZHEq9ebdXe4DMrp3s9vQAU0HNIuHnFEuMuOcm0ZIXyV0Yzxj91NvhLpvXZJO/5ZQ==}
 
@@ -3338,7 +3363,7 @@ snapshots:
     dependencies:
       '@emnapi/core': 1.11.1
       '@emnapi/runtime': 1.11.1
-      '@napi-rs/wasm-runtime': 1.2.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+      '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
     optional: true
 
   '@bruits/satteri-win32-arm64-msvc@0.10.5':
@@ -3947,7 +3972,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@napi-rs/wasm-runtime@1.2.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
+  '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
     dependencies:
       '@emnapi/core': 1.11.1
       '@emnapi/runtime': 1.11.1
@@ -5818,6 +5843,19 @@ snapshots:
       parse-css-color: 0.2.1
       postcss-value-parser: 4.2.0
       yoga-layout: 3.2.1
+
+  satteri-autolink-headings@0.1.1(satteri@0.10.5):
+    dependencies:
+      satteri: 0.10.5
+
+  satteri-external-links@0.1.1(satteri@0.10.5):
+    dependencies:
+      satteri: 0.10.5
+
+  satteri-slug@0.1.1(satteri@0.10.5):
+    dependencies:
+      github-slugger: 2.0.0
+      satteri: 0.10.5
 
   satteri@0.10.5:
     dependencies:
