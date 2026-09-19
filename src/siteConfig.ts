@@ -8,6 +8,7 @@ export const SITE = {
   website: "https://abhishe.com",
   domain: "abhishe.com",
   defaultOgImage: "/og/default.png",
+  externalLink: { rel: "noopener", target: "_blank" },
   timezone: "Asia/Kolkata",
   lang: "en",
   dir: "ltr",
@@ -47,7 +48,7 @@ export const SITE = {
     {
       redirects: ["/twitter", "/x"],
       href: "https://x.com/now7x?utm_source=abhishe.com",
-      text: "twitter",
+      text: "x/twitter",
       footer: true,
     },
     {

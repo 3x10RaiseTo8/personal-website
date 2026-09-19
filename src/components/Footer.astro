@@ -26,16 +26,16 @@ const tags = await getTags();
     <div class="link-group">
       <a href="/about">about</a>
       <a href="/p/blogroll">blogroll</a>
-      <a class="external-link" target="_blank" href="/rss.xml">rss</a>
+      <a href="/rss.xml">rss</a>
     </div>
     <div class="link-group">
       {
         footerLinks.map((l) => (
           <a
             class="external-link"
-            href={`${l.url}?utm_source=personal_website&utm_campaign=footer`}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
+            href={l.url}
+            target={SITE.externalLink.target}
+            rel={SITE.externalLink.rel}
           >
             {l.text}
           </a>
