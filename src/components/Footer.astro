@@ -13,18 +13,22 @@ const tags = await getTags();
 
 <footer>
   <section class="tag-list-section">
-    <TagList tags={tags} class:list={"tag-list-section"} />
+    <TagList tags={tags} />
   </section>
 
-  <section class="social-links-section">
+  <section class="footer-hero">
     <img
       src={happy.src}
       width={happy.width}
       height={happy.height}
       alt="happy"
     />
-
-    <div class="footer-links">
+    <div class="link-group">
+      <a href="/about">about</a>
+      <a href="/p/blogroll">blogroll</a>
+      <a class="external-link" target="_blank" href="/rss.xml">rss</a>
+    </div>
+    <div class="link-group">
       {
         footerLinks.map((l) => (
           <a
@@ -37,8 +41,6 @@ const tags = await getTags();
           </a>
         ))
       }
-      <a href="/p/blogroll">blogroll</a>
-      <a class="external-link" target="_blank" href="/rss.xml">rss</a>
     </div>
   </section>
 
@@ -84,7 +86,7 @@ const tags = await getTags();
     padding-block: var(--gap);
   }
 
-  .social-links-section {
+  .footer-hero {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -95,7 +97,7 @@ const tags = await getTags();
     gap: var(--gap);
   }
 
-  .footer-links {
+  .link-group {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
