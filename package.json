@@ -30,6 +30,7 @@
     "satori": "^0.26.0",
     "satteri": "^0.10.5",
     "satteri-autolink-headings": "^0.1.1",
+    "satteri-expressive-code": "^0.1.24",
     "satteri-external-links": "^0.1.1",
     "satteri-slug": "^0.1.1",
     "sharp": "^0.35.3",
