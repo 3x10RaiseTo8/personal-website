@@ -32,7 +32,7 @@ const {
   modDatetime,
 } = Astro.props;
 
-const finalTitle = title ? title.concat(" — ", titleSuffix) : titleSuffix;
+const finalTitle = title ? title.concat(" – ", titleSuffix) : titleSuffix;
 const ogImageURL = new URL(ogImage, Astro.url);
 ---
 
