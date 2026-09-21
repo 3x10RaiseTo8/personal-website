@@ -1,6 +1,6 @@
 import { defineHastPlugin } from "satteri";
 
-export const satteriWrapTable = defineHastPlugin({
+export const wrapTable = defineHastPlugin({
   name: "wrap-table",
   element: {
     filter: ["table"],
@@ -26,4 +26,4 @@ export const satteriWrapTable = defineHastPlugin({
   },
 });
 
-export default satteriWrapTable;
+export default wrapTable;

@@ -1,14 +1,18 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import { unified, rehypeHeadingIds } from "@astrojs/markdown-remark";
 import { qrcode } from "vite-plugin-qrcode";
 
-import { SITE } from "./src/siteConfig";
-import { remarkModifiedTime } from "./src/utils/remark-modified-time";
-import { rehypeWrapTable } from "./src/utils/rehype-wrap-table";
-import { getRedirectsList, getRedirectsMap } from "./src/utils/links";
-import rehypeExternalLinks from "./src/utils/rehype-external-links";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { satteri } from "@astrojs/markdown-satteri";
+import { satteriSlug } from "satteri-slug";
+import satteriAutolinkHeadings from "satteri-autolink-headings";
+import expressiveCode from "satteri-expressive-code";
+
+import { modifiedTime } from "@/utils/satteri-modified-time";
+import { externalLinks } from "@/utils/satteri-external-links";
+import { wrapTable } from "@/utils/satteri-wrap-table";
+
+import { getRedirectsList, getRedirectsMap } from "@/utils/links";
+import { SITE } from "@/siteConfig";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,50 +24,45 @@ export default defineConfig({
   integrations: [sitemap()],
   redirects: getRedirectsMap(SITE.links),
   markdown: {
-    processor: unified({
-      remarkPlugins: [remarkModifiedTime],
-      rehypePlugins: [
-        rehypeHeadingIds,
-        rehypeWrapTable,
-        [
-          rehypeExternalLinks,
-          {
-            redirectPaths: getRedirectsList(SITE.links),
+    processor: satteri({
+      features: {
+        gfm: true,
+        frontmatter: true,
+        math: true,
+        headingAttributes: true,
+        wikilinks: true,
+        smartPunctuation: true,
+        rawHtml: true,
+      },
+      mdastPlugins: [modifiedTime],
+      hastPlugins: [
+        satteriSlug(),
+        externalLinks({
+          properties: {
+            className: ["external-link"],
+            rel: ["noopener"],
             target: "_blank",
-            rel: ["noopener", "noreferrer", "nofollow"],
-            properties: {
-              className: ["external-link"], // styles in globals.css
-            },
           },
-        ],
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "append",
-            properties: { className: ["heading-link"] },
-            content: { type: "text", value: "" },
-          },
-        ],
+          hrefsToInclude: getRedirectsList(SITE.links),
+          searchParams: { utm_source: SITE.domain },
+          internalHosts: [SITE.domain],
+        }),
+        satteriAutolinkHeadings({
+          behavior: "append",
+          properties: { className: ["heading-link"] },
+        }),
+        wrapTable,
+        expressiveCode({ themes: ["github-dark", "github-light"] }),
       ],
     }),
     shikiConfig: {
       themes: {
-        light: "catppuccin-latte",
-        dark: "aurora-x",
+        light: "github-light",
+        dark: "github-dark",
       },
     },
   },
   fonts: [
-    {
-      name: "Libertinus Serif Display",
-      cssVariable: "--font-serif-display",
-      provider: fontProviders.fontsource(),
-      // Default included:
-      weights: [400],
-      // subsets: ["latin"],
-      fallbacks: ["serif"],
-      formats: ["woff2"],
-    },
     {
       provider: fontProviders.local(),
       name: "Libertinus Serif Initials",
@@ -80,17 +79,6 @@ export default defineConfig({
         ],
       },
       fallbacks: ["serif"],
-    },
-    {
-      name: "Libertinus Serif",
-      cssVariable: "--font-serif",
-      provider: fontProviders.fontsource(),
-      // Default included:
-      weights: [400, 700],
-      styles: ["normal", "italic"],
-      // subsets: ["latin"],
-      fallbacks: ["serif"],
-      formats: ["woff2"],
     },
     {
       name: "Libertinus Serif",
@@ -144,7 +132,6 @@ export default defineConfig({
       },
     },
   ],
-
   vite: {
     plugins: [qrcode()],
   },
