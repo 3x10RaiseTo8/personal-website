@@ -5,7 +5,6 @@ import { qrcode } from "vite-plugin-qrcode";
 import { satteri } from "@astrojs/markdown-satteri";
 import { satteriSlug } from "satteri-slug";
 import satteriAutolinkHeadings from "satteri-autolink-headings";
-import expressiveCode from "satteri-expressive-code";
 
 import { modifiedTime } from "@/utils/satteri-modified-time";
 import { externalLinks } from "@/utils/satteri-external-links";
@@ -52,7 +51,6 @@ export default defineConfig({
           properties: { className: ["heading-link"] },
         }),
         wrapTable,
-        expressiveCode({ themes: ["github-dark", "github-light"] }),
       ],
     }),
     shikiConfig: {

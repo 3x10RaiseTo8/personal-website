@@ -20,7 +20,7 @@
     "@astrojs/markdown-satteri": "^0.4.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "@lucide/astro": "^1.25.0",
+    "@lucide/astro": "^1.47.0",
     "astro": "^7.3.3",
     "github-slugger": "^2.0.0",
     "hast-util-from-html": "^2.0.3",
@@ -30,15 +30,14 @@
     "satori": "^0.26.0",
     "satteri": "^0.10.5",
     "satteri-autolink-headings": "^0.1.1",
-    "satteri-expressive-code": "^0.1.24",
     "satteri-external-links": "^0.1.1",
     "satteri-slug": "^0.1.1",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.4",
     "typescript": "^6.0.3",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0",
     "vfile": "^6.0.3",
-    "wrangler": "^4.93.0"
+    "wrangler": "^4.135.0"
   },
   "engines": {
     "node": ">=26"
@@ -46,7 +45,7 @@
   "devDependencies": {
     "@types/hast": "^3.0.5",
     "@types/mdast": "^4.0.4",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.8",
     "prettier-plugin-astro": "^0.14.1",
     "vite-plugin-qrcode": "^0.4.1"
   }
