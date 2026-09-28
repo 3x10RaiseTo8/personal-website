@@ -41,19 +41,19 @@ export const SITE = {
     },
     {
       redirects: ["/linkedin", "/li"],
-      href: "https://www.linkedin.com/in/abhishek7x?utm_source=abhishe.com",
+      href: "https://www.linkedin.com/in/abhishek7x?utm_source=abhishe.com&utm_medium=referral",
       text: "linkedin",
       footer: true,
     },
     {
       redirects: ["/twitter", "/x"],
-      href: "https://x.com/now7x?utm_source=abhishe.com",
+      href: "https://x.com/now7x?utm_source=abhishe.com&utm_medium=referral",
       text: "x/twitter",
       footer: true,
     },
     {
       redirects: ["/github", "/gh"],
-      href: "https://github.com/3x10RaiseTo8?utm_source=abhishe.com",
+      href: "https://github.com/3x10RaiseTo8?utm_source=abhishe.com&utm_medium=referral",
       text: "github",
       footer: true,
     },
@@ -65,7 +65,7 @@ export const SITE = {
     },
     {
       redirects: ["/source"],
-      href: "https://github.com/3x10RaiseTo8/personal-website?utm_source=abhishe.com",
+      href: "https://github.com/3x10RaiseTo8/personal-website?utm_source=abhishe.com&utm_medium=referral",
       text: "source",
       footer: false,
     },

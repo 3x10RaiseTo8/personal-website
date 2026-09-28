@@ -43,7 +43,7 @@ export default defineConfig({
             target: "_blank",
           },
           hrefsToInclude: getRedirectsList(SITE.links),
-          searchParams: { utm_source: SITE.domain },
+          searchParams: { utm_source: SITE.domain, utm_medium: "referral" },
           internalHosts: [SITE.domain],
         }),
         satteriAutolinkHeadings({
