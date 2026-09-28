@@ -25,7 +25,11 @@ export default defineConfig({
   markdown: {
     processor: satteri({
       features: {
-        gfm: true,
+        gfm: {
+          footnotes: {
+            backLabel: "Return to {reference}",
+          },
+        },
         frontmatter: true,
         math: true,
         headingAttributes: true,
