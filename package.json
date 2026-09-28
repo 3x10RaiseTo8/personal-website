@@ -17,11 +17,11 @@
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/markdown-remark": "^7.3.1",
-    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/markdown-satteri": "^0.4.2",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "@lucide/astro": "^1.47.0",
-    "astro": "^7.3.3",
+    "@lucide/astro": "^1.48.0",
+    "astro": "^7.3.5",
     "github-slugger": "^2.0.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-is-element": "^3.0.0",
@@ -37,7 +37,7 @@
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0",
     "vfile": "^6.0.3",
-    "wrangler": "^4.135.0"
+    "wrangler": "^4.141.0"
   },
   "engines": {
     "node": ">=26"
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/hast": "^3.0.5",
     "@types/mdast": "^4.0.4",
-    "prettier": "^3.9.8",
+    "prettier": "^3.9.9",
     "prettier-plugin-astro": "^0.14.1",
     "vite-plugin-qrcode": "^0.4.1"
   }
